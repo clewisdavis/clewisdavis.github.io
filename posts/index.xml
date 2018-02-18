@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Chris&#39;s Blog</title>
-    <link>http://clewisdavis.github.io/</link>
-    <description>Recent content on Chris&#39;s Blog</description>
+    <title>Posts on Chris&#39;s Blog</title>
+    <link>http://clewisdavis.github.io/posts/</link>
+    <description>Recent content in Posts on Chris&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 17 Feb 2018 18:21:39 -0500</lastBuildDate>
     
-	<atom:link href="http://clewisdavis.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://clewisdavis.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
