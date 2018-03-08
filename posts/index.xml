@@ -6,27 +6,19 @@
     <description>Recent content in Posts on Chris&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Feb 2018 19:27:59 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 17 Feb 2018 18:21:39 -0500</lastBuildDate>
     
 	<atom:link href="http://clewisdavis.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>My Second Post and update</title>
-      <link>http://clewisdavis.github.io/posts/my-second-post/</link>
-      <pubDate>Sat, 17 Feb 2018 19:27:59 -0500</pubDate>
-      
-      <guid>http://clewisdavis.github.io/posts/my-second-post/</guid>
-      <description>This is my second posts hello And this is what I would like to discuss. The events of today and what they mean.</description>
-    </item>
-    
-    <item>
-      <title>My First Post and another</title>
+      <title>Is writing design?</title>
       <link>http://clewisdavis.github.io/posts/my-first-post/</link>
       <pubDate>Sat, 17 Feb 2018 18:21:39 -0500</pubDate>
       
       <guid>http://clewisdavis.github.io/posts/my-first-post/</guid>
-      <description>This is my first posts and this is a description</description>
+      <description>I am starting to see some parallels between writing and drawing. When I sketch an idea, it’s very rough and unrefined. The initial sketch is never the final product—I have to get it out and keep refining. I sketch again and again until I get the final result, even then it feels unfinished. The most difficult part is deciding when to stop.
+This has changed my mindset and approach to writing.</description>
     </item>
     
   </channel>
