@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="robots" content="noindex">
     <title>Caretaker Scheduler: Review Lessons</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
@@ -207,39 +208,37 @@
       // function toggleEle(element) {
       //   if (element.classList.value === 'weekend hide' || element.classList.value === 'weekend') {
       //     element.classList.toggle('hide')
-      //   } 
+      //   }
       // }
 
       // add event listener to toggle and loop through each section of the table
-      weekendToggle.addEventListener('click', function() {
-        
-        // thead loop
-        thArr.forEach(
-          function(element) {
-            if (element.classList.value === 'weekend hide' || element.classList.value === 'weekend') {
-              element.classList.toggle('hide')
-            } 
-          }
-        );
+      weekendToggle.addEventListener('click', () => {
+  // thead loop
+  thArr.forEach(
+    (element) => {
+      if (element.classList.value === 'weekend hide' || element.classList.value === 'weekend') {
+              element.classList.toggle('hide');
+      }
+    },
+  );
 
-        //tbody loop
-        tbBody.forEach(
-          function(element) {
-            if (element.classList.value === 'weekend hide' || element.classList.value === 'weekend') {
-              element.classList.toggle('hide')
-            } 
-          }
-        );
+  // tbody loop
+  tbBody.forEach(
+    (element) => {
+      if (element.classList.value === 'weekend hide' || element.classList.value === 'weekend') {
+              element.classList.toggle('hide');
+      }
+    },
+  );
 
-        // tfoot loop
-        tFoot.forEach(
-          function(element) {
-            if (element.classList.value === 'weekend hide' || element.classList.value === 'weekend') {
-              element.classList.toggle('hide')
-            } 
-          }
-        )
-
-      })
+  // tfoot loop
+  tFoot.forEach(
+    (element) => {
+      if (element.classList.value === 'weekend hide' || element.classList.value === 'weekend') {
+              element.classList.toggle('hide');
+      }
+    },
+  );
+});
   </script>
 </html>
