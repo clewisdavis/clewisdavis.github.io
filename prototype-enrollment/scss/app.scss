@@ -1,0 +1,189 @@
+@import "settings";
+@import "foundation";
+
+// Or selectively include components
+// @import
+//   "foundation/components/accordion",
+//   "foundation/components/alert-boxes",
+//   "foundation/components/block-grid",
+//   "foundation/components/breadcrumbs",
+//   "foundation/components/button-groups",
+//   "foundation/components/buttons",
+//   "foundation/components/clearing",
+//   "foundation/components/dropdown",
+//   "foundation/components/dropdown-buttons",
+//   "foundation/components/flex-video",
+//   "foundation/components/forms",
+//   "foundation/components/grid",
+//   "foundation/components/inline-lists",
+//   "foundation/components/joyride",
+//   "foundation/components/keystrokes",
+//   "foundation/components/labels",
+//   "foundation/components/magellan",
+//   "foundation/components/orbit",
+//   "foundation/components/pagination",
+//   "foundation/components/panels",
+//   "foundation/components/pricing-tables",
+//   "foundation/components/progress-bars",
+//   "foundation/components/reveal",
+//   "foundation/components/side-nav",
+//   "foundation/components/split-buttons",
+//   "foundation/components/sub-nav",
+//   "foundation/components/switch",
+//   "foundation/components/tables",
+//   "foundation/components/tabs",
+//   "foundation/components/thumbs",
+//   "foundation/components/tooltips",
+//   "foundation/components/top-bar",
+//   "foundation/components/type",
+//   "foundation/components/offcanvas",
+//   "foundation/components/visibility";
+
+
+// CLDAVIS CUSTOM STYLES
+
+.main-section {
+	margin-top: $tight;
+}
+
+.legal {
+	font-color: $aluminum;
+	font-size: 70%;
+}
+
+small > .legal {
+	line-height: 1.5;
+}
+
+.success {
+	color: $green;
+}
+
+.sectionTitle, .instruction {
+	color: $steel;
+	font-size: .95rem;
+}
+
+.title {
+	color: $tuatara;
+}
+
+.help-block {
+	display: block;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	color: $charcoal;
+	font-size: $form-label-font-size;
+}
+
+input[type="text"].helper-text, select.helper-text  {
+	margin: 0 0 0 0;
+}
+
+p.tight {
+	margin-bottom: $tight;
+}
+
+/* Circle Avatar Styles */
+
+.circle {
+	line-height: 0;		/* remove line-height */ 
+	display: inline-block;	/* circle wraps image */
+	margin: 5px;
+  border: 2px solid rgba(255,255,255,0.4);
+	border-radius: 50%;	/* relative value */
+	/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+	transition: linear 0.25s;
+  height: 32px;
+  width: 32px;
+}
+.circle img {
+	border-radius: 50%;	/* relative value for
+				   adjustable image size */
+}
+.circle:hover {
+	transition: ease-out 0.2s;
+  border: 2px solid rgba(255,255,255,0.8);
+  -webkit-transition: ease-out 0.2s;
+}
+a.circle {
+  color: transparent;
+} /* IE fix: removes blue border */
+
+
+// adjustment for the margin bottom
+.margin-tight {
+	margin: 0 0 0;
+}
+
+.panel h4.margin-loose {
+	margin: 0 0 1.5rem;
+	margin-bottom: 1.8rem;
+}
+
+small a {
+	font-size: $small-font-size;
+}
+
+.large-margin-top {
+	margin-top: 2rem;
+}
+
+.side-nav.padding-top-tight {
+	padding: 0 0;
+}
+
+.sidebar {
+	background: $ghost;
+}
+
+.side-nav li.active {
+	background: $silver;
+}
+
+
+// ADDRESS THE RADIO AND CHECK BOX ALIGNMENT ISSUE
+// Form groups
+//
+// Designed to help with the organization and spacing of vertical forms. For
+// horizontal forms, use the predefined grid classes.
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+
+// Checkboxes and radios
+//
+// Indent the labels to position radios/checkboxes as hanging controls.
+
+.radio,
+.checkbox {
+  display: block;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  label {
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+  }
+}
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+  float: left;
+  margin-left: -20px;
+  margin-top: 4px;
+}
+.radio + .radio,
+.checkbox + .checkbox {
+  margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
+}
+
+
+
+
+
+
