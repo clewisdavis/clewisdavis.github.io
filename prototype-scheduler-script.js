@@ -1,4 +1,5 @@
 console.log('it works');
+// script written to simulate weekly minumum lesson requirement for students per week.
 
 // get ALL the inputs values of of each row
 const courseRow1 = document.querySelectorAll('.courseRow1 td input');
