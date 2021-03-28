@@ -1,8 +1,8 @@
 console.log('it works');
 
-
 // section / location select functionality
 // script written for UX designer to simulate functionality for user testing and stakeholder feedback
+// demo's here: https://clewisdavis.github.io/prototypes.html
 
 // get the select menu
 const sectionLocation = document.querySelector('#sectionLocation');
@@ -47,5 +47,3 @@ sectionLocation.addEventListener('change', () => {
     }
   }
 });
-
-// demo's here: https://clewisdavis.github.io/prototypes.html
