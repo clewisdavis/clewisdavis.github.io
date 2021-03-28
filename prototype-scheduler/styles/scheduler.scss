@@ -1,0 +1,794 @@
+body {
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  padding: 0 50px 50px 50px;
+  margin: 0;
+}
+
+.home-link {
+  background-color: #404040;
+  margin: 0 -50px 0 -50px;
+  padding: 10px 50px;
+  a {
+    color: #fff;
+    font-size: .85rem;
+    text-decoration: none;
+    span {
+      vertical-align: middle;
+      margin-top: -1px;
+    }
+  }
+}
+
+a {
+  color: #722362;
+  &.note {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+h1,
+h2,
+h3 {
+  color: #722362;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+p,
+ul {
+  font-size: 1.1rem;
+}
+
+.btn,
+button.btn {
+  cursor: pointer;
+  border: none;
+  background-color: #e0e0e0;
+  padding: 12px 18px;
+  border-radius: 6px;
+  color: #000;
+  text-decoration: none;
+  transition: background-color 0.35s ease;
+  &.small {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  &:hover,
+  &:focus {
+    background-color: #d0d0d0;
+  }
+  &.primary-btn {
+    background-color: #76d5d4;
+    &:hover,
+    &:focus {
+      background-color: #93e9e7;
+    }
+  }
+  &.disabled {
+    background-color: #e0e0e0;
+    color: #8f8f8f;
+    cursor: default;
+    &:hover,
+    &:focus {
+      background-color: #e0e0e0;
+    }
+  }
+}
+
+input[type="text"],
+input[type="number"] {
+  border-radius: 6px;
+  padding: 7px 7px 7px 7px;
+  border-style: solid;
+  border: 1px solid #8f8f8f;
+  &.lesson-value {
+    width: 40px;
+  }
+}
+
+.date-input {
+  position: relative;
+  .date-field {
+    width: 110px;
+  }
+  .material-icons {
+    position: absolute;
+    right: 5px;
+    top: 1px;
+  }
+}
+
+/// SITE STYLES
+
+.main {
+  display: flex;
+  .col1 {
+    width: 65%;
+    margin-right: 5%;
+    padding-bottom: 100px;
+    p:first-of-type {
+      margin-top: 0;
+    }
+    &.table-full {
+      width: 50%;
+    }
+  }
+  .col2 {
+    width: 30%;
+    &.table-full {
+      width: 45%;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.single-card.intro {
+  width: 40%;
+  margin-right: 5%;
+  h1 {
+    margin: 0;
+  }
+  &:hover {
+    -webkit-transition: background-color 0.25s ease;
+    transition: background-color 0.25s ease;
+    background-color: rgba(118, 213, 212, 0.2);
+  }
+}
+img.intro-img {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+.top-dots {
+  border-top: 2px dotted #76d5d4;
+  padding-top: 20px;
+}
+
+.student-select {
+  display: flex;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    a.pending-link {
+      display: block;
+      font-size: 0.9rem;
+      text-indent: 25px;
+    }
+    &:first-of-type {
+      margin-right: 50px;
+    }
+    h4 {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #e0e0e0;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    li {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.formFields {
+  ul.optionList {
+    list-style-type: none;
+    padding: 0;
+    li {
+      margin-bottom: 8px;
+      label strong {
+        border: 1px solid #125f02;
+        display: inline-block;
+        font-size: 0.9rem;
+        padding: 4px 8px;
+        border-radius: 6px;
+        background-color: #fbf9f7;
+        margin-left: 5px;
+        color: #125f02;
+      }
+      label.advanced strong {
+        color: #a06e01;
+        border: 1px solid #ffb81c;
+      }
+    }
+  }
+}
+
+.form-actions, .modal-footer {
+  border-top: 2px solid #ccc;
+  padding-top: 35px;
+  margin-top: 20px;
+  &.pinned {
+    position: fixed;
+    padding: 30px 50px;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    background-color: #fff;
+  }
+  .btn {
+    margin-right: 10px;
+  }
+}
+
+.edit-actions {
+  margin-top: 15px;
+}
+
+p.teacher {
+  background-image: url(../images/teacher.png);
+  background-size: 55px;
+  background-repeat: no-repeat;
+  padding: 20px 55px 20px 0;
+  background-position: 100% ;
+  font-style: italic;
+  font-size: 1rem;
+  color: #722362;
+}
+
+.steps {
+  background-color: rgba(118, 213, 212, 0.3);
+  padding: 20px 20px 0px 20px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  h2,
+  h3 {
+    margin: 0;
+    font-weight: 400;
+  }
+  h2 {
+    background-image: url(../images/schedule.png);
+    background-repeat: no-repeat;
+    background-size: 50px;
+    padding: 10px 0 15px 60px;
+  }
+  h3 {
+    font-size: 1.1rem;
+    .numeral {
+      display: inline-block;
+      background-color: #722362;
+      color: #fff;
+      border-radius: 2px;
+      font-size: 15px;
+      font-weight: 500;
+      width: 14px;
+      height: 14px;
+      text-align: center;
+      margin-right: 8px;
+      padding: 3px 7px 8px 8px;
+    }
+  }
+  p {
+    text-align: center;
+    font-style: italic;
+    &.teacher {
+      padding: 15px 55px 25px 10px;
+      text-align: left;
+    }
+  }
+  ol {
+    margin: 0;
+    padding: 10px 0 0 0;
+    list-style-type: none;
+    li {
+      background-color: #fbf9f7;
+      padding: 15px;
+      margin-bottom: 10px;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+      p {
+        font-size: 0.9rem;
+        margin: 5px 0 0 0;
+        text-align: left;
+        font-style: normal;
+      }
+      ul {
+        list-style-type: disc;
+        padding: 0;
+        margin-top: 10px;
+        li {
+          font-size: 0.9rem;
+          padding: 0;
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}
+
+.step-indicator {
+  margin-bottom: 20px;
+  border-bottom: 2px dotted #76d5d4;
+  padding-bottom: 20px;
+  ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      vertical-align: top;
+      display: inline-block;
+      text-align: center;
+      &.active {
+        font-weight: 700;
+        border-bottom: 3px solid #722362;
+        padding-bottom: 5px;
+        color: #722362;
+      }
+      em {
+        font-size: 0.9rem;
+        color: #404040;
+      }
+    }
+  }
+  .material-icons {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 4px;
+    color: #76d5d4;
+  }
+}
+
+.tip-pane {
+  background-color:#fbf9f7;
+  padding: 1px 30px 0px 25px;
+  border-radius: 2px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  h2 {
+    background-image: url(../images/bulb.png);
+    background-repeat: no-repeat;
+    background-size: 45px;
+    text-indent: 10%;
+    padding: 10px 0 10px 12px;
+    margin-bottom: 0;
+  }
+  ul li{
+    margin-bottom: 8px;
+  }
+  ul li ul {
+    margin-top: 8px;
+    padding-left: 15px;
+  }
+  p, ul li {
+    font-size: .95rem;
+  }
+}
+
+.custom-dates {
+  label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .material-icons.cal-icon {
+    vertical-align: middle;
+  }
+  button {
+    margin-left: 5px;
+  }
+
+  &.show {
+    display: block;
+  }
+  &.hide {
+    display: none;
+  }
+}
+
+.single-card {
+  margin-top: 25px;
+  background-color: #fbf9f7;
+  padding: 20px;
+  border-radius: 2px;
+  display: inline-block;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  h2 {
+    color: #000;
+    margin-top: 0;
+    .material-icons {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 5px;
+      font-size: 30px;
+    }
+  }
+}
+
+.grid {
+  color: #404040;
+  background-color: #fff;
+  border-collapse: collapse;
+  padding: 10px 35px;
+  display: inline-block;
+  width: auto;
+  th,
+  td {
+    text-align: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+    &.left-header {
+      font-weight: 600;
+      text-align: left;
+    }
+    &.read-only {
+      font-style: italic;
+    }
+    &.req {
+      max-width: 150px;
+      font-weight: 600;
+    }
+  }
+  thead th {
+    border-bottom: 2px solid rgba(114, 35, 98, 0.3);
+    color: #722362;
+    font-weight: 600;
+  }
+  tr:last-of-type td {
+    border-bottom: 0;
+  }
+  tr:hover {
+    background-color: rgba(114, 35, 98, 0.1);
+  }
+  tfoot td {
+    border-top: 2px solid rgba(114, 35, 98, 0.3);
+    color: #722362;
+    font-weight: 600;
+  }
+
+  .weekend {
+    //   border: 1px dotted red;
+      &.hide {
+          display: none;
+        // border: 5px solid green;
+      }
+  }
+}
+
+.card-header {
+  position: relative;
+  .switch-container {
+    h5 {
+      position: absolute;
+      top: 14px;
+      right: 56px;
+      margin: 0;
+      display: inline;
+      font-weight: 600;
+    }
+  }
+}
+
+// Toggle Switch
+.switch {
+  position: absolute;
+  display: inline-block;
+  right: 2px;
+  top: 10px;
+}
+.switch-input {
+  display: none;
+}
+.switch-label {
+  display: block;
+  width: 48px;
+  height: 24px;
+  text-indent: -150%;
+  clip: rect(0 0 0 0);
+  color: transparent;
+  user-select: none;
+}
+.switch-label::before,
+.switch-label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  cursor: pointer;
+}
+.switch-label::before {
+  width: 100%;
+  height: 100%;
+  background-color: #dedede;
+  border-radius: 9999em;
+  border: 1px solid #999999;
+  -webkit-transition: background-color 0.25s ease;
+  transition: background-color 0.25s ease;
+}
+.switch-label::after {
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #999;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+  -webkit-transition: left 0.25s ease;
+  transition: left 0.25s ease;
+}
+.switch-input:checked + .switch-label::before {
+  background-color: #89c12d;
+}
+.switch-input:checked + .switch-label::after {
+  left: 24px;
+}
+
+.validation-error {
+  border: 1px solid #5f1401;
+  color: #5f1401;
+  background-color: #ffefeb;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 20px;
+
+  &.hide {
+    display: none;
+  }
+}
+
+
+
+/// SPECIAL STUFF FOR ALERT PAGE MODAL
+
+body.landing {
+  padding: 0;
+  overflow: hidden;
+  .home-link a {
+    margin-left: 50px;
+  }
+}
+.connexus {
+  button.invisibutton {
+    cursor: pointer;
+    span {
+      text-indent: -100000px;
+      display: block;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      margin-top: -15px;
+    }
+  }
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 10px 20px;
+  border: 1px solid #888;
+  width: 850px;
+  height: auto;
+  position: relative;
+  overflow: auto;
+  @media screen and (max-width: 950px) {
+    width: 95%;
+    margin: 0 auto;
+
+  }
+  p {
+    font-size: .95rem;
+    &:last-of-type {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 20px;
+    }
+  }
+}
+.modal-footer {
+  padding-bottom: 20px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/// HOUSEHOLD CALENDAR
+.calendar-header {
+  display: flex;
+  margin: 20px 0;
+  h2 {
+    display: inline-block;
+    margin: 0 10px;
+    width: 100%;
+    text-align: center;
+  }
+}
+table.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    width: 10%;
+    padding: 10px;
+    vertical-align: top;
+  }
+  th {
+    border-bottom: 2px solid #722362;
+    color: #722362;
+  }
+  td {
+    height: 100px;
+    border: 2px solid #efefef;
+    &:hover, &:focus {
+      cursor: pointer;
+      background-color: rgba(118, 213, 212, 0.3);
+      &.no-date {
+        cursor: default;
+        background-color: transparent;
+      }
+    }
+  }
+}
+#addCalModal .modal-content {
+  width: 600px;
+  @media screen and (max-width: 620px) {
+    width: 100%;
+  }
+}
+.add-cal ul.option-list {
+  list-style-type: none;
+  padding-left: 0;
+  li {
+    margin-bottom: 10px;
+  }
+}
+
+// SUCCESS MESSAGE ANIMATION THINGS ALL HERE
+
+.loading-area {
+  margin: 60px 0;
+  p {
+    text-align: center;
+    color: #722362;
+    font-weight: 700;
+    width: 625px;
+  }
+  img {
+    max-width: 60px;
+    vertical-align: bottom;
+    background-color: #fff;
+  }
+  .container {
+    width: 500px;
+    text-align: center;
+    vertical-align: bottom;
+    display: inline-block;
+    margin: 0 10px;
+  }
+  .progress {
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .progress-bar {
+    height: 45px;
+    background-color: #ee303c;
+    border-radius: 4px;
+    transition: 0.4s linear;
+    transition-property: width, background-color;
+  }
+
+  .progress-striped .progress-bar {
+    background-color: #FCBC51;
+    width: 100%;
+    background-image: linear-gradient(
+          45deg, rgb(252,163,17) 25%,
+          transparent 25%, transparent 50%,
+          rgb(252,163,17) 50%, rgb(252,163,17) 75%,
+          transparent 75%, transparent);
+    animation: progressAnimationStrike 6s;
+  }
+
+  @keyframes progressAnimationStrike {
+       from { width: 0 }
+       to   { width: 100% }
+  }
+}
+
+.animation-area {
+  height: 250px;
+  position: relative;
+}
+
+#loading {
+  position: absolute;
+  top: -50px;
+  -moz-animation: cssAnimation 0s ease-out 7s forwards;
+ /* Firefox */
+  -webkit-animation: cssAnimation 0s ease-out 7s forwards;
+ /* Safari and Chrome */
+  -o-animation: cssAnimation 0s ease-out 7s forwards;
+ /* Opera */
+  animation: cssAnimation 0s ease-out 7s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}
+#complete {
+  animation: cssAnimationshow 0s 7s forwards;
+  visibility: hidden;
+}
+
+@keyframes cssAnimationshow {
+  to   { visibility: visible; }
+}
+
+
+
+// SUCESS MESSAGE
+.success-complete {
+  padding-top: 20px;
+  img.firework {
+    width: 100px;
+    float: left;
+    margin-right: 30px;
+  }
+  .end-buttons {
+    margin-top: 60px;
+    .primary-btn {
+      margin-right: 10px;
+      //display: inline-block;
+    }
+  }
+}
+
+.clearfix {
+  clear: both;
+}

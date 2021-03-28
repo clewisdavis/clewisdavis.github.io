@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Caretaker Scheduler</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/scheduler.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+    
+  </head>
+  <body>
+      <div class="home-link">
+          <a href="index.html"><span class="material-icons">
+            keyboard_arrow_left
+            </span>Prototype Landing Page</a>
+      </div>
+    <h1>Scheduler</h1>
+    <div class="main">
+ 
+        <div class="col1">
+            <p>Welcome to the Scheduler! Use this tool to arrange lessons on your student's Planner or reschedule existing ones.
+            </p>
+            <p><em>Before beginning...</em></p>
+            <ul>
+                <li>Make sure you've marked off any lessons that are pending complete so that your student's progress doesn't get lost.</li>
+            </ul>
+            <p>
+                When you run the Scheduler, any overdue lessons will be rescheduled from the start date you select. <br><em>Note: If a teacher determines it is appropriate, he or she may skip lessons for a student.</em>
+            </p>
+
+            <h2 class="top-dots">Select Students</h2>
+            <div class="formField">
+                <input type="checkbox" id="…" class="field checkbox" />
+                <label for="…" class="checkboxLabel">Select entire household</label>
+            </div>
+
+            <div class="student-select">
+                <ul>
+                    <h4>Scheduling Required</h4>
+                    <li>
+                        <div class="formField">
+                            <input type="checkbox" id="…" class="field checkbox" />
+                            <label for="…" class="checkboxLabel">Gretl von Trapp</label>
+                            <a href="javascript:void(0);" class="pending-link">3 lessons pending approval</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="formField">
+                            <input type="checkbox" id="…" class="field checkbox" />
+                            <label for="…" class="checkboxLabel">Marta von Trapp</label>
+                            <a href="javascript:void(0);" class="pending-link">16 lessons pending approval</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul>
+                    <h4>No Scheduling Currently Required</h4>
+                    <li>                        
+                        <div class="formField">
+                            <input type="checkbox" id="…" class="field checkbox" />
+                            <label for="…" class="checkboxLabel">Freddy von Trapp</label>
+                            <a href="javascript:void(0);" class="pending-link">1 lesson pending approval</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-actions">
+                <a href="start-select.html" class="btn primary-btn">Continue</a>
+            </div>
+ 
+
+        </div>
+        <div class="col2">
+            <div class="steps">
+                <h2>Running the Scheduler</h2>
+                <ol>
+                    <li><h3><span class="numeral">1</span>Select Students</h3></li>
+                    <li>
+                        <h3><span class="numeral">2</span>Set Household Calendar</h3>
+                        <p><strong>If you are running the Scheduler for your entire household</strong>, you can customize your household calendar by adding personal events (e.g., family vacation). This will help schedule lessons around those events.</p>
+                    </li>
+                    <li>
+                        <h3><span class="numeral">3</span>Choose Start Date</h3>
+                        <p>Select the first date when you want new or rescheduled lessons to appear on the Planner. Any incomplete or overdue lessons will be rescheduled starting on this date.</p>
+                    </li>
+                    <li>
+                        <h3><span class="numeral">4</span>Review or Rearrange Lessons</h3>
+                        <p>Review the schedule we have created for you, or make edits to match your preference.</p>
+                    </li>
+                    <li>
+                        <h3><span class="numeral">5</span>Run the Scheduler</h3>
+                        <p>This step will update your student's Planner with their new schedule.</p>
+                    </li>
+                </ol>
+                <p class="teacher">Questions or concerns about finishing on time? Contact a teacher.</p>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

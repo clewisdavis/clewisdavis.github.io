@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Caretaker Scheduler: Running</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/scheduler.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  </head>
+  <body>
+    <div class="home-link">
+      <a href="../index.html"><span class="material-icons">
+        keyboard_arrow_left
+        </span>Prototype Landing Page</a>
+  </div>
+    <h1>Scheduler</h1>
+
+    <div class="main">
+        <div class="">
+            <div class="step-indicator">
+                <ol>
+                    <li>Select Students</li>
+                    <span class="material-icons" role="presentation">forward</span>
+                    <li>Set Household Calendar<br>
+                    <em>Entire household only</em></li>
+                    <span class="material-icons" role="presentation">forward</span>
+                    <li>Choose Start Date</li>
+                    <span class="material-icons" role="presentation">forward</span>
+                    <li>Review or Rearrange</li>
+                    <span class="material-icons" role="presentation">forward</span>
+                    <li  class="active">Run the Scheduler</li>
+                </ol>
+            </div>
+            <div class="animation-area">
+              <div id='complete' class="success-complete">
+                <img src="../images/firework.png" role="presentation" class="firework">
+                <h2>Success!</h2>
+                <p>
+                  Lessons are updated in the Planner! To review schedules, please see below.
+                </p>
+                <div class="clearfix end-buttons">
+                  <a href="../index.html" class="btn primary-btn">I'm finished! Close this window</a>
+                  <a href="../students.html" class="btn">I want to run the Scheduler again</a>
+                </div>
+  
+              </div>
+              <div class="loading-area" id="loading">
+                <p>
+                  <em>Processing schedule, please wait...</em>
+               </p>
+                <img src="../images/schedule.png">
+                <div class="container">
+                  <div class="progress progress-striped">
+                    <div class="progress-bar">
+                    </div>
+                  </div>
+                </div>
+                <img src="../images/book.png">
+              </div>
+            </div>
+            
+
+            <div class="top-dots">
+
+              <div class="single-card" id="gretl">
+                <div class="card-header">
+                  <h2><span class="material-icons">assignment_ind</span>Gretl von Trapp</h2>
+                  <div class="switch-container">
+                    <h5>Show weekends</h5>
+                    <div class="switch">
+                      <input id="switch-1" type="checkbox" class="switch-input" />
+                      <label for="switch-1" class="switch-label"></label>
+                    </div>
+                  </div>
+
+                </div>
+
+                <table class="grid">
+                  <thead>
+                    <th class="left-header">Course</th>
+                    <th class="weekend hide">Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th class="weekend hide">Sat</th>
+                  </thead>
+                <tr>
+                  <td class="left-header">Educational Technology and Online Learning 5</td>
+                  <td class="weekend hide">-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>2</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Essential Math 5B</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Language Arts 5B</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Renaissance</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>-</td>
+                  <td>1</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Science 5B</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Social Studies 5B</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>-</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tfoot>
+                  <td class="left-header">Daily Lesson Distribution</td>
+                  <td class="weekend hide"></td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td class="weekend hide"></td>
+                </tfoot>
+
+                </table>
+
+              </div>
+
+              <div class="single-card" id="marta">
+                <div class="card-header">
+                  <h2><span class="material-icons">assignment_ind</span>Marta von Trapp</h2>
+                  <div class="switch-container">
+                    <h5>Show weekends</h5>
+                    <div class="switch">
+                      <input id="switch-2" type="checkbox" class="switch-input" />
+                      <label for="switch-2" class="switch-label"></label>
+                    </div>
+                  </div>
+
+                </div>
+
+                <table class="grid">
+                  <thead>
+                    <th class="left-header">Course</th>
+                    <th class="weekend hide">Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th class="weekend hide">Sat</th>
+                  </thead>
+                <tr>
+                  <td class="left-header">Educational Technology and Online Learning 5</td>
+                  <td class="weekend hide">-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>2</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Essential Math 5B</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Language Arts 5B</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Renaissance</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>-</td>
+                  <td>1</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Science 5B</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Social Studies 5B</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>-</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tfoot>
+                  <td class="left-header">Daily Lesson Distribution</td>
+                  <td class="weekend hide"></td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td class="weekend hide"></td>
+                </tfoot>
+
+                </table>
+
+              </div>
+
+              <div class="single-card" id="freddy">
+                <div class="card-header">
+                  <h2><span class="material-icons">assignment_ind</span>Freddy von Trapp</h2>
+                  <div class="switch-container">
+                    <h5>Show weekends</h5>
+                    <div class="switch">
+                      <input id="switch-3" type="checkbox" class="switch-input" />
+                      <label for="switch-3" class="switch-label"></label>
+                    </div>
+                  </div>
+
+                </div>
+
+                <table class="grid">
+                  <thead>
+                    <th class="left-header">Course</th>
+                    <th class="weekend hide">Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th class="weekend hide">Sat</th>
+                  </thead>
+                <tr>
+                  <td class="left-header">Educational Technology and Online Learning 5</td>
+                  <td class="weekend hide">-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>2</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Essential Math 5B</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Language Arts 5B</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Renaissance</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>-</td>
+                  <td>1</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Science 5B</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Social Studies 5B</td>
+                  <td class="weekend hide">-</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>-</td>
+                  <td class="weekend hide">-</td>
+                </tr>
+                <tfoot>
+                  <td class="left-header">Daily Lesson Distribution</td>
+                  <td class="weekend hide"></td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td class="weekend hide"></td>
+                </tfoot>
+
+                </table>
+
+              </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+  </body>
+  <script>
+      // get weekend toggle
+      const weekendToggle = document.querySelector('#switch-1');
+      // get the calendar table header
+      const tableHead = document.querySelectorAll('.grid thead > tr > th');
+      // get the calendar body
+      const tableBody = document.querySelectorAll('.grid  tbody > tr > td');
+      // get the calendar footer
+      const tableFoot = document.querySelectorAll('.grid tfoot > tr > td');
+
+      // thead node list to an array
+      const thArr = Array.from(tableHead);
+
+      // tbody node list to array
+      const tbBody = Array.from(tableBody);
+
+      // tfoot node list to array
+      const tFoot = Array.from(tableFoot);
+
+      // Nice to have DRY function, create a function to handle all the toggles
+      // function toggleEle(element) {
+      //   if (element.classList.value === 'weekend hide' || element.classList.value === 'weekend') {
+      //     element.classList.toggle('hide')
+      //   }
+      // }
+
+      // add event listener to toggle and loop through each section of the table
+      weekendToggle.addEventListener('click', function() {
+
+        // thead loop
+        thArr.forEach(
+          function(element) {
+            if (element.classList.value === 'weekend hide' || element.classList.value === 'weekend') {
+              element.classList.toggle('hide')
+            }
+          }
+        );
+
+        //tbody loop
+        tbBody.forEach(
+          function(element) {
+            if (element.classList.value === 'weekend hide' || element.classList.value === 'weekend') {
+              element.classList.toggle('hide')
+            }
+          }
+        );
+
+        // tfoot loop
+        tFoot.forEach(
+          function(element) {
+            if (element.classList.value === 'weekend hide' || element.classList.value === 'weekend') {
+              element.classList.toggle('hide')
+            }
+          }
+        )
+
+      })
+  </script>
+</html>

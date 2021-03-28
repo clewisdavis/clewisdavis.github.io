@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Caretaker Scheduler: Choose Start Date</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/scheduler.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <script src="../main.js" async defer></script>
+  </head>
+  <body>
+    <div class="home-link">
+      <a href="../index.html"><span class="material-icons">
+        keyboard_arrow_left
+        </span>Prototype Landing Page</a>
+  </div>
+    <h1>Scheduler</h1>
+
+    <div class="main">
+        <div class="col1">
+            <div class="step-indicator">
+                <ol>
+                    <li>Select Students</li>
+                    <span class="material-icons" role="presentation">forward</span>
+                    <li>Set Household Calendar<br>
+                    <em>Entire household only</em></li>
+                    <span class="material-icons" role="presentation">forward</span>
+                    <li class="active">Choose Start Date</li>
+                    <span class="material-icons" role="presentation">forward</span>
+                    <li>Review or Rearrange</li>
+                    <span class="material-icons" role="presentation">forward</span>
+                    <li>Run the Scheduler</li>
+                </ol>
+            </div>
+            <h2>Choose Start Date</h2>
+            <p>
+                Select the date when new or rescheduled lessons should start appearing on the Planner. Any incomplete or overdue lessons will also be rescheduled starting on this date. All completed lessons will remain on the date they were originally marked complete.
+            </p>
+
+            <p>Below you can select today (recommended) or a future date (advanced) as the start date. Do not set a date in the past. If you choose to set the date for each course individually, enter the start date in the <strong>New Start Date</strong> column.
+              </p>
+
+            <div class="formFields top-dots">
+                <ul class="optionList">
+                  <li>
+                    <input type="radio" id="radio1" name="radio1" class="field radio"  checked>
+                    <label for="radio1" class="radioLabel">Set today as the start date for new or rescheduled lessons in all courses <strong>Recommended</strong></label>
+                  </li>
+                  <li>
+                    <input type="radio" id="radio2" name="radio1" class="field radio">
+                    <label for="radio2" class="radioLabel advanced">Set the start date for new or rescheduled lessons for each course individually <strong>Advanced</strong></label>
+                  </li>
+                </ul>
+              </div>
+
+            <div class="custom-dates hide">
+              <label for="dates-all">Use this start date for all courses:</label>
+              <span class="date-input">
+                <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+              </span>
+              
+              <button class="btn small">Apply Date</button>
+              <a href="#" class="note">What is being displayed in this table?</a>
+
+              <div class="single-card" id="gretl">
+                <h2><span class="material-icons">assignment_ind</span>Gretl von Trapp</h2>
+                <table class="grid">
+                  <thead>
+                    <th>Course</th>
+                    <th>Student's Start Date</th>
+                    <th>Current Start Date</th>
+                    <th>New Start Date</th>
+                  </thead>
+                <tr>
+                  <td class="left-header">Educational Technology and Online Learning 5</td>
+                  <td>7/24/2020</td>
+                  <td>2/2/2021</td>
+                  <td>
+                    <span class="date-input">
+                      <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                      <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="left-header">Essential Math 5B</td>
+                  <td>1/4/2021</td>
+                  <td>2/2/2021</td>
+                  <td>              
+                    <span class="date-input">
+                    <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                    <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                  </span></td>
+                </tr>
+                <tr>
+                  <td class="left-header">Language Arts 5B</td>
+                  <td>1/4/2021</td>
+                  <td>2/2/2021</td>
+                  <td>              
+                    <span class="date-input">
+                    <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                    <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                  </span></td>
+                </tr>
+                <tr>
+                  <td class="left-header">Renaissance</td>
+                  <td>8/3/2020</td>
+                  <td class="read-only">Not Schedulable</td>
+                  <td class="read-only">Not Schedulable</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Science 5B</td>
+                  <td>7/24/2020</td>
+                  <td>2/2/2021</td>
+                  <td>              
+                    <span class="date-input">
+                    <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                    <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                  </span></td>
+                </tr>
+                <tr>
+                  <td class="left-header">Social Studies 5B</td>
+                  <td>1/4/2021</td>
+                  <td>2/2/2021</td>
+                  <td>
+                    <span class="date-input">
+                      <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                      <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                    </span>
+                  </td>
+                </tr>
+                
+                </table>
+              </div>
+
+              <div class="single-card" id="marta">
+                <h2><span class="material-icons">assignment_ind</span>Marta von Trapp</h2>
+                <table class="grid">
+                  <thead>
+                    <th>Course</th>
+                    <th>Student's Start Date</th>
+                    <th>Current Start Date</th>
+                    <th>New Start Date</th>
+                  </thead>
+                <tr>
+                  <td class="left-header">Educational Technology and Online Learning 5</td>
+                  <td>7/24/2020</td>
+                  <td>2/2/2021</td>
+                  <td>
+                    <span class="date-input">
+                      <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                      <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="left-header">Essential Math 5B</td>
+                  <td>1/4/2021</td>
+                  <td>2/2/2021</td>
+                  <td>              
+                    <span class="date-input">
+                    <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                    <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                  </span></td>
+                </tr>
+                <tr>
+                  <td class="left-header">Language Arts 5B</td>
+                  <td>1/4/2021</td>
+                  <td>2/2/2021</td>
+                  <td>              
+                    <span class="date-input">
+                    <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                    <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                  </span></td>
+                </tr>
+                <tr>
+                  <td class="left-header">Renaissance</td>
+                  <td>8/3/2020</td>
+                  <td class="read-only">Not Schedulable</td>
+                  <td class="read-only">Not Schedulable</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Science 5B</td>
+                  <td>7/24/2020</td>
+                  <td>2/2/2021</td>
+                  <td>              
+                    <span class="date-input">
+                    <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                    <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                  </span></td>
+                </tr>
+                <tr>
+                  <td class="left-header">Social Studies 5B</td>
+                  <td>1/4/2021</td>
+                  <td>2/2/2021</td>
+                  <td>
+                    <span class="date-input">
+                      <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                      <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                    </span>
+                  </td>
+                </tr>
+                
+                </table>
+              </div>
+
+              <div class="single-card" id="freddy">
+                <h2><span class="material-icons">assignment_ind</span>Freddy von Trapp</h2>
+                <table class="grid">
+                  <thead>
+                    <th>Course</th>
+                    <th>Student's Start Date</th>
+                    <th>Current Start Date</th>
+                    <th>New Start Date</th>
+                  </thead>
+                <tr>
+                  <td class="left-header">Educational Technology and Online Learning 5</td>
+                  <td>7/24/2020</td>
+                  <td>2/2/2021</td>
+                  <td>
+                    <span class="date-input">
+                      <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                      <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="left-header">Essential Math 5B</td>
+                  <td>1/4/2021</td>
+                  <td>2/2/2021</td>
+                  <td>              
+                    <span class="date-input">
+                    <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                    <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                  </span></td>
+                </tr>
+                <tr>
+                  <td class="left-header">Language Arts 5B</td>
+                  <td>1/4/2021</td>
+                  <td>2/2/2021</td>
+                  <td>              
+                    <span class="date-input">
+                    <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                    <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                  </span></td>
+                </tr>
+                <tr>
+                  <td class="left-header">Renaissance</td>
+                  <td>8/3/2020</td>
+                  <td class="read-only">Not Schedulable</td>
+                  <td class="read-only">Not Schedulable</td>
+                </tr>
+                <tr>
+                  <td class="left-header">Science 5B</td>
+                  <td>7/24/2020</td>
+                  <td>2/2/2021</td>
+                  <td>              
+                    <span class="date-input">
+                    <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                    <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                  </span></td>
+                </tr>
+                <tr>
+                  <td class="left-header">Social Studies 5B</td>
+                  <td>1/4/2021</td>
+                  <td>2/2/2021</td>
+                  <td>
+                    <span class="date-input">
+                      <input type="text" class="date-field" id="dates-all" placeholder="MM/DD/YYYY">
+                      <a href="#" title="Select date"><span class="material-icons" role="presentation">today</span></a>
+                    </span>
+                  </td>
+                </tr>
+                
+                </table>
+              </div>
+
+            </div>  
+
+
+
+            <div class="form-actions pin">
+                <a href="hh-calendar.html" class="btn">Previous</a>
+                <a href="hh-review.html" class="btn primary-btn">Continue</a>
+            </div>
+ 
+
+        </div>
+        <div class="col2">
+            <div class="tip-pane">
+              
+                <h2>Choosing a Start Date</h2>
+                <ul>
+                    <li>
+                        If a course's start date is today and your student has already completed lessons, note that new lessons may also be added to today's date.
+                    </li>
+                    <li>
+                        Setting individual start dates per course?
+                        <ul>
+                            <li>Custom start dates may not be in the past.</li>
+                            <li>Custom start dates may not be prior to the original course start date.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="teacher top-dots">Questions or concerns about finishing on time? Contact a teacher.</p>
+              
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

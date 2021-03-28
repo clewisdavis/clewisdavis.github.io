@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Caretaker Scheduler</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/scheduler.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    
+  </head>
+  <body>
+    <div class="home-link">
+      <a href="../index.html"><span class="material-icons">
+        keyboard_arrow_left
+        </span>Prototype Landing Page</a>
+  </div>
+    <h1>Scheduler</h1>
+    <div class="main">
+        <div class="col1">
+            <div class="step-indicator">
+                <ol>
+                    <li>Select Students</li>
+                    <span class="material-icons" role="presentation">forward</span>
+                    <li class="active">Set Household Calendar<br>
+                    <em>Entire household only</em></li>
+                    <span class="material-icons" role="presentation">forward</span>
+                    <li>Choose Start Date</li>
+                    <span class="material-icons" role="presentation">forward</span>
+                    <li>Review or Rearrange</li>
+                    <span class="material-icons" role="presentation">forward</span>
+                    <li>Run the Scheduler</li>
+                </ol>
+            </div>
+            <h2>Add Household Calendar Events</h2>
+            <p>
+                The household calendar shows events that pertain to all users in the household. All events on the household calendar appear on the Planner of each user in the household. In this step, review the household calendar.
+            </p>
+                 <p>If you are running the Scheduler for all users in the household, you can customize the household calendar by adding or removing personal events (e.g., a family vacation). Then, you can schedule lessons around these events. You may also be able to add or remove school calendar events.
+            </p>
+            <p>
+              When you've finished reviewing or making changes to your household calendar, you're ready to continue on to scheduling lessons.
+            </p>
+
+            <div class="top-dots">
+                <div class="calendar-header">
+                    <a href="javascript:void(0)" class="cal next"><span class="material-icons">arrow_back_ios</span></a>
+                    <h2>March 2021</h2>
+                    <a href="javascript:void(0)" class="cal next"><span class="material-icons">arrow_forward_ios</span></a>
+                </div>
+                <button id="otherCalendars" class="btn small"><span>Add or Remove Calendars</span></button>
+                <table class="calendar-table">
+                    <thead>
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </thead>
+                    <tr>
+                        <td class="no-date"></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                        <td class="no-date"></td>
+                        <td class="no-date"></td>
+                        <td class="no-date"></td>
+                    </tr>
+                </table>
+
+            </div>
+
+          </div>
+            <div class="col2">
+              <div class="tip-pane">
+                  <h2>Calendar Events</h2>
+                  <ul>
+                      <li>
+                          Add an event by clicking on a calendar date or using your keyboard to move to a date and hitting the <strong>Enter</strong> key.
+                      </li>
+                      <li>To edit an existing event, select it from the calendar.</li>
+                      <li>
+                          To include school events on your household calendar, select <strong>Add or Remove Calendars</strong> to choose which school calendars are added to your own.
+                      </li>
+                      <li>
+                      
+                        Depending on whether your student's course schedule is set or customizable, you may not be able to block lessons using household events.
+                        
+                      </li>
+                      <li>
+                        Adding personal events to the calendar will not change a course's end date, so be mindful of your student's workload.
+                      </li>
+                  </ul>
+                  <p class="teacher top-dots">Questions or concerns about finishing on time? Contact a teacher.</p>
+              </div>
+          </div>
+
+        </div> 
+            
+
+
+
+          <div class="form-actions pinned">
+            <a href="hh-students.html" class="btn">Previous</a>
+            <a href="hh-start-select.html" class="btn primary-btn">Continue</a>
+        </div>
+
+<!-- Add/Remove Calendars Modal -->
+        <div id="addCalModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Add or Remove Calendars</h2>
+            </div>
+            <div class="modal-body add-cal">
+                <p>Toggle checkboxes to choose school calendars to include in your own household calendar.</p>
+                <div class="formFields">
+                <ul class="option-list">
+                    <li>
+                        <input type="checkbox" id="1" class="field checkbox" />
+                        <label for="1" class="checkboxLabel">Connections Academy State Testing</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="2" class="field checkbox" />
+                        <label for="2" class="checkboxLabel">Connections Academy Schoolwide Events</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="3" class="field checkbox" checked />
+                        <label for="3" class="checkboxLabel">Connections Academy General Calendar</label>
+                    </li>
+                </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn primary-btn exit">Save Changes</button>
+                <button class="btn exit2">Cancel</button>
+            </div>
+
+        </div>
+        </div>
+  </body>
+
+  <script>
+    // Get the Add/Remove Calendars modal
+var modal = document.getElementById("addCalModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("otherCalendars");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+
+// When the user clicks on a bottom button, close it
+
+var exitButton = document.getElementsByClassName("exit")[0];
+exitButton.onclick = function() {
+  modal.style.display = "none";
+}
+var exitButton = document.getElementsByClassName("exit2")[0];
+exitButton.onclick = function() {
+  modal.style.display = "none";
+}
+}
+</script>
+</html>

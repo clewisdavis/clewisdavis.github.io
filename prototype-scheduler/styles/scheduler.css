@@ -1,0 +1,803 @@
+body {
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  padding: 0 50px 50px 50px;
+  margin: 0;
+}
+
+.home-link {
+  background-color: #404040;
+  margin: 0 -50px 0 -50px;
+  padding: 10px 50px;
+}
+.home-link a {
+  color: #fff;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+.home-link a span {
+  vertical-align: middle;
+  margin-top: -1px;
+}
+
+a {
+  color: #722362;
+}
+a.note {
+  display: block;
+  margin: 10px 0;
+}
+
+h1,
+h2,
+h3 {
+  color: #722362;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+p,
+ul {
+  font-size: 1.1rem;
+}
+
+.btn,
+button.btn {
+  cursor: pointer;
+  border: none;
+  background-color: #e0e0e0;
+  padding: 12px 18px;
+  border-radius: 6px;
+  color: #000;
+  text-decoration: none;
+  transition: background-color 0.35s ease;
+}
+.btn.small,
+button.btn.small {
+  padding: 8px 12px;
+  font-size: 0.85rem;
+}
+.btn:hover, .btn:focus,
+button.btn:hover,
+button.btn:focus {
+  background-color: #d0d0d0;
+}
+.btn.primary-btn,
+button.btn.primary-btn {
+  background-color: #76d5d4;
+}
+.btn.primary-btn:hover, .btn.primary-btn:focus,
+button.btn.primary-btn:hover,
+button.btn.primary-btn:focus {
+  background-color: #93e9e7;
+}
+.btn.disabled,
+button.btn.disabled {
+  background-color: #e0e0e0;
+  color: #8f8f8f;
+  cursor: default;
+}
+.btn.disabled:hover, .btn.disabled:focus,
+button.btn.disabled:hover,
+button.btn.disabled:focus {
+  background-color: #e0e0e0;
+}
+
+input[type=text],
+input[type=number] {
+  border-radius: 6px;
+  padding: 7px 7px 7px 7px;
+  border-style: solid;
+  border: 1px solid #8f8f8f;
+}
+input[type=text].lesson-value,
+input[type=number].lesson-value {
+  width: 40px;
+}
+
+.date-input {
+  position: relative;
+}
+.date-input .date-field {
+  width: 110px;
+}
+.date-input .material-icons {
+  position: absolute;
+  right: 5px;
+  top: 1px;
+}
+
+.main {
+  display: flex;
+}
+.main .col1 {
+  width: 65%;
+  margin-right: 5%;
+  padding-bottom: 100px;
+}
+.main .col1 p:first-of-type {
+  margin-top: 0;
+}
+.main .col1.table-full {
+  width: 50%;
+}
+.main .col2 {
+  width: 30%;
+}
+.main .col2.table-full {
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+.single-card.intro {
+  width: 40%;
+  margin-right: 5%;
+}
+.single-card.intro h1 {
+  margin: 0;
+}
+.single-card.intro:hover {
+  transition: background-color 0.25s ease;
+  background-color: rgba(118, 213, 212, 0.2);
+}
+
+img.intro-img {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+.top-dots {
+  border-top: 2px dotted #76d5d4;
+  padding-top: 20px;
+}
+
+.student-select {
+  display: flex;
+}
+.student-select ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.student-select ul a.pending-link {
+  display: block;
+  font-size: 0.9rem;
+  text-indent: 25px;
+}
+.student-select ul:first-of-type {
+  margin-right: 50px;
+}
+.student-select ul h4 {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #e0e0e0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.student-select ul li {
+  margin-bottom: 15px;
+}
+
+.formFields ul.optionList {
+  list-style-type: none;
+  padding: 0;
+}
+.formFields ul.optionList li {
+  margin-bottom: 8px;
+}
+.formFields ul.optionList li label strong {
+  border: 1px solid #125f02;
+  display: inline-block;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: #fbf9f7;
+  margin-left: 5px;
+  color: #125f02;
+}
+.formFields ul.optionList li label.advanced strong {
+  color: #a06e01;
+  border: 1px solid #ffb81c;
+}
+
+.form-actions, .modal-footer {
+  border-top: 2px solid #ccc;
+  padding-top: 35px;
+  margin-top: 20px;
+}
+.form-actions.pinned, .modal-footer.pinned {
+  position: fixed;
+  padding: 30px 50px;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #fff;
+}
+.form-actions .btn, .modal-footer .btn {
+  margin-right: 10px;
+}
+
+.edit-actions {
+  margin-top: 15px;
+}
+
+p.teacher {
+  background-image: url(../images/teacher.png);
+  background-size: 55px;
+  background-repeat: no-repeat;
+  padding: 20px 55px 20px 0;
+  background-position: 100%;
+  font-style: italic;
+  font-size: 1rem;
+  color: #722362;
+}
+
+.steps {
+  background-color: rgba(118, 213, 212, 0.3);
+  padding: 20px 20px 0px 20px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+}
+.steps h2,
+.steps h3 {
+  margin: 0;
+  font-weight: 400;
+}
+.steps h2 {
+  background-image: url(../images/schedule.png);
+  background-repeat: no-repeat;
+  background-size: 50px;
+  padding: 10px 0 15px 60px;
+}
+.steps h3 {
+  font-size: 1.1rem;
+}
+.steps h3 .numeral {
+  display: inline-block;
+  background-color: #722362;
+  color: #fff;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 500;
+  width: 14px;
+  height: 14px;
+  text-align: center;
+  margin-right: 8px;
+  padding: 3px 7px 8px 8px;
+}
+.steps p {
+  text-align: center;
+  font-style: italic;
+}
+.steps p.teacher {
+  padding: 15px 55px 25px 10px;
+  text-align: left;
+}
+.steps ol {
+  margin: 0;
+  padding: 10px 0 0 0;
+  list-style-type: none;
+}
+.steps ol li {
+  background-color: #fbf9f7;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+.steps ol li:last-of-type {
+  margin-bottom: 0;
+}
+.steps ol li p {
+  font-size: 0.9rem;
+  margin: 5px 0 0 0;
+  text-align: left;
+  font-style: normal;
+}
+.steps ol li ul {
+  list-style-type: disc;
+  padding: 0;
+  margin-top: 10px;
+}
+.steps ol li ul li {
+  font-size: 0.9rem;
+  padding: 0;
+  margin-left: 20px;
+}
+
+.step-indicator {
+  margin-bottom: 20px;
+  border-bottom: 2px dotted #76d5d4;
+  padding-bottom: 20px;
+}
+.step-indicator ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.step-indicator ol li {
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+}
+.step-indicator ol li.active {
+  font-weight: 700;
+  border-bottom: 3px solid #722362;
+  padding-bottom: 5px;
+  color: #722362;
+}
+.step-indicator ol li em {
+  font-size: 0.9rem;
+  color: #404040;
+}
+.step-indicator .material-icons {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 4px;
+  color: #76d5d4;
+}
+
+.tip-pane {
+  background-color: #fbf9f7;
+  padding: 1px 30px 0px 25px;
+  border-radius: 2px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+}
+.tip-pane h2 {
+  background-image: url(../images/bulb.png);
+  background-repeat: no-repeat;
+  background-size: 45px;
+  text-indent: 10%;
+  padding: 10px 0 10px 12px;
+  margin-bottom: 0;
+}
+.tip-pane ul li {
+  margin-bottom: 8px;
+}
+.tip-pane ul li ul {
+  margin-top: 8px;
+  padding-left: 15px;
+}
+.tip-pane p, .tip-pane ul li {
+  font-size: 0.95rem;
+}
+
+.custom-dates label {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 10px;
+}
+.custom-dates .material-icons.cal-icon {
+  vertical-align: middle;
+}
+.custom-dates button {
+  margin-left: 5px;
+}
+.custom-dates.show {
+  display: block;
+}
+.custom-dates.hide {
+  display: none;
+}
+
+.single-card {
+  margin-top: 25px;
+  background-color: #fbf9f7;
+  padding: 20px;
+  border-radius: 2px;
+  display: inline-block;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+}
+.single-card h2 {
+  color: #000;
+  margin-top: 0;
+}
+.single-card h2 .material-icons {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+  font-size: 30px;
+}
+
+.grid {
+  color: #404040;
+  background-color: #fff;
+  border-collapse: collapse;
+  padding: 10px 35px;
+  display: inline-block;
+  width: auto;
+}
+.grid th,
+.grid td {
+  text-align: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+}
+.grid th.left-header,
+.grid td.left-header {
+  font-weight: 600;
+  text-align: left;
+}
+.grid th.read-only,
+.grid td.read-only {
+  font-style: italic;
+}
+.grid th.req,
+.grid td.req {
+  max-width: 150px;
+  font-weight: 600;
+}
+.grid thead th {
+  border-bottom: 2px solid rgba(114, 35, 98, 0.3);
+  color: #722362;
+  font-weight: 600;
+}
+.grid tr:last-of-type td {
+  border-bottom: 0;
+}
+.grid tr:hover {
+  background-color: rgba(114, 35, 98, 0.1);
+}
+.grid tfoot td {
+  border-top: 2px solid rgba(114, 35, 98, 0.3);
+  color: #722362;
+  font-weight: 600;
+}
+.grid .weekend.hide {
+  display: none;
+}
+
+.card-header {
+  position: relative;
+}
+.card-header .switch-container h5 {
+  position: absolute;
+  top: 14px;
+  right: 56px;
+  margin: 0;
+  display: inline;
+  font-weight: 600;
+}
+
+.switch {
+  position: absolute;
+  display: inline-block;
+  right: 2px;
+  top: 10px;
+}
+
+.switch-input {
+  display: none;
+}
+
+.switch-label {
+  display: block;
+  width: 48px;
+  height: 24px;
+  text-indent: -150%;
+  clip: rect(0 0 0 0);
+  color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.switch-label::before,
+.switch-label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  cursor: pointer;
+}
+
+.switch-label::before {
+  width: 100%;
+  height: 100%;
+  background-color: #dedede;
+  border-radius: 9999em;
+  border: 1px solid #999999;
+  transition: background-color 0.25s ease;
+}
+
+.switch-label::after {
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #999;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+  transition: left 0.25s ease;
+}
+
+.switch-input:checked + .switch-label::before {
+  background-color: #89c12d;
+}
+
+.switch-input:checked + .switch-label::after {
+  left: 24px;
+}
+
+.validation-error {
+  border: 1px solid #5f1401;
+  color: #5f1401;
+  background-color: #ffefeb;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.validation-error.hide {
+  display: none;
+}
+
+body.landing {
+  padding: 0;
+  overflow: hidden;
+}
+body.landing .home-link a {
+  margin-left: 50px;
+}
+
+.connexus button.invisibutton {
+  cursor: pointer;
+}
+.connexus button.invisibutton span {
+  text-indent: -100000px;
+  display: block;
+}
+.connexus button.invisibutton img {
+  width: 100%;
+  height: 100%;
+  margin-top: -15px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 10px 20px;
+  border: 1px solid #888;
+  width: 850px;
+  height: auto;
+  position: relative;
+  overflow: auto;
+}
+@media screen and (max-width: 950px) {
+  .modal-content {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+.modal-content p {
+  font-size: 0.95rem;
+}
+.modal-content p:last-of-type {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.modal-footer {
+  padding-bottom: 20px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.calendar-header {
+  display: flex;
+  margin: 20px 0;
+}
+.calendar-header h2 {
+  display: inline-block;
+  margin: 0 10px;
+  width: 100%;
+  text-align: center;
+}
+
+table.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.calendar-table th, table.calendar-table td {
+  width: 10%;
+  padding: 10px;
+  vertical-align: top;
+}
+table.calendar-table th {
+  border-bottom: 2px solid #722362;
+  color: #722362;
+}
+table.calendar-table td {
+  height: 100px;
+  border: 2px solid #efefef;
+}
+table.calendar-table td:hover, table.calendar-table td:focus {
+  cursor: pointer;
+  background-color: rgba(118, 213, 212, 0.3);
+}
+table.calendar-table td:hover.no-date, table.calendar-table td:focus.no-date {
+  cursor: default;
+  background-color: transparent;
+}
+
+#addCalModal .modal-content {
+  width: 600px;
+}
+@media screen and (max-width: 620px) {
+  #addCalModal .modal-content {
+    width: 100%;
+  }
+}
+
+.add-cal ul.option-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+.add-cal ul.option-list li {
+  margin-bottom: 10px;
+}
+
+.loading-area {
+  margin: 60px 0;
+}
+.loading-area p {
+  text-align: center;
+  color: #722362;
+  font-weight: 700;
+  width: 625px;
+}
+.loading-area img {
+  max-width: 60px;
+  vertical-align: bottom;
+  background-color: #fff;
+}
+.loading-area .container {
+  width: 500px;
+  text-align: center;
+  vertical-align: bottom;
+  display: inline-block;
+  margin: 0 10px;
+}
+.loading-area .progress {
+  padding: 6px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+.loading-area .progress-bar {
+  height: 45px;
+  background-color: #ee303c;
+  border-radius: 4px;
+  transition: 0.4s linear;
+  transition-property: width, background-color;
+}
+.loading-area .progress-striped .progress-bar {
+  background-color: #FCBC51;
+  width: 100%;
+  background-image: linear-gradient(45deg, #fca311 25%, transparent 25%, transparent 50%, #fca311 50%, #fca311 75%, transparent 75%, transparent);
+  -webkit-animation: progressAnimationStrike 6s;
+          animation: progressAnimationStrike 6s;
+}
+@-webkit-keyframes progressAnimationStrike {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes progressAnimationStrike {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animation-area {
+  height: 250px;
+  position: relative;
+}
+
+#loading {
+  position: absolute;
+  top: -50px;
+  /* Firefox */
+  -webkit-animation: cssAnimation 0s ease-out 7s forwards;
+  /* Safari and Chrome */
+  /* Opera */
+  animation: cssAnimation 0s ease-out 7s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cssAnimation {
+  to {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}
+@-webkit-keyframes cssAnimation {
+  to {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
+#complete {
+  -webkit-animation: cssAnimationshow 0s 7s forwards;
+          animation: cssAnimationshow 0s 7s forwards;
+  visibility: hidden;
+}
+
+@-webkit-keyframes cssAnimationshow {
+  to {
+    visibility: visible;
+  }
+}
+
+@keyframes cssAnimationshow {
+  to {
+    visibility: visible;
+  }
+}
+.success-complete {
+  padding-top: 20px;
+}
+.success-complete img.firework {
+  width: 100px;
+  float: left;
+  margin-right: 30px;
+}
+.success-complete .end-buttons {
+  margin-top: 60px;
+}
+.success-complete .end-buttons .primary-btn {
+  margin-right: 10px;
+}
+
+.clearfix {
+  clear: both;
+}/*# sourceMappingURL=scheduler.css.map */
