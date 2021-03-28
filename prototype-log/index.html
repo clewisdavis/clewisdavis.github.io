@@ -1,0 +1,1020 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>UX Logging Prototype</title>
+  <meta name="description" content="UX Logging Prototype">
+  <meta name="author" content="UX">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="chosen.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js">
+  </script>
+</head>
+
+<body>
+  <h2 class="header-1">Log LiveLesson Attendance</h2>
+  <a href="session-list.html">
+    <button class="back-button">
+      <img src="images/arrow-left.svg" /> back to session list
+    </button>
+  </a>
+  <div>
+    <p class="header-2 m-0">23423meeting_science</p>
+    <p class="header-2 m-0">Thursday, January 29, 2021 - 3:00 PM </p>
+  </div>
+  <section class="grey">
+    <div class="container cxForm">
+      <div class="grid-item">
+        <label class="primaryLabel field chosen" for="section">
+          <span title="Section/Location is required" class="requiredIndicator">*</span> Section/Location:
+        </label>
+        <div class="select">
+          <select size="1" id="sectionLocation" class="field" aria-required="true">
+            <option selected>Select Section/Location</option>
+            <option>No Applicable Section</option>
+            <option>Language Arts / CalCA Central Coast</option>
+            <option>Language Arts / CalCA Central Valley</option>
+            <option>Language Arts / CalCA Monterey Bay</option>
+            <option>Language Arts / CalCA North Bay</option>
+            <option>Language Arts / Ripton</option>
+            <option>Language Arts / SoCal</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid-item">
+        <label class="primaryLabel field" for="categories">
+          <span title="Areas & Categories is required" class="requiredIndicator">*</span>
+          Areas & Categories:</label>
+        <select data-placeholder="Select at least one option" class="chosen-select" multiple="" tabindex="-1"
+          style="display: none;">
+          <option value=""></option>
+          <optgroup label="Instructional">
+            <option>DCBA</option>
+            <option>Verified VCBA</option>
+            <option>Unverified VCBA</option>
+            <option>Program Modification</option>
+            <option>Teaching/Curriculum</option>
+            <option>Assesment/State Testing</option>
+            <option>PLP</option>
+            <option>Other</option>
+            <option>Math</option>
+            <option>Language Arts</option>
+            <option>Science</option>
+            <option>Behavior</option>
+            <option>Social Studies</option>
+            <option>Elective</option>
+            <option>Other Course</option>
+            <option>Course Progress Extension</option>
+            <option>Conservervatories</option>
+            <option>Deffentiation (Tier I)</option>
+            <option>Intervention (Tier II/III)</option>
+          </optgroup>
+          <optgroup label="Assesment">
+            <option>DCBA</option>
+            <option>Verified VCBA</option>
+            <option>Unverified VCBA</option>
+            <option>Program Modification</option>
+          </optgroup>
+        </select>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-item grid-item-full cxForm">
+      <label class="primaryLabel field" for="email">
+        <span title="Note is required" class="requiredIndicator">*</span>
+        Note applied to all students in group session:
+      </label>
+      <textarea class="field" name="notes" placeholder="Add a note here..." rows="3"></textarea>
+    </div>
+  </section>
+  <section>
+    <small><strong>12 students</strong> attended this LiveLesson session.</small>
+    <table class="cxTable cxForm" id="students">
+      <thead>
+        <tr>
+          <th>Attended?</th>
+          <th>Last</th>
+          <th>First</th>
+          <th>ID</th>
+          <th>Join</th>
+          <th>Leave</th>
+          <th>Duration</th>
+          <th>Section/Location</th>
+          <th>Remove?</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>
+          <div class="pill-container">
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Group</span>
+              <input type='radio' name='attended' value='G' id='attendedg' checked>
+              <label for='attendedg' class="a">G</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Individual</span>
+              <input type='radio' name='attended' value='I' id='attendedi'>
+              <label for='attendedi' class="a">I</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend</span>
+              <input type='radio' name='attended' value='D' id='didnotattend'>
+              <label for='didnotattend' class="dna">D</label>
+            </span>
+
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend (Required)</span>
+              <input type='radio' name='attended' value='D' id='didnotattend-required'>
+              <label for='didnotattend-required' class="dnar">D*</label>
+            </span>
+
+          </div>
+        </td>
+        <td>Bowes</td>
+        <td>Richard</td>
+        <td>2385212</td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">First Join Time</span>
+            10:30 AM
+          </span>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">Last Leave Time</span>
+            11:30 AM
+          </span>
+        </td>
+        <td>
+          <div class="tooltip">
+            <span class="tooltiptext"> Total time in session </span>
+            00:30
+          </div>
+        </td>
+        <td>
+          <div class="select studentSection">
+            --
+            <!-- <select size="1" id="type1" class="field" id="standard-select">
+              <option selected>Select section/location</option>
+            	<option>Earth Science A/MyCA</option>
+              <option>Math A/MyCA</option>
+              <option>Music Theory C/MyCA</option>
+            </select> -->
+          </div>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">There will be no log submitted for the student</span>
+            <div class="c-checkbox c-checkbox--normal">
+              <input class="sr-only checkbox" id="c1" type="checkbox">
+              <label class="c-checkbox__label" for="c1"></label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="pill-container">
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Group</span>
+              <input type='radio' name='attended1' value='G1' id='attendedg1' checked>
+              <label for='attendedg1' class="a">G</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Individual</span>
+              <input type='radio' name='attended1' value='I1' id='attendedi1'>
+              <label for='attendedi1' class="a">I</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend</span>
+              <input type='radio' name='attended1' value='D1' id='didnotattend1'>
+              <label for='didnotattend1' class="dna">D</label>
+            </span>
+
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend (Required)</span>
+              <input type='radio' name='attended1' value='Dr1' id='didnotattend-required1'>
+              <label for='didnotattend-required1' class="dnar">D*</label>
+            </span>
+
+          </div>
+        </td>
+        <td>Buchanan</td>
+        <td>Taylor</td>
+        <td>3434523</td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">First Join Time</span>
+            10:30 AM
+          </span>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">Last Leave Time</span>
+            11:30 AM
+          </span>
+        </td>
+        <td>
+          <div class="tooltip">
+            <span class="tooltiptext"> Total time in session </span>
+            00:30
+          </div>
+        </td>
+        <td>
+          <div class="select studentSection">
+            --
+            <!-- <select size="1" id="type1" class="field" id="standard-select">
+              <option selected>Select section/location</option>
+              <option>Earth Science A/MyCA</option>
+              <option>Math A/MyCA</option>
+              <option>Music Theory C/MyCA</option>
+              <option>Earth Science A/MyCA</option>
+            </select> -->
+          </div>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">There will be no log submitted for the student</span>
+            <div class="c-checkbox c-checkbox--normal">
+              <input class="sr-only checkbox" id="c2" type="checkbox">
+              <label class="c-checkbox__label" for="c2"></label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="pill-container">
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Group</span>
+              <input type='radio' name='attended2' value='G2' id='attendedg2' checked>
+              <label for='attendedg2' class="a">G</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Individual</span>
+              <input type='radio' name='attended2' value='I2' id='attendedi2'>
+              <label for='attendedi2' class="a">I</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend</span>
+              <input type='radio' name='attended2' value='D2' id='didnotattend2'>
+              <label for='didnotattend2' class="dna">D</label>
+            </span>
+
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend (Required)</span>
+              <input type='radio' name='attended2' value='Dr2' id='didnotattend-required2'>
+              <label for='didnotattend-required2' class="dnar">D*</label>
+            </span>
+
+          </div>
+        </td>
+        <td>Johns</td>
+        <td>Lemar</td>
+        <td>6342512</td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">First Join Time</span>
+            10:30 AM
+          </span>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">Last Leave Time</span>
+            11:30 AM
+          </span>
+        </td>
+        <td>
+          <div class="tooltip">
+            <span class="tooltiptext"> Total time in session </span>
+            00:30
+          </div>
+        </td>
+        <td>
+          <div class="select ">
+            <select size="1" id="type1" class="field" id="standard-select">
+              <option selected>Select section/location</option>
+              <option>Earth Science A/MyCA</option>
+              <option>Math A/MyCA</option>
+              <option>Music Theory C/MyCA</option>
+              <option>Earth Science A/MyCA</option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">There will be no log submitted for the student</span>
+            <div class="c-checkbox c-checkbox--normal">
+              <input class="sr-only checkbox" id="c3" type="checkbox">
+              <label class="c-checkbox__label" for="c3"></label>
+            </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="pill-container">
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Group</span>
+              <input type='radio' name='attended3' value='G2' id='attendedg3' checked>
+              <label for='attendedg3' class="a">G</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Individual</span>
+              <input type='radio' name='attended3' value='I2' id='attendedi3'>
+              <label for='attendedi3' class="a">I</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend</span>
+              <input type='radio' name='attended3' value='D2' id='didnotattend3'>
+              <label for='didnotattend3' class="dna">D</label>
+            </span>
+
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend (Required)</span>
+              <input type='radio' name='attended3' value='Dr2' id='didnotattend-required3'>
+              <label for='didnotattend-required3' class="dnar">D*</label>
+            </span>
+
+          </div>
+        </td>
+        <td>Kayla</td>
+        <td>Saqip</td>
+        <td>6342512</td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">First Join Time</span>
+            10:30 AM
+          </span>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">Last Leave Time</span>
+            11:30 AM
+          </span>
+        </td>
+        <td>
+          <div class="tooltip">
+            <span class="tooltiptext"> Total time in session </span>
+            00:30
+          </div>
+        </td>
+        <td>
+          <div class="select studentSection">
+            --
+            <!-- <select size="1" id="type1" class="field" id="standard-select">
+              <option selected>Select section/location</option>
+              <option>Earth Science A/MyCA</option>
+              <option>Math A/MyCA</option>
+              <option>Music Theory C/MyCA</option>
+              <option>Earth Science A/MyCA</option>
+            </select> -->
+          </div>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">There will be no log submitted for the student</span>
+            <div class="c-checkbox c-checkbox--normal">
+              <input class="sr-only checkbox" id="c4" type="checkbox">
+              <label class="c-checkbox__label" for="c4"></label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="pill-container">
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Group</span>
+              <input type='radio' name='attended4' value='G2' id='attendedg4' checked>
+              <label for='attendedg4' class="a">G</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Individual</span>
+              <input type='radio' name='attended4' value='I2' id='attendedi4'>
+              <label for='attendedi4' class="a">I</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend</span>
+              <input type='radio' name='attended4' value='D2' id='didnotattend4'>
+              <label for='didnotattend4' class="dna">D</label>
+            </span>
+
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend (Required)</span>
+              <input type='radio' name='attended4' value='Dr2' id='didnotattend-required4'>
+              <label for='didnotattend-required4' class="dnar">D*</label>
+            </span>
+
+          </div>
+        </td>
+        <td>Kaur</td>
+        <td>Montel</td>
+        <td>6342512</td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">First Join Time</span>
+            10:30 AM
+          </span>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">Last Leave Time</span>
+            11:30 AM
+          </span>
+        </td>
+        <td>
+          <div class="tooltip">
+            <span class="tooltiptext"> Total time in session </span>
+            00:30
+          </div>
+        </td>
+        <td>
+          <div class="select ">
+            <select size="1" id="type1" class="field" id="standard-select">
+              <option selected>Select section/location</option>
+              <option>Earth Science A/MyCA</option>
+              <option>Math A/MyCA</option>
+              <option>Music Theory C/MyCA</option>
+              <option>Earth Science A/MyCA</option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">There will be no log submitted for the student</span>
+            <div class="c-checkbox c-checkbox--normal">
+              <input class="sr-only checkbox" id="c5" type="checkbox">
+              <label class="c-checkbox__label" for="c5"></label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="pill-container">
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Group</span>
+              <input type='radio' name='attended5' value='G2' id='attendedg5' checked>
+              <label for='attendedg5' class="a">G</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Individual</span>
+              <input type='radio' name='attended5' value='I2' id='attendedi5'>
+              <label for='attendedi5' class="a">I</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend</span>
+              <input type='radio' name='attended5' value='D2' id='didnotattend5'>
+              <label for='didnotattend5' class="dna">D</label>
+            </span>
+
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend (Required)</span>
+              <input type='radio' name='attended5' value='Dr2' id='didnotattend-required5'>
+              <label for='didnotattend-required5' class="dnar">D*</label>
+            </span>
+
+          </div>
+        </td>
+        <td>Mckinney</td>
+        <td>Rudra</td>
+        <td>6342512</td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">First Join Time</span>
+            10:30 AM
+          </span>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">Last Leave Time</span>
+            11:30 AM
+          </span>
+        </td>
+        <td>
+          <div class="tooltip">
+            <span class="tooltiptext"> Total time in session </span>
+            00:30
+          </div>
+        </td>
+        <td>
+          <div class="select studentSection">
+            --
+            <!-- <select size="1" id="type1" class="field" id="standard-select">
+              <option selected>Select section/location</option>
+              <option>Earth Science A/MyCA</option>
+              <option>Math A/MyCA</option>
+              <option>Music Theory C/MyCA</option>
+              <option>Earth Science A/MyCA</option>
+            </select> -->
+          </div>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">There will be no log submitted for the student</span>
+            <div class="c-checkbox c-checkbox--normal">
+              <input class="sr-only checkbox" id="c6" type="checkbox">
+              <label class="c-checkbox__label" for="c6"></label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="pill-container">
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Group</span>
+              <input type='radio' name='attended6' value='G2' id='attendedg6' checked>
+              <label for='attendedg6' class="a">G</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Individual</span>
+              <input type='radio' name='attended6' value='I2' id='attendedi6'>
+              <label for='attendedi6' class="a">I</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend</span>
+              <input type='radio' name='attended6' value='D2' id='didnotattend6'>
+              <label for='didnotattend6' class="dna">D</label>
+            </span>
+
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend (Required)</span>
+              <input type='radio' name='attended6' value='Dr2' id='didnotattend-required6'>
+              <label for='didnotattend-required6' class="dnar">D*</label>
+            </span>
+
+          </div>
+        </td>
+        <td>Naylor</td>
+        <td>Frederick</td>
+        <td>6342512</td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">First Join Time</span>
+            10:30 AM
+          </span>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">Last Leave Time</span>
+            11:30 AM
+          </span>
+        </td>
+        <td>
+          <div class="tooltip">
+            <span class="tooltiptext"> Total time in session </span>
+            00:30
+          </div>
+        </td>
+        <td>
+          <div class="select studentSection">
+            --
+            <!-- <select size="1" id="type1" class="field" id="standard-select">
+              <option selected>Select section/location</option>
+              <option>Earth Science A/MyCA</option>
+              <option>Math A/MyCA</option>
+              <option>Music Theory C/MyCA</option>
+              <option>Earth Science A/MyCA</option>
+            </select> -->
+          </div>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">There will be no log submitted for the student</span>
+            <div class="c-checkbox c-checkbox--normal">
+              <input class="sr-only checkbox" id="c7" type="checkbox">
+              <label class="c-checkbox__label" for="c7"></label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="pill-container">
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Group</span>
+              <input type='radio' name='attended7' value='G2' id='attendedg7' checked>
+              <label for='attendedg7' class="a">G</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Individual</span>
+              <input type='radio' name='attended7' value='I2' id='attendedi7'>
+              <label for='attendedi7' class="a">I</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend</span>
+              <input type='radio' name='attended7' value='D2' id='didnotattend7'>
+              <label for='didnotattend7' class="dna">D</label>
+            </span>
+
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend (Required)</span>
+              <input type='radio' name='attended7' value='Dr2' id='didnotattend-required7'>
+              <label for='didnotattend-required7' class="dnar">D*</label>
+            </span>
+
+          </div>
+        </td>
+        <td>Nguyen</td>
+        <td>Habib</td>
+        <td>6342512</td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">First Join Time</span>
+            10:30 AM
+          </span>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">Last Leave Time</span>
+            11:30 AM
+          </span>
+        </td>
+        <td>
+          <div class="tooltip">
+            <span class="tooltiptext"> Total time in session </span>
+            00:30
+          </div>
+        </td>
+        <td>
+          <div class="select studentSection">
+            --
+            <!-- <select size="1" id="type1" class="field" id="standard-select">
+              <option selected>Select section/location</option>
+              <option>Earth Science A/MyCA</option>
+              <option>Math A/MyCA</option>
+              <option>Music Theory C/MyCA</option>
+              <option>Earth Science A/MyCA</option>
+            </select> -->
+          </div>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">There will be no log submitted for the student</span>
+            <div class="c-checkbox c-checkbox--normal">
+              <input class="sr-only checkbox" id="c8" type="checkbox">
+              <label class="c-checkbox__label" for="c8"></label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="pill-container">
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Group</span>
+              <input type='radio' name='attended8' value='G2' id='attendedg8' checked>
+              <label for='attendedg8' class="a">G</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Individual</span>
+              <input type='radio' name='attended8' value='I2' id='attendedi8'>
+              <label for='attendedi8' class="a">I</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend</span>
+              <input type='radio' name='attended8' value='D2' id='didnotattend8'>
+              <label for='didnotattend8' class="dna">D</label>
+            </span>
+
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend (Required)</span>
+              <input type='radio' name='attended8' value='Dr2' id='didnotattend-required8'>
+              <label for='didnotattend-required8' class="dnar">D*</label>
+            </span>
+
+          </div>
+        </td>
+        <td>Osborn</td>
+        <td>Lottie</td>
+        <td>6342512</td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">First Join Time</span>
+            10:30 AM
+          </span>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">Last Leave Time</span>
+            11:30 AM
+          </span>
+        </td>
+        <td>
+          <div class="tooltip">
+            <span class="tooltiptext"> Total time in session </span>
+            00:30
+          </div>
+        </td>
+        <td>
+          <div class="select studentSection">
+            --
+            <!-- <select size="1" id="type1" class="field" id="standard-select">
+              <option selected>Select section/location</option>
+              <option>Earth Science A/MyCA</option>
+              <option>Math A/MyCA</option>
+              <option>Music Theory C/MyCA</option>
+              <option>Earth Science A/MyCA</option>
+            </select> -->
+          </div>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">There will be no log submitted for the student</span>
+            <div class="c-checkbox c-checkbox--normal">
+              <input class="sr-only checkbox" id="c9" type="checkbox">
+              <label class="c-checkbox__label" for="c9"></label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="pill-container">
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Group</span>
+              <input type='radio' name='attended9' value='G2' id='attendedg9' checked>
+              <label for='attendedg9' class="a">G</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Individual</span>
+              <input type='radio' name='attended9' value='I2' id='attendedi9'>
+              <label for='attendedi9' class="a">I</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend</span>
+              <input type='radio' name='attended9' value='D2' id='didnotattend9'>
+              <label for='didnotattend9' class="dna">D</label>
+            </span>
+
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend (Required)</span>
+              <input type='radio' name='attended9' value='Dr2' id='didnotattend-required9'>
+              <label for='didnotattend-required9' class="dnar">D*</label>
+            </span>
+
+          </div>
+        </td>
+        <td>Parrish</td>
+        <td>Simon</td>
+        <td>6342512</td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">First Join Time</span>
+            10:30 AM
+          </span>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">Last Leave Time</span>
+            11:30 AM
+          </span>
+        </td>
+        <td>
+          <div class="tooltip">
+            <span class="tooltiptext"> Total time in session </span>
+            00:30
+          </div>
+        </td>
+        <td>
+          <div class="select studentSection">
+            --
+            <!-- <select size="1" id="type1" class="field" id="standard-select">
+              <option selected>Select section/location</option>
+              <option>Earth Science A/MyCA</option>
+              <option>Math A/MyCA</option>
+              <option>Music Theory C/MyCA</option>
+              <option>Earth Science A/MyCA</option>
+            </select> -->
+          </div>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">There will be no log submitted for the student</span>
+            <div class="c-checkbox c-checkbox--normal">
+              <input class="sr-only checkbox" id="c10" type="checkbox">
+              <label class="c-checkbox__label" for="c10"></label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="pill-container">
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Group</span>
+              <input type='radio' name='attended10' value='G2' id='attendedg10' checked>
+              <label for='attendedg10' class="a">G</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Individual</span>
+              <input type='radio' name='attended10' value='I2' id='attendedi10'>
+              <label for='attendedi10' class="a">I</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend</span>
+              <input type='radio' name='attended10' value='D2' id='didnotattend10'>
+              <label for='didnotattend10' class="dna">D</label>
+            </span>
+
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend (Required)</span>
+              <input type='radio' name='attended10' value='Dr2' id='didnotattend-required10'>
+              <label for='didnotattend-required10' class="dnar">D*</label>
+            </span>
+
+          </div>
+        </td>
+        <td>Plant</td>
+        <td>Janet</td>
+        <td>6342512</td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">First Join Time</span>
+            10:30 AM
+          </span>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">Last Leave Time</span>
+            11:30 AM
+          </span>
+        </td>
+        <td>
+          <div class="tooltip">
+            <span class="tooltiptext"> Total time in session </span>
+            00:30
+          </div>
+        </td>
+        <td>
+          <div class="select studentSection">
+            --
+            <!-- <select size="1" id="type1" class="field" id="standard-select">
+              <option selected>Select section/location</option>
+              <option>Earth Science A/MyCA</option>
+              <option>Math A/MyCA</option>
+              <option>Music Theory C/MyCA</option>
+              <option>Earth Science A/MyCA</option>
+            </select> -->
+          </div>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">There will be no log submitted for the student</span>
+            <div class="c-checkbox c-checkbox--normal">
+              <input class="sr-only checkbox" id="c11" type="checkbox">
+              <label class="c-checkbox__label" for="c11"></label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="pill-container">
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Group</span>
+              <input type='radio' name='attended11' value='G2' id='attendedg11' checked>
+              <label for='attendedg11' class="a">G</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Attended - Individual</span>
+              <input type='radio' name='attended11' value='I2' id='attendedi11'>
+              <label for='attendedi11' class="a">I</label>
+            </span>
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend</span>
+              <input type='radio' name='attended11' value='D2' id='didnotattend11'>
+              <label for='didnotattend11' class="dna">D</label>
+            </span>
+
+
+            <span class="tooltip">
+              <span class="tooltiptext">Did Not Attend (Required)</span>
+              <input type='radio' name='attended11' value='Dr2' id='didnotattend-required11'>
+              <label for='didnotattend-required11' class="dnar">D*</label>
+            </span>
+
+          </div>
+        </td>
+        <td>Vargas</td>
+        <td>Philip</td>
+        <td>6342512</td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">First Join Time</span>
+            10:30 AM
+          </span>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">Last Leave Time</span>
+            11:30 AM
+          </span>
+        </td>
+        <td>
+          <div class="tooltip">
+            <span class="tooltiptext"> Total time in session </span>
+            00:30
+          </div>
+        </td>
+        <td>
+          <div class="select studentSection">
+            --
+            <!-- <select size="1" id="type1" class="field" id="standard-select">
+              <option selected>Select section/location</option>
+              <option>Earth Science A/MyCA</option>
+              <option>Math A/MyCA</option>
+              <option>Music Theory C/MyCA</option>
+              <option>Earth Science A/MyCA</option>
+            </select> -->
+          </div>
+        </td>
+        <td>
+          <span class="tooltip">
+            <span class="tooltiptext">There will be no log submitted for the student</span>
+            <div class="c-checkbox c-checkbox--normal">
+              <input class="sr-only checkbox" id="c12" type="checkbox">
+              <label class="c-checkbox__label" for="c12"></label>
+            </div>
+        </td>
+      </tr>
+
+    </table>
+    <div class="float-right">
+      <a href="#modal"><button class="cxBtn cxPrimaryBtn">Submit Log</button></a>
+    </div>
+    <div class="modal-container" id="modal">
+
+      <!-- Modal  -->
+      <div class="modal">
+        <div>
+          <img class="inline-blk mr-1" src="images/checkmark_icon.png" />
+          <h3 class="inline-blk mb-0">Log submitted successfully</h3>
+        </div>
+        <p>The attendance log was successfully submitted to student logs.</p>
+        <br>
+        <a href="session-list.html"><button class="cxBtn cxPrimaryBtn">Back to Session List</button></a>
+      </div>
+
+      <!-- Background, click to close -->
+      <a href="#" class="modal-bg"></a>
+    </div>
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="chosen.jquery.min.js" type="text/javascript"></script>
+  <script src="scripts.js" defer></script>
+  <script>
+    $(".chosen-select").chosen({
+      width: "95%"
+    });
+  </script>
+</body>
+
+</html>

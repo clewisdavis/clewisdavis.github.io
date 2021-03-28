@@ -1,0 +1,2245 @@
+/* bulk_logging additional css */
+* {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+body{
+  padding: 0 3em;
+}
+a {
+  color: #022C69;
+}
+.back-button{
+  background-color: transparent;
+  border: none;
+  border-radius: .25rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  color: #046CC8;
+  padding: 12px 0;
+}
+.back-button img{
+  width: 1.4em;
+  vertical-align: bottom;
+}
+.header-1{
+  font-size: 22px;
+  font-family: 'Lato', sans-serif;
+}
+.header-2{
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+}
+.cxTable.cxForm thead tr th{
+  font-size: 13px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.mb-0{
+  margin-bottom: 0px;
+}
+.m-0{
+  margin: 0px;
+}
+.mt-0{
+  margin-top: 0px;
+}
+.inline-blk{
+  display: inline-block;
+}
+.mr-1{
+  margin-right: 5px;
+}
+.container {
+  display: grid;
+  grid-template-rows: auto;
+  align-content: space-evenly;
+  grid-template-columns: auto auto auto auto;
+  justify-content: start;
+}
+.grid-item{
+  padding: 20px;
+}
+.float-right{
+  float: right;
+  margin-bottom: 1em;
+}
+section,
+table{
+  margin: 1em 0;
+}
+.grey{
+  background: #F5F3F3;
+}
+.grid-item-full{
+  grid-column: 1 / -1;
+}
+.grey .grid-item-full textarea.field{
+  width: 99%;
+}
+table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  min-width: 400px;
+  width: 100%
+}
+table thead tr {
+  background-color: #434343;
+  color: #ffffff;
+  text-align: left;
+}
+table tr td {
+  padding: 1em;
+  font-size: 12px;
+  position: relative;
+}
+tbody{
+  font-size: 12px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+#students tbody tr {
+  background: #fbfbfb;
+  transition: 0sec;
+}
+#students tbody tr:hover{
+  background: #EFF1FC;
+  transition: .3sec;
+}
+#session-list tbody tr{
+  transition: .3sec;
+  cursor: pointer;
+  color: #000;
+  background: #fff;
+}
+#session-list tbody tr:hover{
+  transition: .3sec;
+  cursor: pointer;
+  background: #F5F3F3;
+}
+input[type='radio'] {
+  display: none;
+}
+.pill-container {
+  display: flex;
+  flex-direction: row;
+}
+.pill-container > span {
+  flex: 1 1 auto;
+  display: block;
+}
+.pill-container label {
+  flex: 1 1 auto;
+  border: solid 1px #F9F9F9;
+  cursor: pointer;
+  display: block;
+  padding: 5px;
+  text-align: center;
+  font-size: inherit;
+  background: #fff;
+}
+.pill-container input:checked + .a {
+  background: #E4F2E2;
+  border: 1px solid #97DA98;
+  color: #000;
+}
+.pill-container input:checked + .dna {
+  background: #FFEEBE;
+  border: 1px solid #EFC040;
+  color: #000;
+}
+.pill-container input:checked + .dnar {
+  background: #FFE8E6;
+  border: 1px solid #ED9289;
+  color: #000;
+}
+tr.strikeout td {
+  transition: .3s;
+  opacity: .3;
+}
+tr.strikeout td:before {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border-bottom: 1px solid #111;
+  width: 100%;
+  z-index: 101010101010;
+}
+tr.strikeout td:after {
+  font-size: 1px;
+}
+c-checkbox {
+  position: relative;
+}
+.c-checkbox--normal input:checked + .c-checkbox__label:before {
+  border-color: #979797;
+  background-color: #fff;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgMjAuMTg4bC04LjMxNS04LjIwOSA4LjItOC4yODItMy42OTctMy42OTctOC4yMTIgOC4zMTgtOC4zMS04LjIwMy0zLjY2NiAzLjY2NiA4LjMyMSA4LjI0LTguMjA2IDguMzEzIDMuNjY2IDMuNjY2IDguMjM3LTguMzE4IDguMjg1IDguMjAzeiIvPjwvc3ZnPg==') center/12px no-repeat;
+}
+.c-checkbox__label {
+  cursor: pointer;
+  display: inline-block;
+}
+.c-checkbox__label:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #979797;
+    margin-right: 8px;
+    border-radius: 4px;
+    background: #fff;
+}
+.c-checkbox__label:hover {
+    color: blue;
+}
+.c-checkbox input:focus:not(:focus-visible) {
+  outline: none;
+}
+.c-checkbox input:focus + .c-checkbox__label {
+  outline: dashed 2px lightgrey;
+  outline-offset: 5px;
+}
+.sr-only {
+  position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+.chosen-choices,
+textarea ,
+input{
+  border-radius: 3px;
+  border: solid 1px #AAAAAA;
+}
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #444444;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  font-weight: normal;
+
+ /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+ /* Fade in tooltip */
+  opacity: 0;
+  transition: .25s all ease;
+  transition-delay: .25s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+/* Greeting Modal Container */
+#modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* Greeting Modal Container - when open */
+#modal:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Greeting Modal */
+#modal .modal {
+  opacity: 0;
+  transform: translateY(-1rem);
+  transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-delay: .2s;
+}
+
+/* Greeting Modal - when open */
+#modal:target .modal {
+transform: translateY(0);
+opacity: 1;
+}
+
+/* Modal Container Styles */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Background Styles */
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .2);
+}
+
+/* Modal Body Styles */
+.modal {
+  z-index: 1;
+  background-color: white;
+  width: 80%;
+  max-width: 500px;
+  padding: 2.5rem 0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* CSS for forms, button, and icon styles */
+.cxForm h1, .cxForm h2, .cxForm h3, .cxForm h4, .cxForm h5, .cxHeader {
+	text-rendering: optimizelegibility;
+}
+
+/*Icon spritesheet*/
+.cxForm fieldset legend a.toggle,.cxForm .invalidMessage, .cxForm .validMessage, .cxForm .invalidMessageOverlay, .cxIcon {
+	background-image:url(../images/iconSprites.png?v=i2);
+	background-repeat:no-repeat;
+}
+
+/* Used for screen reader only content */
+.audibleOnly {
+	position: absolute;
+	left: -9999px;
+	z-index: -1;
+	overflow: hidden;
+	text-indent: -9999px;
+}
+.cxContent {
+	padding: 0 15px;
+}
+.cxContent a {
+	color: #024d99;
+}
+/* Removes Spaces for inline-block Components */
+.inlineNoSpace {
+	word-spacing: -.43em;
+}
+.inlineNoSpace * {
+	word-spacing: normal;
+}
+/* Breadcrumb Styles - Not yet Implemented */
+.cxBreadcrumb {
+	margin: 8px 0 18px;
+	padding-top: 5px;
+	padding-left: 11px;
+	color: #666;
+	font-size: 11px;
+}
+.cxBreadcrumb .separator {
+    padding: 0 3px;
+}
+/* Header Tags */
+.cxForm h1, h1.cxHeader {
+	margin: 0 10px;
+	padding: 1.2em 0 .4em;
+	border-bottom: 1px solid #fff;
+	color: #222;
+	font-weight: 400;
+	font-size: 1.75em;
+}
+.cxForm h2, h2.cxHeader {
+	margin: 0;
+	padding: 1.2em 0 .8em;
+	color: #222;
+	font-weight: 700;
+	font-size: 1.25em;
+}
+.cxForm h3, h3.cxHeader {
+	margin: 0;
+	padding: 1.2em 0 .4em;
+	color: #111;
+	font-weight: 700;
+	font-size: 1em;
+}
+.cxForm h4, h4.cxHeader {
+	margin: 0;
+	padding: 1.2em 0 .4em;
+	color: #000;
+	font-weight: 700;
+	font-size: .9em;
+}
+.cxForm h5, h5.cxHeader {
+	margin: 0;
+	padding: 1.2em 0 .4em;
+	color: #000;
+	font-weight: 400;
+	font-size: .9em;
+}
+.cxContent h1.cxHeader {
+	margin-left: 0;
+}
+
+.cxForm .actionList li {
+	list-style-type: none;
+	padding-bottom:5px;
+}
+/* Fieldset class can be used to adjust form layout */
+.cxForm fieldset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.cxForm fieldset.leftLabels {
+	padding: 12px 5px;
+	min-width: 650px;
+}
+.cxForm fieldset.extendedLabels {
+	padding: 10px 0;
+}
+.cxForm fieldset.extendedLabels .formLabels {
+	display: block;
+	padding: 0 0 6px;
+	text-align: left;
+}
+.cxForm fieldset.extendedLabels .formFields {
+	max-width: 720px;
+}
+.cxForm fieldset.extendedLabels.formCol {
+	padding-bottom: 0;
+}
+.cxForm fieldset.extendedLabels.formCol .formRow {
+	display: inline-block;
+	padding: 8px 15px 8px 0;
+}
+.cxForm fieldset legend {
+	display: block;
+	margin: 0;
+	padding: 20px 0 8px;
+	width: 100%;
+	border-bottom: 1px solid #dedede;
+	color: #555;
+	font-weight: 700;
+	font-size: 12px;
+}
+.cxForm fieldset legend a.toggle {
+	display: block;
+	padding-left: 18px;
+	background-position: -2px -300px;
+	color: #555;
+	text-decoration: none;
+}
+.cxForm fieldset legend a.toggle:hover {
+	color: #024d99;
+	text-decoration: underline;
+}
+.cxForm fieldset legend a.toggleOpen {
+	background-position: -2px -334px;
+}
+/* Layout */
+.cxForm .formRow {
+	clear: both;
+	padding: 8px 0;
+}
+.cxForm .formLabels {
+    font-size: 11px;
+}
+.cxForm .leftLabels .formLabels {
+	display: inline-block;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	margin: 0 -.43em 0 0;
+	padding: 7px 8px 7px 5px;
+	width: 17%;
+	vertical-align: top;
+	text-align: right;
+}
+
+
+.cxForm .leftLabels .formFields {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	width: 83%;
+	vertical-align: top;
+}
+.cxForm .leftLabels .formComponent {
+	padding: 7px 0;
+}
+.cxForm .fieldSection {
+	margin-bottom: 8px;
+}
+.cxForm .fieldInline {
+	display: inline-block;
+	/*vertical-align: middle;*/
+}
+.cxForm .leftLabels .formFieldsLimited {
+	max-width: 720px;
+}
+.cxForm .leftLabelsSmall .formLabels {
+	width: 14%;
+}
+.cxForm .leftLabelsSmall .formFields {
+	width: 85%;
+}
+.cxForm .leftLabelsLarge .formLabels {
+	width: 22%;
+}
+.cxForm .leftLabelsLarge .formFields {
+	width: 77%;
+}
+/* For IE 7 width adjustment  */
+.ie7 .cxForm .leftLabels .formFields {
+	width: 81%;
+}
+.ie7 .cxForm .leftLabelsSmall .formFields {
+	width: 81%;
+}
+.ie7 .cxForm .leftLabelsLarge .formFields {
+	width: 74%;
+}
+
+/* Label Formatting*/
+.cxForm .primaryLabel {
+	color: #444;
+	font-weight: 700;
+	line-height: 120%;
+}
+.cxForm .requiredIndicator {
+	color: #DA2B19;
+	font-weight: 700;
+}
+/* Form Field Element Formating */
+.cxForm .field, .cxField, .cxForm .optionList input[type=checkbox], .cxForm .optionList input[type=radio] {
+	font-size: 12px;
+	-webkit-transition: border-color linear .25s, box-shadow linear .25s, -webkit-box-shadow linear .25s;
+	transition: border-color linear .25s, box-shadow linear .25s, -webkit-box-shadow linear .25s;
+}
+.cxForm input.field:hover, .cxForm select.field:hover, .cxForm textarea.field:hover, .cxField:focus, .cxForm .optionList input[type=checkbox]:hover, .cxForm .optionList input[type=radio]:hover {
+	-webkit-box-shadow: 0 0 3px #74b9ef, inset 1px 1px 3px #ddd;
+	box-shadow: 0 0 3px #74b9ef, inset 1px 1px 3px #ddd;
+}
+.cxForm input[type=text].field, .cxForm input[type=email].field, .cxForm input[type=password].field, .cxForm input[type=tel].field, .cxForm input[type=url].field, .cxForm textarea.field, .cxForm select.field, .cxField {
+	margin: 0 3px 0 0;
+	padding: 5px;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+}
+.cxForm input[type=text].field:focus, .cxForm input[type=email].field:focus, .cxForm input[type=password].field:focus, .cxForm input[type=tel].field:focus, .cxForm input[type=url].field:focus, .cxForm textarea.field:focus, .cxForm select.field:focus, .cxField:focus {
+	outline: none;
+	border-color: #74b9ef;
+	-webkit-box-shadow: 0 0 3px #74b9ef, inset 1px 1px 3px #ddd;
+	box-shadow: 0 0 3px #74b9ef, inset 1px 1px 3px #ddd;
+}
+.cxForm textarea.field, textarea.cxField {
+	width: 480px;
+	line-height: 130%;
+}
+.cxForm select.field, select.cxField {
+	padding: 4px 4px 4px 1px;
+}
+/* Spacing fix for IE */
+.ie .cxForm select.field {
+	padding-top: 4px;
+}
+.ie7 .cxForm select.field {
+	margin-top: 5px;
+}
+.cxForm input[type=checkbox].field, .cxForm .optionList input[type=checkbox] {
+	margin: 3px 2px 3px 0;
+	padding: 0;
+	vertical-align: middle;
+}
+.cxForm input[type=radio].field, .cxForm .optionList input[type=radio] {
+	margin-bottom: 3px;
+	margin-left: 0;
+	vertical-align: middle;
+}
+.cxForm .optionList input[type=radio].radio, .cxForm .optionList input[type=checkbox].checkbox {
+	/*margin-right: 1px;*/
+}
+/* Spacing fix for IE */
+.ie input[type=radio].field, .ie .optionList input[type=radio] {
+	margin: 2px 5px 1px 0;
+}
+/* Lists of Options */
+.cxForm .optionList {
+	margin: 0 0 -3px 0;
+	padding: 0;
+	max-width: 700px;
+	list-style-type: none;
+}
+.cxForm .leftLabels .optionList {
+	padding-top: 2px;
+}
+.cxForm .optionListExtended {
+	max-width: none;
+}
+.cxForm .optionList li {
+	margin: 0;
+	padding: 2px 0;
+	line-height: 130%;
+}
+.cxForm .optionList label, .cxForm .checkboxLabel, .cxForm .radioLabel {
+	font-size: 11px;
+	vertical-align: middle;
+}
+.cxForm ol.optionList {
+	margin-left: 0;
+	padding-top: 0;
+	padding-left: 0;
+	list-style-position: inside;
+	list-style-type: decimal;
+}
+.cxForm .leftLabels ol.optionList {
+	padding-top: 0;
+}
+.cxForm .optionListInline {
+	display: block;
+}
+.cxForm .optionList li input[type=checkbox] {
+	margin-right: 3px;
+	margin-left: 0;
+}
+.cxForm .optionList li input[type=radio] {
+	margin-right: 4px;
+	margin-left: 0;
+}
+.cxForm .optionListInline li, .cxForm .optionListInline2 li, .cxForm .optionListInline3 li, .cxForm .optionListInline4 li, .cxForm .optionListInline5 li {
+	display: inline-block;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	padding-right: 12px;
+}
+/* IE Formatting Adjustment */
+.ie .cxForm .optionListInline li, .ie .cxForm .optionListInline2 li, .ie .cxForm .optionListInline3 li, .ie .cxForm .optionListInline4 li, .ie .cxForm .optionListInline5 li {
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+.cxForm .optionListInline2 li {
+	width: 45%;
+}
+.cxForm .optionListInline3 li {
+	width: 30%;
+}
+.cxForm .optionListInline4 li {
+	width: 22.5%;
+}
+.cxForm .optionListInline5 li {
+	width: 18%;
+}
+.cxForm .multilineOptions {
+	position: relative;
+}
+.cxForm .multilineOptions li {
+	position: relative;
+	padding-left: 18px;
+	vertical-align: top;
+}
+.cxForm .multilineOptions li input[type=checkbox], .cxForm .multilineOptions li input[type=radio] {
+	position: absolute;
+	left: 0;
+	margin-top: 4px;
+}
+.cxForm .multilineOptions li label {
+	display: block;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.ie7 .cxForm .multilineOptions {
+	position: relative;
+	zoom: 1;
+}
+.ie7 .cxForm .multilineOptions li input[type=checkbox], .ie7 .cxForm .multilineOptions li input[type=radio] {
+	margin-top: 0;
+}
+.ie7 .cxForm .multilineOptions li {
+	padding-left: 24px;
+}
+/* Stacked Options With Extended Label Names */
+.cxForm .multilineOptionsStacked li {
+	display: table-row;
+	margin-bottom: 5px;
+}
+.cxForm .multilineOptionsStacked label {
+	display: table-cell;
+	vertical-align: top;
+	padding-bottom: 6px;
+	line-height: 150%;
+}
+.cxForm .multilineOptionsStacked input[type=radio], .cxForm .multilineOptionsStacked input[type=checkbox] {
+	margin-right: 4px;
+	display: table-cell;
+}
+.ie7 .cxForm .multilineOptionsStacked input[type=radio], .ie7 .cxForm .multilineOptionsStacked input[type=checkbox] {
+	float: left;
+ }
+/* Add Remove Interface */
+.cxForm .addRemove {
+	margin-bottom: 6px;
+}
+.cxForm .addRemove li .field {
+	margin-right: 1px;
+}
+.cxForm .addRemove .addLink {
+    display: inline-block;
+	margin: 8px 0 5px 0;
+	padding-left: 12px;
+}
+.cxForm .removeOption input[type=text], .cxForm .removeOption select {
+	border-color: #bb1200;
+	-webkit-box-shadow: 0 0 3px #ff2f19;
+	box-shadow: 0 0 3px #ff2f19;
+	text-decoration: line-through;
+}
+.cxForm .optionList .removeOption input[type=file] {
+	-webkit-box-shadow: 0 0 3px #ff2f19;
+	box-shadow: 0 0 3px #ff2f19;
+}
+.addLink .cxIcon {
+	margin-right: 5px;
+}
+/* Read Only Fields */
+.cxForm .readOnlyField {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	font-size: 11px;
+}
+.cxForm .leftLabels .readOnlyField {
+	padding: 7px 0;
+}
+.cxForm .readOnlyForm .formFields, .cxForm .readOnlyForm .formLabels {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	max-width: 730px;
+	font-size: 11px;
+}
+.cxForm .readOnlyRow .formFields .readOnlyField, .cxForm .readOnlyForm .formFields .readOnlyField {
+	padding: 0;
+}
+.cxForm .formFields input.readOnlyField, .cxForm .formFields input.readOnlyField:hover, .cxForm .formFields input.readOnlyField:focus {
+	padding: 7px 0;
+	border: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	font-size: 11px;
+}
+.cxForm .leftLabels .readOnlyRow .formFields, .cxForm .leftLabels .readOnlyRow .formLabels {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	max-width: 720px;
+	font-size: 11px;
+}
+.cxForm .leftLabels .readOnlyRow .formFields, .cxForm .readOnlyForm .formFields  {
+    font-size: 11px;
+}
+.cxForm .readOnlyRow .requiredIndicator, .cxForm .readOnlyForm .requiredIndicator {
+	display: none;
+}
+.cxForm fieldset.readOnlyForm .optionList, .cxForm .readOnlyRow .optionList {
+	margin: -4px 0;
+	padding-top: 0;
+}
+.cxForm .fieldDescription {
+	font-size: 11px;
+}
+/* Defined Widths */
+.cxForm input.fieldDate, .cxForm input.dateField  {
+	width: 75px;
+}
+.cxForm input.shortField, .cxForm textarea.shortField {
+	width: 55px;
+}
+.cxForm select.shortField {
+	width: 67px;
+}
+.cxForm input.medField, .cxForm textarea.medField {
+	width: 150px;
+}
+.cxForm select.medField {
+	width: 162px;
+}
+.cxForm input.longField, .cxForm textarea.longField {
+	width: 270px;
+}
+.cxForm select.longField {
+	width: 282px;
+}
+.cxForm input.superField, .cxForm textarea.superField {
+	width: 480px;
+}
+.cxForm select.superField {
+	width: 492px;
+}
+.cxForm .formFields .fieldMax, .cxForm .formFields .maxField {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	-ms-box-sizing: border-box;
+}
+.ie7 .cxForm .formFields .fieldMax, .ie7 .cxForm .formFields .maxField {
+	width: 90%;
+}
+/* Table Styles */
+.cxTable {
+	border-spacing: 0;
+	border-top: 2px solid #D6D6D6;
+	border-bottom: 1px solid #D6D6D6;
+	width: 100%;
+}
+.cxTable th {
+	padding: 7px 0 7px 10px;
+	border-bottom: 3px double #E9E9E9;
+	background-color: #fff;
+	color: #6b6b6b;
+	font-weight: 400;
+	font-size: 11px;
+	text-align: left;
+}
+.cxTable td {
+	padding: 8px 5px 8px 10px;
+	border-bottom: 1px solid #e2e2e2;
+}
+.cxTable tbody>:first-child td {
+	padding-top: 10px;
+}
+.cxTable tbody>:last-child td {
+	padding-bottom: 10px;
+}
+.tableTools {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.tableTools li {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+/* Btns */
+body .cxBtn, .ie8 div .cxBtnLegacy {
+	display: inline-block;
+	margin: 0 3px 0 0;
+	padding: 5px 12px 6px;
+	border: 1px solid rgba(100,100,100,.75);
+	border-radius: 6px;
+	background: #f9f9f8 url(../images/btnBgSprites.png) 0 0px repeat-x;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2px rgba(0,0,0,0.1);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2px rgba(0,0,0,0.1);
+	color: #222;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 rgba(255,255,255,.60);
+	font-size: 13px;
+	line-height: 1.3em;
+	cursor: pointer;
+	-webkit-transition: all linear .1s;
+	transition: all linear .1s;
+}
+body .cxBtn input {
+	display: inline-block;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 13px;
+	border-image-width: 0;
+	background: transparent;
+	cursor: pointer;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+body .cxBtn:focus {
+	outline: 1px dotted #ccc;
+	border-color: #74b9ef;
+	-webkit-box-shadow: 0 0 3px #a9cfed;
+	box-shadow: 0 0 3px #a9cfed;
+}
+body .cxBtn:hover, body .cxBtn.active, body .cxBtnLegacy:hover {
+	outline: none;
+	background-position: 0 70px;
+	-webkit-box-shadow: 0 0 4px #74b9ef;
+	box-shadow: 0 0 4px #74b9ef;
+}
+body .cxBtn:active {
+	-webkit-box-shadow: inset 0 0 4px #74b9ef;
+	box-shadow: inset 0 0 4px #74b9ef;
+}
+/* IE 8 and Below Compatibility  */
+.ie8 .cxBtn {
+	white-space: nowrap;
+	overflow: visible;
+	padding: 0 7px 0 0;
+	height: 30px;
+	border: 0;
+	background: transparent url(../images/ieBtnSprites.png) right -100px no-repeat;
+}
+.ie8 .cxBtn .btnContent {
+	display: block;
+	margin: 0;
+	padding: 6px 5px 6px 12px;
+	width: auto;
+	height: 18px;
+	background: transparent url(../images/ieBtnSprites.png) 0px -100px no-repeat;
+	vertical-align: middle;
+	font-size: 12px;
+}
+.ie8 .cxBtn input.btnContent {
+	position: relative;
+	overflow: visible;
+	height: 30px;
+	cursor: pointer;
+}
+.ie7 .cxBtn input.btnContent {
+	padding-right: 1px;
+	padding-left: 7px;
+}
+.ie8 .cxBtn:focus {
+	outline: 1px dotted #666;
+}
+.ie8 .cxBtn:hover {
+	background-color: transparent;
+	background-position: right -150px;
+}
+.ie8 .cxBtn:hover .btnContent {
+	background-position: 1px -150px;
+}
+.ie8 .cxBtn .cxIcon {
+	vertical-align: inherit;
+}
+.ie8 .cxBtnLegacy {
+	height: auto;
+	width: auto;
+}
+.ie7 input.cxBtnLegacy {
+	padding: 5px 12px;
+}
+/* Primary Btn*/
+body .cxPrimaryBtn, body .cxPrimaryBtnLegacy {
+	border: 1px solid rgba(2,24,126,.8);
+	/* background: #034eb8 url(../images/primaryBtnBg.png) 0 0 repeat-x; */
+	background: #034eb8;
+	color: #fff;
+	text-shadow: 0 0 2px #010c24;
+}
+body .cxPrimaryBtn:focus {
+	outline: 1px dotted #666;
+	border-color: #001337;
+	-webkit-box-shadow: 0 0 4px #0751b9;
+	box-shadow: 0 0 4px #0751b9;
+}
+body .cxPrimaryBtn:hover, body .cxPrimaryBtn.active, body .cxPrimaryBtnLegacy:hover {
+	border-color: #001337;
+	background-position: 0 -20px;
+}
+.ie8 .cxPrimaryBtn {
+	background-position: right 0px;
+}
+.ie8 .cxPrimaryBtn .btnContent {
+	background-position: 0 0;
+}
+.ie8 .cxPrimaryBtn:hover {
+	background-position: right -50px;
+}
+.ie8 .cxPrimaryBtn:hover .btnContent {
+	background-position: 0 -50px;
+}
+body .deleteBtn:focus {
+	outline: 1px dotted #ccc;
+	border-color: #bb1200;
+}
+body .deleteBtn:hover {
+	border-color: #bb1200;
+	-webkit-box-shadow: 0 0 3px #ff2f19;
+	box-shadow: 0 0 3px #ff2f19;
+	color: #DA2B19;
+}
+body .deleteBtn:active {
+	-webkit-box-shadow: inset 0 0 4px #ff2f19;
+	box-shadow: inset 0 0 4px #ff2f19;
+}
+/* Disabled Button Types */
+body .btnDisabled, body .btnDisabled:hover, body .btnDisabled:focus, body .btnDisabled:active, body .cxBtn[disabled="disabled"], body .cxBtn[disabled="disabled"]:hover, body .cxBtn[disabled="disabled"]:focus, body .cxBtn[disabled="disabled"]:active {
+	border-color: #ccc;
+	background: #eee;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: #444;
+	text-shadow: none;
+	opacity: .75;
+	cursor: default;
+}
+body .btnDisabled input, body .cxBtn[disabled="disabled"] input {
+	cursor: default;
+}
+body .cxBtn[disabled=disabled] .cxIcon, body .btnDisabled .cxIcon {
+    opacity: 0.5;
+}
+.ie8 .btnDisabled, .ie8 .btnDisabled:hover, .ie8 .btnDisabled:focus, .ie8 .btnDisabled:active, .ie8 .cxBtn[disabled="disabled"], .ie8 .cxBtn[disabled="disabled"]:hover, .ie8 .cxBtn[disabled="disabled"]:focus, .ie8 .cxBtn[disabled="disabled"]:active {
+	background: transparent url(../images/ieBtnSprites.png) right -100px no-repeat !important;
+}
+.ie8 .btnDisabled .btnContent, .ie8 .btnDisabled:hover .btnContent, .ie8 .btnDisabled:focus .btnContent, .ie8 .btnDisabled:active .btnContent, .cxBtn[disabled="disabled"]:hover .btnContent, .ie8 .cxBtn[disabled="disabled"]:focus .btnContent, .ie8 .cxBtn[disabled="disabled"] .btnContent {
+	background-position: 0 -100px !important;
+}
+/* Button Groups */
+.cxBtn.nextBtn {
+	font-size: 8px;
+	padding: 5px 8px 6px 10px;
+}
+.cxBtn.prevBtn {
+	font-size: 8px;
+	padding: 5px 10px 6px 8px;
+}
+.ie8 .prevBtn, .ie8 .nextBtn {
+	padding: 0 7px 0 0;
+}
+.ie8 .prevBtn .cxIcon, .ie8 .nextBtn .cxIcon {
+	margin-top: 2px;
+	margin-left: 2px;
+}
+.ie8 .btnDisabled .prevIcon {
+	background-position: -30px -649px;
+}
+.ie8 .btnDisabled .nextIcon {
+	background-position: -30px -679px;
+}
+/* Button Groups */
+.btnGrp {
+	display: inline-block;
+	margin: 0 .42em 0 0;
+	padding: 0;
+	list-style-type: none;
+}
+.btnGrp>li {
+	display: inline-block;
+	margin: 0 -.43em 0 0;
+	padding: 0;
+}
+.btnGrp .cxBtn {
+	position: relative;
+	margin: 0;
+	white-space: nowrap;
+}
+.btnGrp .cxBtn:hover {
+	z-index: 2;
+}
+.btnGrp .leftBtn>.cxBtn {
+	border-radius: 6px 0 0 6px;
+}
+.btnGrp .rightBtn>.cxBtn {
+	border-radius: 0 6px 6px 0;
+}
+.btnGrp .middleBtn>.cxBtn {
+	border-radius: 0;
+}
+/* Compound Button */
+.compoundBtn>.cxBtn .cxIcon {
+	display: block;
+	height: auto;
+	overflow: visible;
+	vertical-align: inherit;
+}
+.compoundBtn>.menuTitle .cxBtn {
+	padding-right: 10px;
+	border-right: 0;
+}
+.compoundBtn>.menuOptions .cxBtn {
+	padding-right: 8px;
+	padding-left: 5px;
+	border-left: 1px solid rgba(150,150,150,.3);
+}
+.compoundBtn>.menuOptions .cxPrimaryBtn {
+	border-left: 1px solid rgba(2, 24, 126, .3);
+}
+.compoundBtn>.menuOptions .cxIcon {
+	overflow: visible;
+	vertical-align: middle;
+}
+.compoundBtn>.menuOptions .cxPrimaryBtn .cxIcon {
+	height: inherit;
+	vertical-align: inherit;
+}
+/* IE8 and below Styles for Btns Group */
+.ie7 ul.btnGrp {
+	margin-right: .43em;
+}
+.ie8 ul.btnGrp>li {
+	margin-right: -4px;
+}
+.ie7 ul.btnGrp>li, .ie8 ul.btnGrp>li .cxBtn {
+	margin-right: 0;
+}
+.ie8 .btnGrp .middleBtn>.cxBtn, .ie8 .btnGrp .leftBtn>.cxBtn {
+	padding-right: 0;
+	background-image: none;
+}
+.ie8 .btnGrp .rightBtn>.cxBtn {
+	padding-right: 7px;
+	padding-left: 0;
+}
+.ie8 .btnGrp .middleBtn>.cxBtn .btnContent {
+	padding-right: 12px;
+	border-right: 1px solid #ccc;
+	background-position: -10px -100px;
+}
+.ie8 .btnGrp .middleBtn>.cxBtn:hover .btnContent, .ie8 .btnGrp .rightBtn>.cxBtn:hover .btnContent {
+	background-position: -10px -150px;
+}
+.ie8 .btnGrp .leftBtn>.cxBtn .btnContent {
+	padding-right: 12px;
+	border-right: 1px solid #ccc;
+	background-position: 0 -100px;
+}
+.ie8 .btnGrp .leftBtn>.cxBtn:hover .btnContent {
+	background-position: 0 -150px;
+}
+.ie8 .btnGrp .rightBtn>.cxBtn .btnContent {
+	background-position: -10px -100px;
+}
+.ie8 .btnGrp .middleBtn>.cxPrimaryBtn .btnContent {
+	border-right: 1px solid #039;
+	background-position: -10px 0;
+}
+.ie8 .btnGrp .middleBtn>.cxPrimaryBtn:hover .btnContent, .ie8 .btnGrp .rightBtn>.cxPrimaryBtn:hover .btnContent {
+	background-position: -10px -50px;
+}
+.ie8 .btnGrp .leftBtn>.cxPrimaryBtn .btnContent {
+	border-right: 1px solid #039;
+	background-position: 0 0;
+}
+.ie8 .btnGrp .rightBtn>.cxPrimaryBtn .btnContent {
+	background-position: -10px 0;
+}
+.ie8 .cxPrimaryBtn:hover .btnContent, .ie8 .btnGrp .leftBtn>.cxPrimaryBtn:hover .btnContent {
+	background-position: 0 -50px;
+}
+.ie8 .compoundBtn>.menuOptions .cxBtn {
+	padding-left: 0;
+}
+.ie8 .compoundBtn>.menuOptions .cxIcon {
+	vertical-align: top;
+}
+.ie7 .compoundBtn>.menuOptions .cxIcon {
+    vertical-align: middle;
+}
+/* Validation */
+.cxForm .validationNote, .cxForm .fieldNote {
+	display: block;
+	padding: 6px 0;
+	color: #444;
+	font-weight: 400;
+	font-style: italic;
+	font-size: 11px;
+}
+.cxForm .invalidMessage, .cxForm .validMessage {
+	display: inline-block;
+	padding: 7px 3px 7px 22px;
+	background-position: 0 -114px;
+	color: #e93b29;
+	vertical-align: top;
+	font-weight: 700;
+	font-size: 11px;
+}
+/* Required Messages overrides */
+.cxForm .formFields .requiredMessage span[style*="display: inline"] ~ span .invalidMessage,
+.cxForm .requiredMessage[style*="display: inline-block"] ~ .invalidMessage,
+.cxForm .formFields .requiredMessage[style*="display: inline"] ~ span .invalidMessage,
+.cxForm .formFields .requiredMessage[style*="display: inline-block"] ~ span .invalidMessage {
+	display: none !important;
+}
+/* Don't show multiple icons, but only for non mobile mode */
+@media only screen and min-width 520px {
+.cxForm .formFields span[style*="display: inline"] ~ span .invalidMessage, .cxForm .invalidMessage[style*="display: inline-block"] ~ .invalidMessage {
+	padding-left:0;
+	background:transparent;
+}
+}
+.cxForm .validMessage {
+	background-position: 0 -83px;
+	color: #549f06;
+	display: none;
+}
+.cxForm .invalid {
+	position: relative;
+}
+.cxForm .invalidMessageOverlay {
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	overflow: hidden;
+	padding: 0;
+	min-height: 16px;
+	width: 16px;
+	background-position:0 -118px;
+	text-indent: -1200px;
+}
+.cxForm input[type=text].invalid, .cxForm input[type=email].invalid, .cxForm input[type=password].invalid, .cxForm input[type=tel].invalid, .cxForm input[type=url].invalid, .cxForm textarea.invalid, .cxForm select.invalid {
+	border-color: #cc3425;
+	-webkit-box-shadow: 0 0 3px #ff2f19;
+	box-shadow: 0 0 3px #ff2f19;
+}
+.cxForm input[type=text].invalid:focus, .cxForm input[type=email].invalid:focus, .cxForm input[type=password].invalid:focus, .cxForm input[type=tel].invalid:focus, .cxForm input[type=url].invalid:focus, .cxForm textarea.invalid:focus, .cxForm select.invalid:focus {
+	border-color: #74b9ef;
+	-webkit-box-shadow: 0 0 3px #ff2f19;
+	box-shadow: 0 0 3px #ff2f19;
+}
+.cxForm input[type=text].valid, .cxForm input[type=email].valid, .cxForm input[type=password].valid, .cxForm input[type=tel].valid, .cxForm input[type=url].valid, .cxForm textarea.valid, .cxForm select.valid {
+	-webkit-box-shadow: 0 0 3px #7ffb7f;
+	box-shadow: 0 0 3px #7ffb7f;
+}
+.cxForm .invalid .selectContainer {
+	display: inline-block;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 0 3px #ff2f19;
+	box-shadow: 0 0 3px #ff2f19;
+}
+.cxForm .invalidSummary, .saveConfirmation {
+    margin: 8px 0;
+	padding: 10px 15px;
+	border: solid 1px #FF1800;
+	border-radius: 3px;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmYyZjIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -webkit-linear-gradient(top, #ffffff 0%, #fff2f2 100%); /* Chrome10+,Safari5.1+ */
+	background: -ms-linear-gradient(top, #ffffff 0%, #fff2f2 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #ffffff 0%, #fff2f2 100%); /* W3C */
+	background-color: #fff4f4;
+	-webkit-box-shadow: 0 0 3px #ff2f19;
+	box-shadow: 0 0 3px #ff2f19;
+	color: #000;
+}
+.cxForm .invalidSummary p, .saveConfirmation p {
+	position: relative;
+	margin: 0;
+	padding: 2px 0 2px 22px;
+	min-height: 18px;
+	background: transparent;
+	color: #e93b29;
+	font-weight: 700;
+	line-height: 135%;
+}
+.cxForm .invalidSummary ul {
+	margin-top: 0;
+	padding-top: 5px;
+	padding-left: 40px;
+	color: #333;
+}
+.cxForm .invalidSummary li {
+	margin: 0;
+	padding: 2px 0;
+	color: #333;
+}
+.cxForm .invalidSummary li .fieldsetLabel {
+	display: inline-block;
+	padding: 3px 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background: #fff;
+	color: #222;
+	text-decoration: none;
+	font-weight: 700;
+	-webkit-transition: all linear .2s;
+	transition: all linear .2s;
+}
+.cxForm .invalidSummary li .fieldsetLabel:hover {
+	border-color: #bb1200;
+	background: #fff;
+	-webkit-box-shadow: 0 0 3px #ff2f19;
+	box-shadow: 0 0 3px #ff2f19;
+	color: #DA2B19;
+	text-decoration: none;
+	cursor: pointer;
+}
+.cxForm .invalidSummary .cxIcon, .saveConfirmation .cxIcon {
+	position: absolute;
+	top: 4px;
+	left: 0;
+}
+/* Confirmation */
+.saveConfirmation {
+	border-color: #7ec437;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmM2ZmZjIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -webkit-linear-gradient(top, #ffffff 0%, #f3fff2 100%); /* Chrome10+,Safari5.1+ */
+	background: -ms-linear-gradient(top, #ffffff 0%, #f3fff2 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #ffffff 0%, #f3fff2 100%); /* W3C */
+	background-color: #f3fff2;
+	-webkit-box-shadow: 0 0 2px #b3e481;
+	box-shadow: 0 0 2px #b3e481;
+}
+.saveConfirmation p {
+	color: #529f04;
+}
+/* Message Overlay */
+.cxOverlay {
+	position: absolute;
+	top: 28px;
+	z-index: 999;
+	width: 100%;
+	text-align: center;
+}
+.cxOverlay .saveConfirmation, .cxOverlay .deleteConfirmation {
+	display: inline-block;
+	margin: 0 auto;
+	padding: 4px 12px;
+	max-width: 550px;
+}
+.cxOverlay .saveConfirmation p, .cxOverlay .deleteConfirmation p {
+	font-size: 12px;
+	line-height: 160%;
+}
+.cxIcon {
+	display: inline-block;
+	overflow: hidden;
+	padding: 0;
+	border: 0;
+	background-color: transparent;
+	vertical-align: middle;
+	color: transparent;
+	text-align: left;
+	text-decoration: none;
+	text-indent: -9999px;
+	*display:inline; /* Fixes for IE7 Support */
+	*text-indent:0;
+	*zoom: 1;
+}
+.ie7 .cxIcon {
+	text-indent: 0;
+	font-size: 0;
+	zoom: 1;
+	text-decoration: underline;
+}
+.deleteIcon {
+	width: 16px;
+	height: 16px;
+	background-position: 0 -30px;
+}
+.deleteDisabledIcon {
+	width: 16px;
+	height: 16px;
+	background-position: -30px -30px;
+}
+
+.newIcon, .createIcon {
+	width: 18px;
+	height: 15px;
+	background-position: 0 -60px;
+}
+
+.confirmIcon, .correctIcon {
+	width: 17px;
+	height: 16px;
+	background-position: 0 -90px;
+}
+.partialCreditIcon {
+	width: 17px;
+	height: 16px;
+	background-position: -30px -90px;
+}
+.incorrectIcon {
+	width: 17px;
+	height: 16px;
+	background-position: -60px -90px;
+}
+.invalidIcon {
+	width: 16px;
+	height: 16px;
+	background-position: 0 -120px;
+	color: #DA2B19;
+}
+.newMultipleIcon {
+	width: 18px;
+	height: 18px;
+	background-position: 0 -150px;
+}
+.sortAscending .sortIcon, .sortAscendingIcon {
+	display: block;
+	width: 12px;
+	height: 12px;
+	background-position: -2px -299px;
+}
+.sortDescending .sortIcon, .sortDescendingIcon {
+	display: block;
+	width: 12px;
+	height: 12px;
+	background-position: -2px -334px;
+}
+.inboxIcon, .unreadIcon {
+	width: 20px;
+	height: 16px;
+	background-position: 0 -380px;
+}
+.folderIcon {
+	width: 20px;
+	height: 16px;
+	background-position: 0 -409px;
+}
+.editFolderIcon {
+	width: 24px;
+	height: 13px;
+	background-position: -30px -410px;
+}
+.menuIcon {
+	width: 15px;
+	height: 15px;
+	background-position: -60px -410px;
+}
+.draftIcon {
+	width: 20px;
+	height: 16px;
+	background-position: 0 -440px;
+}
+.deleteFolderIcon {
+	width: 24px;
+	height: 13px;
+	background-position: -30px -440px;
+}
+.sentIcon {
+	width: 20px;
+	height: 15px;
+	background-position: 0 -530px;
+}
+.createFolderIcon {
+	width: 24px;
+	height: 13px;
+	background-position: -30px -470px;
+}
+.deletedIcon {
+	width: 20px;
+	height: 16px;
+	background-position: 0 -500px;
+}
+.moveFolderIcon {
+	width: 24px;
+	height: 13px;
+	background-position: -30px -500px;
+}
+.leftIcon {
+	width: 13px;
+	height: 13px;
+	background-position: 0 -560px;
+}
+.rightIcon {
+	width: 13px;
+	height: 13px;
+	background-position: -30px -560px;
+}
+
+.leftCollapseIcon {
+	width: 9px;
+	height: 12px;
+	background-position: -60px -560px;
+}
+.rightCollapseIcon {
+	width: 9px;
+	height: 12px;
+	background-position: -90px -560px;
+}
+
+.expandedIcon {
+	width: 14px;
+	height: 14px;
+	background-position: -30px -589px;
+
+}
+.collapsedIcon {
+	width: 14px;
+	height: 14px;
+	background-position: -60px -590px;
+}
+.upIcon {
+	width: 13px;
+	height: 12px;
+	background-position: 0 -618px;
+}
+.downIcon {
+	width: 13px;
+	height: 12px;
+	background-position: -60px -618px;
+}
+
+.prevIcon {
+	width: 11px;
+	height: 12px;
+	background-position: 0 -649px;
+}
+.prevDisabledIcon {
+	width: 11px;
+	height: 12px;
+	background-position: -30px -649px;
+}
+.nextIcon {
+	width: 11px;
+	height: 12px;
+	background-position: 0 -679px;
+}
+.nextDisabledIcon {
+	width: 11px;
+	height: 12px;
+	background-position: -30px -679px;
+}
+.plusIcon {
+	width: 14px;
+	height: 14px;
+	background-position: 0 -710px;
+}
+.minusIcon {
+	width: 14px;
+	height: 14px;
+	background-position: 0 -740px;
+}
+.readIcon {
+	width: 20px;
+	height: 15px;
+	background-position: 0 -770px;
+}
+.forwardedIcon {
+	width: 18px;
+	height: 14px;
+	background-position: 0 -800px;
+}
+.repliedIcon {
+	width: 18px;
+	height: 14px;
+	background-position: 0 -830px;
+}
+.announcementIcon {
+	width: 18px;
+	height: 14px;
+	background-position: 0 -860px;
+}
+.attachmentsIcon {
+	width: 12px;
+	height: 14px;
+	background-position: 0 -890px;
+}
+
+.plannerIcon {
+	width: 16px;
+	height: 16px;
+	background-position: -60px -1410px;
+}
+
+.progressionPlanIcon {
+	width: 16px;
+	height: 16px;
+	background-position: -60px -1440px;
+}
+
+.starOffIcon {
+	width: 17px;
+	height: 15px;
+	background-position: 0 -1170px;
+}
+
+.starOnIcon {
+	width: 17px;
+	height: 15px;
+	background-position: -30px -1170px;
+}
+
+.schedulerBlueIcon {
+	width: 17px;
+	height: 17px;
+	background-position: -30px -1410px;
+}
+
+.schedulerGreyIcon {
+	width: 17px;
+	height: 17px;
+	background-position: -30px -1440px;
+}
+
+.schedulerRedIcon {
+	width: 17px;
+	height: 17px;
+	background-position: -30px -1470px;
+}
+.gradeBookIcon {
+	width: 16px;
+	height: 12px;
+	background-position: -60px -1350px;
+}
+
+.noAttachmentsIcon {
+	background-position: -999px 999px;
+}
+.noAttachmentsIcon:hover {
+	background-position: 0 -890px;
+	opacity: .5;
+}
+.cxPrimaryBtn .downIcon, .downIconWhite {
+	width: 13px;
+	height: 12px;
+	background-position: 0 -913px;
+}
+.cxPrimaryBtn .upIcon, .upIconWhite {
+	width: 13px;
+	height: 12px;
+	background-position: 0 -947px;
+}
+.mustReadIcon {
+	width: 18px;
+	height: 14px;
+	background-position: 0 -1020px;
+}
+.deletePageIcon {
+	width: 18px;
+	height: 20px;
+	background-position: 0 -1050px;
+}
+.deletePageDisabledIcon {
+	width: 18px;
+	height: 20px;
+	background-position: -30px -1050px;
+}
+.copyIcon {
+	width: 18px;
+	height: 18px;
+	background-position: 0 -1080px;
+}
+.removeIcon {
+	width: 13px;
+	height: 13px;
+	background-position: 0 -1110px;
+}
+.removeDisabledIcon {
+	width: 13px;
+	height: 13px;
+	background-position: -30px -1110px;
+}
+.removeBigIcon {
+	width: 17px;
+	height: 17px;
+	background-position: 0 -1140px;
+}
+.removeBigDisabledIcon {
+	width: 17px;
+	height: 17px;
+	background-position: -30px -1140px;
+}
+.searchIcon {
+	width: 18px;
+	height: 18px;
+	background-position: 0 -1200px;
+}
+.printIcon {
+	width: 23px;
+	height: 18px;
+	background-position: -50px -1202px;
+}
+.deleteBigIcon {
+	width: 16px;
+	height: 16px;
+	background-position: 0 -1290px;
+}
+.deleteBigDisabledIcon {
+	width: 16px;
+	height: 16px;
+	background-position: -30px -1290px;
+}
+.sendWebMailIcon {
+	width: 18px;
+	height: 18px;
+	background-position: 0 -1320px;
+}
+.userLogIcon {
+	width: 18px;
+	height: 18px;
+	background-position: 0 -1350px;
+}
+.dataViewIcon {
+	width: 18px;
+	height: 18px;
+	background-position: 0 -1380px;
+}
+.calculatorIcon {
+	width: 18px;
+	height: 18px;
+	background-position: 0 -1410px;
+}
+.falseIcon {
+	width:12px;
+	height:12px;
+	background-position:0 -1440px;
+}
+.checkIcon, .trueIcon {
+	width: 20px;
+	height: 16px;
+	background-position: 0 -1470px;
+}
+.closeIcon {
+	background-position: -23px -24px;
+	border-radius: 5px;
+	box-shadow: inset 0 0 4px #ddd;
+	height: 26px;
+	opacity: .7;
+	position: absolute;
+	right: 6px;
+	top: 6px;
+	width: 28px;
+	-webkit-box-shadow: inset 0 0 4px #ccc;
+}
+.closeIcon:hover, .closeIcon:focus  {
+	box-shadow: inset 0 0 3px rgba(116, 185, 239, 1);
+	opacity: 1;
+}
+.expandIcon {
+    background-position: 0 -1530px;
+    width: 14px;
+    height: 14px;
+}
+.addWhiteArrowIcon {
+	background-position: -30px -920px;
+	width: 6px;
+	height: 11px;
+}
+.removeArrowIcon {
+	background-position: -60px -950px;
+	width: 7px;
+	height: 11px;
+}
+
+.timeAlertIcon {
+	width: 57px;
+	height:32px;
+	background-position: 0 -200px;
+}
+
+.undoIcon {
+	background-position: 0 -1600px;
+	width: 17px;
+	height: 16px;
+}
+/* Left Aligned Icons */
+.addLink {
+	display: inline-block;
+	padding-left: 12px;
+	margin-right: 5px;
+}
+
+/* Misc Form Components */
+/* Location Selector  */
+.cxForm .leftLabels .locationContainer {
+	padding-top: 3px;
+}
+/* Grade Selector  */
+.cxForm .leftLabels .gradeSelector {
+	padding-top: 2px;
+}
+/* Bottom Actions  */
+div.formAction {
+	margin: 0 0 0 0;
+	padding: 30px 1px 50px 0px;
+}
+
+.formAction .cxButton {
+       margin-right: 5px;
+}
+
+.cxForm .leftLabels .formAction, .cxForm .formActionLeftLabels {
+	margin-left: 17%;
+}
+.cxForm .leftLabelsLarge .formAction {
+    margin-left: 22%;
+}
+.cxForm .leftLabelsSmall .formAction {
+    margin-left: 14%;
+}
+/* CalloutBox */
+.withCalloutBox {
+    position: relative;
+}
+.cxForm .calloutBox {
+    background: #f6f6f6; /* Old browsers */
+    background: #f6f6f6 url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y2ZjZmNiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmMmYyZjIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -webkit-linear-gradient(top,  #f6f6f6 0%,#f2f2f2 100%); /* Chrome10+,Safari5.1+ */
+    background: -ms-linear-gradient(top,  #f6f6f6 0%,#f2f2f2 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #f6f6f6 0%,#f2f2f2 100%); /* W3C */
+    text-shadow: 1px 1px 1px #fff;
+	color: #333;
+    padding: 10px 12px;
+	margin: 0;
+    border-radius: 3px;
+    border-color: #ddd;
+    box-shadow: 0 0 2px #eee;
+}
+.cxForm .calloutBox p, .cxForm .calloutBox label  {
+    display: block;
+    font-style: italic;
+    background-color: transparent;
+    color: #222;
+    margin: 0;
+    font-size: .8em;
+    line-height: 150%;
+    padding: 2px 0 4px 0;
+}
+.cxForm .rightCalloutBox {
+    position: absolute;
+    right: 0;
+    top: 0;
+    max-width: 320px;
+}
+@media only screen and (max-width: 750px) {
+    .cxForm  .withCalloutBox .leftLabels {
+        float: none;
+    }
+    .cxForm  .rightCalloutBox {
+         position: static;
+         float: none;
+         max-width: none;
+         margin: 8px 0;
+    }
+}
+
+/* IE7 display inline fixes */
+.ie7 body {
+	*zoom: 1;
+} /* Fixes IE Rendering Bugs */
+.ie7 .cxForm .leftLabels .formLabels, .ie7 .cxForm .leftLabels .formFields, .ie7 .cxForm .leftLabels .formComponent, .ie7 .cxForm .invalid .invalidMessage, .ie7 .cxForm .optionListInline li, .ie7 .cxForm .optionListInline2 li, .ie7 .cxForm .optionListInline3 li, .ie7 .cxForm .optionListInline4 li, .ie7 .cxForm .optionListInline5 li, .ie7 .cxForm .inlineField, .ie7 .cxForm .invalid .selectContainer, .ie7 .cxForm .sliderLables li, .ie7 .cxForm .readOnlyField, .ie7 .cxForm .actionList li {
+	*display: inline;
+	margin-right: 3px;
+	*zoom: 1;
+}
+.ie7 .cxForm .cxBtn, .ie7 .btnGrp, .ie7 .btnGrp>li, .ie7 .cxIcon {
+    *display: inline;
+	margin-right: 0;
+	*zoom: 1;
+}
+/* Display for Mobile Devices */
+@media only screen and (max-width: 520px) {
+.mainContent {
+	width: auto;
+	border: 0;
+	padding: 0px 15px ;
+}
+.cxForm fieldset.leftLabels {
+	padding-right:0;
+ 	padding-left:0;
+	min-width:0;
+}
+body .cxForm .leftLabels .formLabels {
+ 	display:block;
+	margin-right:0;
+	padding-left:0;
+ 	width:auto;
+ 	text-align:left;
+}
+body .cxForm .leftLabels .formFields {
+	display: block;
+	width: auto;
+}
+.cxForm input[type=text].field, .cxForm input[type=password].field, .cxForm input[type=email].field, .cxForm input[type=url].field, .cxForm input[type=tel].field, .cxForm textarea.field, .cxForm select.field {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	-ms-box-sizing: border-box;
+}
+.cxForm .fieldInline {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.cxForm .validationNote, .cxForm .fieldNote {
+	padding-bottom: 0;
+}
+.noMobile input[type=text].field, .noMobile input[type=email].field, .noMobile input[type=url].field, .noMobile input[type=tel].field, .noMobile textarea.field, .noMobile select.field {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	width: inherit !important;
+	-ms-box-sizing: content-box;
+}
+.noMobile .leftLabels .formLabels {
+ 	display:inline-block;
+ 	-webkit-box-sizing:border-box;
+ 	-moz-box-sizing:border-box;
+ 	box-sizing:border-box;
+	margin:0 -4px 0 0;
+	padding:7px 8px 7px 5px;
+ 	width:15%;
+ 	vertical-align:top;
+ 	text-align:right;
+	font-size:11px;
+ 	-ms-box-sizing:border-box;
+}
+.noMobile .leftLabels .formFields {
+	display:inline-block;
+	margin:0;
+	padding:0;
+	width:83%;
+	vertical-align:top;
+}
+.noMobile fieldset.leftLabels {
+	min-width:650px;
+}
+.cxForm .leftLabels .optionList {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.cxForm .invalidMessageOverlay {
+	right: -4px;
+	margin-left: 0;
+}
+.cxForm fieldset.readOnlyForm .optionList {
+	margin-top:0;
+	margin-bottom:0;
+}
+.cxForm .addRemove input[type=text].field {
+	width:85%;
+}
+.cxForm .inlineField, .cxForm .formComponent  {
+	padding-top: 4px;
+}
+.cxForm #idLocationBorder, .cxForm #idLocation {
+	width:100%;
+}
+.cxForm .optionListInline4 li, .cxForm .optionListInline5 li {
+	width:48%;
+}
+.cxForm .leftLabels .formAction, .cxForm .formActionLeftLabels {
+	margin-left:0;
+}
+.cxForm .invalidMessage {
+	display:block;
+}
+.cxForm .leftLabels .readOnlyField, .cxForm .leftLabels .readOnlyRow .formFields {
+	padding:2px 0;
+}
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+body .cxBtn, body .cxPrimaryBtn {
+	background-image: url(../images/btnBgSprites@2x.png);
+	background-size: 10px auto;
+}
+body .cxPrimaryBtn  {
+	background-image: url(../images/primaryBtnBg@2x.png);
+}
+body .btnDisabled, body .btnDisabled:hover, body .btnDisabled:focus, body .btnDisabled:active, body .cxBtn[disabled="disabled"], body .cxBtn[disabled="disabled"]:hover, body .cxBtn[disabled="disabled"]:focus, body .cxBtn[disabled="disabled"]:active {
+ 	background: #eee;
+}
+body .cxIcon {
+	background-image: url(../images/iconSprites@2x.png?v=i2);
+	background-size: 100px auto;
+}
+}
+/* Galaxy Tab Button Spacing Adjustment  */
+@media only screen and max-device-width 1280px and max-device-height 800px and orientation landscape, only screen and max-device-width 800px and max-device-height 1280px and orientation portrait {
+body .cxBtn {
+	padding-bottom:4px;
+}
+}
+/* Input Fields for Deprecated HTML  */
+.cxForm .fieldContainer input, .cxForm .fieldContainer textarea, .cxForm .fieldContainer select {
+	font-size: 12px;
+	-webkit-transition: border-color linear .25s, box-shadow linear .25s, -webkit-box-shadow linear .25s;
+	transition: border-color linear .25s, box-shadow linear .25s, -webkit-box-shadow linear .25s;
+}
+.cxForm .fieldContainer input:hover, .cxForm .fieldContainer textarea:hover, .cxForm .fieldContainer select:hover {
+	-webkit-box-shadow: 0 0 3px #74b9ef, inset 1px 1px 3px #ddd;
+	box-shadow: 0 0 3px #74b9ef, inset 1px 1px 3px #ddd;
+}
+.cxForm .fieldContainer input[type=text], .cxForm .fieldContainer input[type=email], .cxForm .fieldContainer input[type=password], .cxForm .fieldContainer input[type=tel], .cxForm .fieldContainer input[type=url], .cxForm .fieldContainer input textarea, .cxForm .fieldContainer select {
+	margin: 0 3px 0 0;
+	padding: 5px;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+}
+.cxForm .fieldContainer input[type=text]:focus, .cxForm .fieldContainer input[type=email]:focus, .cxForm .fieldContainer input[type=password]:focus, .cxForm .fieldContainer input[type=tel]:focus, .cxForm .fieldContainer input[type=url]:focus, .cxForm .fieldContainer input textarea:focus, .cxForm .fieldContainer select:focus {
+	outline: none;
+	border-color: #74b9ef;
+	-webkit-box-shadow: 0 0 3px #74b9ef, inset 1px 1px 3px #ddd;
+	box-shadow: 0 0 3px #74b9ef, inset 1px 1px 3px #ddd;
+}
+.cxForm .fieldContainer.invalid input[type=text], .cxForm .fieldContainer.invalid input[type=email], .cxForm .fieldContainer.invalid input[type=password], .cxForm .fieldContainer.invalid input[type=tel], .cxForm .fieldContainer.invalid input[type=url], .cxForm .fieldContainer.invalid textarea, .cxForm .fieldContainer.invalid select {
+	border-color: #cc3425;
+	-webkit-box-shadow: 0 0 3px #ff2f19;
+	box-shadow: 0 0 3px #ff2f19;
+}
+.cxForm .fieldContainer.invalid input[type=text]:focus, .cxForm .fieldContainer.invalid input[type=email]:focus, .cxForm .fieldContainer.invalid input[type=password]:focus, .cxForm .fieldContainer.invalid input[type=tel]:focus, .cxForm .fieldContainer.invalid input[type=url]:focus, .cxForm .fieldContainer.invalid textarea:focus, .cxForm .fieldContainer.invalid select:focus {
+	border-color: #74b9ef;
+	-webkit-box-shadow: 0 0 3px #ff2f19;
+	box-shadow: 0 0 3px #ff2f19;
+}
+.cxForm .fieldContainer textarea {
+	width: 480px;
+	line-height: 130%;
+}
+.cxForm .fieldContainer select {
+	padding: 4px 4px 4px 1px;
+}
+.iconWithLink .cxIcon {
+  margin-right: 5px;
+}
+/* Replace Old Validation Styles */
+.cxForm .fieldContainer .requiredField, .cxForm .fieldContainer span.requiredFieldError, .cxForm .requiredField {
+    border: 0;
+}
+.cxForm .fieldContainer+span[style*="color:Red;"] {
+    display: inline-block;
+	padding: 7px 3px 7px 22px;
+    background-image: url(../images/iconSprites.png?v=i2);
+    background-position: 0 -114px;
+	background-position: 0 -114px;
+    background-repeat: no-repeat;
+    color: #e93b29 !important;
+    font-weight: bold;
+    font-size: 11px;
+}
+.cxForm .fieldContainer input.requiredFieldError, .cxForm .fieldContainer select.requiredFieldError {
+    border-color: #cc3425;
+    background: transparent;
+	-webkit-box-shadow: 0 0 3px #ff2f19;
+	box-shadow: 0 0 3px #ff2f19;
+}
+/* action link list */
+.cxForm .actionList {
+	margin-bottom: 20px;
+	padding-left:0;
+	font-size:11px;
+}
+.cxForm .actionList li {
+	list-style-type:none;
+	padding: 5px 0;
+    margin: 0 12px 0 0;
+    display: inline-block;
+}
+/* header label */
+.cxForm .headerLabel {
+	background-color:#efefef;
+	padding: 10px;
+	margin-top: 15px;
+}
+.cxForm .headerLabel label {
+	font-weight: bold;
+}
+/* New Submenu Styles */
+.cxSubmenu {
+     line-height: 135%;
+     border-bottom: 1px solid #003399;
+}
+
+/* Used for left aligned fields */
+.cxForm fieldset.inlineLabels .formLabels {
+	display: inline-block;
+	padding: 0 4px 0;
+}
+.cxForm fieldset.inlineLabels .formRow, .cxForm fieldset.inlineLabels .formFields {
+	display: inline-block;
+}
+
+/* Data View Management CSS */
+.cxForm fieldset.inlineLabels .formLabels {
+	display: inline-block;
+	padding: 0 4px 0;
+}
+.cxForm fieldset.inlineLabels .formRow, .cxForm fieldset.inlineLabels .formFields {
+	display: inline-block;
+}
+
+p.cxP {
+	color: #222;
+	line-height: 140%;
+	padding: 3px 0;
+	margin: 0;
+}
+
+.cxForm fieldset.inlineLabels .goToLinks {
+	display: inline-block;
+}
+
+p.dataViewInstruction {
+	margin: 10px 0;
+}
+
+.ie7 .cxForm fieldset.inlineLabels .formLabel, .ie7 .cxForm fieldset.inlineLabels .formFields, .ie7 .cxForm fieldset.inlineLabels .goToLinks {
+	display: inline;
+}
+
+.cxForm table.datagridCondensed {
+	border-spacing: 0 !important;
+	padding: 0;
+	border-radius: 3px;
+	border-collapse: separate;
+	margin-bottom: 20px;
+}
+.cxForm  table.datagridCondensed tr.dataGridPager > td {
+	border: 1px solid #cccccc;
+	background: #fbfbfb;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 1px 1px 1px rgba(255,255,255,0.5);
+	box-shadow: inset 1px 1px 1px rgba(255,255,255,0.5);
+	padding: 6px  8px 4px 8px;
+}
+.cxForm  table.datagridCondensed tr.dataGridPager > td select {
+	margin: 0;
+}
+.cxForm  .dataGridPager td > table tbody tr td:first-child {
+	border: 0;
+}
+
+.cxForm  tr.dataGridPager td {
+	font-size: 12px;
+}
+
+.cxForm  tr.dataGridPager .totalDisplayed {
+	font-style: italic;
+	color: #555555;
+}
+.cxForm  tr.dataGridPager .dataGridPages {
+	padding: 2px 0;
+}
+
+/* Highlight Current Page in Pagination */
+.cxForm  tr.dataGridPager .dataGridPages  a, .cxForm  tr.dataGridPager > td >  a {
+	display: inline-block; *display: inline;
+	border-radius: 4px;
+	padding: 3px 3px;
+	-webkit-transition: -webkit-box-shadow linear .25s, box-shadow linear .25s;
+	transition: -webkit-box-shadow linear .25s, box-shadow linear .25s;
+}
+.cxForm  tr.dataGridPager .dataGridPages a:hover, .cxForm  tr.dataGridPager > td > a:hover {
+	background: #f4f7fc;
+	box-shadow: 0 0px 2px #c9dcf7;
+	-webkit-box-shadow: 0 0px 2px #c9dcf7;
+}
+.cxForm  tr.dataGridPager .currentPage, .cxForm  tr.dataGridPager > td > span {
+	display: inline-block; *display: inline;
+	border-radius: 4px;
+	background: #034eb8 url(../images/primaryBtnBg.png) bottom repeat-x;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2px rgba(0,0,0,0.1);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2px rgba(0,0,0,0.1);
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0 0 1px #010c24;
+	font-size: 12px;
+	line-height: 1.7em;
+	width: 1.7em;
+}
+
+.cxForm   tr.dataGridPager td td {
+	border: 0;
+	padding: 0;
+}
+.cxForm  .datagridCondensed tr.th td, .cxForm  .datagridCondensed th {
+	background: #f4f7fc;
+	color: #555;
+	border-top: 1px solid #fff;
+	padding: 8px 5px;
+	font-weight: bold;
+	margin-top: 100px;
+	border-bottom: 3px double #cccccc;
+	border-right: 1px solid #eaf1fa;
+	border-left: 1px solid #fff;
+	vertical-align: bottom;
+	text-align: left;
+	font-size: 11px;
+	-webkit-box-shadow: inset 0 1px 0 rgba(200,200,200,0.3);
+	box-shadow: inset 0 1px 0 rgba(200,200,200,0.3);
+	line-height: 130%;
+}
+.cxForm  .datagridCondensed tr.th td br {
+	display: none;
+}
+.cxForm .datagridCondensed tr.th a, .cxForm .datagridCondensed th a {
+	color: #003399;
+	text-decoration: none;
+}
+.cxForm  .datagridCondensed tr.th a:hover, .cxForm  .datagridCondensed th a:hover {
+	color: #660099;
+	text-decoration: underline;
+}
+.cxForm  .datagridCondensed tr.th td:first-child, .cxForm .datagridCondensed th:first-child, .cxForm .datagridCondensed > tbody td:first-child, .cxForm .datagridCondensed > tbody .shade td:first-child {
+	border-left: 1px solid #ccc;
+}
+.cxForm  .datagridCondensed tr.th td:last-child, .cxForm  .datagridCondensed th:last-child, .cxForm .datagridCondensed th:last-child, .cxForm  .datagridCondensed > tbody td:last-child {
+	border-right: 1px solid #ccc;
+}
+
+.cxForm  .datagridCondensed > tbody tr:last-child > td {
+	border-top: 1px solid #fff;
+}
+.cxForm  .datagridCondensed td {
+	border: 0;
+
+	padding: 8px 6px 9px 6px;
+	line-height: 135%;
+	max-width: 520px;
+	color: #333;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #fff;
+	border-right: 1px solid #eee;
+	border-left: 1px solid #fff;
+	transition: background-color .2s, box-shadow .2s, color .2s, border-color .5s;
+	-webkit-transition: background-color .2s, -webkit-box-shadow .2s, color .2s, border-color .5s;
+	font-size: 11px;
+}
+.cxForm  .datagridCondensed tr:hover td {
+	box-shadow: inset  0 1px 0px #f3f7fc, inset  0 -1px 0px #f3f7fc ;
+	-webkit-box-shadow: inset  0 1px 0px #f3f7fc, inset  0 -1px 0px #f3f7fc, ;
+	border-bottom-color:  #bbb;
+	color: #000;
+}
+.cxForm  .datagridCondensed tr.shade {
+	background-color: #f5f5f5;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+}
+
+@media only screen and (min-width: 1367px) {
+	.cxForm .datagridCondensed td {
+		padding: 8px 8px 9px 8px;
+		line-height: 140%;
+		font-size: 12px;
+	}
+
+	.cxForm .datagridCondensed tr.th td, .cxForm .datagridCondensed th {
+		padding: 8px;
+	}
+}
+
+@media only screen and (min-width: 1601px) {
+	.cxForm .datagridCondensed td {
+		padding: 8px 12px 9px 12px;
+	}
+
+	.cxForm .datagridCondensed tr.th td, .cxForm .datagridCondensed th {
+		padding: 8px 12px;
+	}
+}
+
+.studentSection {
+	/* border: 1px solid red; */
+}
