@@ -69,3 +69,31 @@ The ability to perform multiple function calls together, allowing the effects an
 💡 Cookbook: [How to build an agent with the OpenAI Node.js SDK](https://cookbook.openai.com/examples/how_to_build_an_agent_with_the_node_sdk)
 
 ## Guides - Prompt Engineering
+
+Guide shows strategies for getting better results from the large language models (sometimes referred to as GPT models) like GPT-4.
+
+- [Prompt Examples](https://platform.openai.com/examples)
+
+### Six Strategies for getting better results
+
+#### Write clear instructions
+
+The models cannot read your mind. If the output are too long, ask for brief replies. If outputs are too simple, ask for expert level writing. If you dislike theformat, demonstrate the format you like to see. The less teh model has to guess at what you want, the more likely you will get it.
+
+Tactics:
+
+- Include details in your query to get more relevant answers
+- Ask the model to adopt a persona
+- Use delimiters to clearly indicate distinct part of the input
+- Specify the steps required to complete a task
+- Provide examples
+- Specify the desired length of the output
+
+Provide reference text
+
+Language models can confidently invent fake answers. IN teh same way notes can help students to better on a test, providing reference text to these models can help in answering with fewer fabrications.
+
+Tactics:
+
+- [Instruct the model to answer using a reference text](https://platform.openai.com/docs/guides/prompt-engineering/tactic-instruct-the-model-to-answer-using-a-reference-text)
+-
