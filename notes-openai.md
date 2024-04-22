@@ -78,7 +78,7 @@ Guide shows strategies for getting better results from the large language models
 
 #### Write clear instructions
 
-The models cannot read your mind. If the output are too long, ask for brief replies. If outputs are too simple, ask for expert level writing. If you dislike theformat, demonstrate the format you like to see. The less teh model has to guess at what you want, the more likely you will get it.
+The models cannot read your mind. If the output are too long, ask for brief replies. If outputs are too simple, ask for expert level writing. If you dislike the format, demonstrate the format you like to see. The less teh model has to guess at what you want, the more likely you will get it.
 
 Tactics:
 
