@@ -135,3 +135,164 @@ In some cases a modification to a prompt will achieve better performance on a fe
 Tactics:
 
 - [Evaluate model outputs with reference to gold-standard answers](https://platform.openai.com/docs/guides/prompt-engineering/tactic-evaluate-model-outputs-with-reference-to-gold-standard-answers)
+
+## Assistants API
+
+The Assistants API allow you to build AI assistants within your own apps. An Assistant ahs instructions and can leverage models, tools and knowledge to respond to user queries. The Assistants API currently supports three types of tools: Code Interpreter, Retrieval and Function calling.
+
+Checkout the [Assistants playground](https://platform.openai.com/playground?mode=assistant)
+
+### Overview
+
+A typical integration of the Assistants API ahs the following flow:
+
+1. Create an Assistant by defining its custom instruction and picking a model. Can add files, enable tools like Code Interpreter, Retrieval and Function calling.
+2. Create a Thread when a user starts a conversation.
+3. Add Messages to the Thread as teh user asks questions.
+4. Run the Assistant on the Thread to generate a response by calling the model and the tools.
+
+This starter guide walks through the key steps to create adn run an Assistant that uses Code Interpreter. In this example, we are creating an Assistant that is a personal math tutor, with the Code Interpreter tool enabled.
+
+Step 1: Create an Assistant
+
+An [Assistant](https://platform.openai.com/docs/api-reference/assistants/object) represents an entity that can be configured to respond to a user's messages using several parameters like `model`, `instructions`, and `tools`.
+
+```JAVASCRIPT
+import OpenAI from "openai";
+const openai = new OpenAI();
+ 
+async function main() { 
+  const assistant = await openai.beta.assistants.create({
+    name: "Math Tutor",
+    instructions: "You are a personal math tutor. Write and run code to answer math questions.",
+    tools: [{ type: "code_interpreter" }],
+    model: "gpt-4-turbo-preview"
+  });
+}
+ 
+main();
+```
+
+Step 2: Create a Thread
+
+A Thead represents a conversation between a user and one or many Assistants. you can create a Thread when a user (Or your AI App) starts a conversation with your Assistant.
+
+```JAVASCRIPT
+const thread = await openai.beta.threads.create();
+```
+
+Step 3: Add a Message to the Thread
+
+The contents of the messages your users or applications create are added as Message objects to the Thread. Messages can contain both text and files. There is no limit to the number of Messages you can add to Threads - we can truncate any context that does not fit into the model's context window.
+
+```JAVASCRIPT
+const message = await openai.beta.threads.messages.create(
+  thread.id,
+  {
+    role: "user",
+    content: "I need to solve the equation `3x + 11 = 14`. Can you help me?"
+  }
+);
+```
+
+Step 4: Create a Run
+
+Once all the user Messages have been added to the Thread, you can Run the Tread with any Assistant. **Creating a Run uses the model and tools associated with the Assistant to generate a response.** These responses are added to the Thread as `assistant` Messages.
+
+- Without Streaming:
+
+```JAVASCRIPT
+let run = await openai.beta.threads.runs.createAndPoll(
+  thread.id,
+  { 
+    assistant_id: assistant.id,
+    instructions: "Please address the user as Jane Doe. The user has a premium account."
+  }
+);
+```
+
+Once the Run completes, you can list the Messages added to the Thread by the Assistant.
+
+```JAVASCRIPT
+if (run.status === 'completed') {
+  const messages = await openai.beta.threads.messages.list(
+    run.thread_id
+  );
+  for (const message of messages.data.reverse()) {
+    console.log(`${message.role} > ${message.content[0].text.value}`);
+  }
+} else {
+  console.log(run.status);
+}
+```
+
+All together, run this in your terminal:
+
+```JAVASCRIPT
+import OpenAI from "openai";
+const openai = new OpenAI('YOURKEYHERE');
+// Assistant API
+async function main() { 
+  const assistant = await openai.beta.assistants.create({
+    name: "Math Tutor",
+    instructions: "You are a personal math tutor. Write and run code to answer math questions.",
+    tools: [{ type: "code_interpreter" }],
+    model: "gpt-4-turbo-preview"
+  });
+
+  const thread = await openai.beta.threads.create();
+
+  const message = await openai.beta.threads.messages.create(
+  thread.id,
+  {
+    role: "user",
+    content: "I need to solve the equation `3x + 11 = 14`. Can you help me?"
+  }
+);
+
+let run = await openai.beta.threads.runs.createAndPoll(
+  thread.id,
+  { 
+    assistant_id: assistant.id,
+    instructions: "Please address the user as Jane Doe. The user has a premium account."
+  }
+);
+
+if (run.status === 'completed') {
+  const messages = await openai.beta.threads.messages.list(
+    run.thread_id
+  );
+  for (const message of messages.data.reverse()) {
+    console.log(`${message.role} > ${message.content[0].text.value}`);
+  }
+} else {
+  console.log(run.status);
+}
+
+}
+ 
+main();
+```
+
+- [How Assistants Work](https://platform.openai.com/docs/assistants/how-it-works/agents)
+
+### How Assistants Work
+
+Designed to help developers build powerful AI assistants capable of performing a variety of tasks.
+
+1. Assistants can call Open AI's models with specific instructions to tune their personality and capabilities.
+2. Assistants can access multiple tools in parallel. These an be both OpenAI hosted tools, like Code interpreter and knowledge retrieval - or tools you build and host via function calling
+3. Assistants can access persistent Threads. Threads simplify AI application development by storing message history and truncating it when the convertion get too long fo rthe model's context length. You can create a Thread once and simply append Messages to it as your users reply.
+4. Assistants can access Files in several formats - eithe ras part of their creation or as part of Threads between Assistants and users. When using tools, Assistants can also create files (images, spreadsheets) and cite files they reference int he Messages they create.
+
+#### Objects
+
+![alt text](images/image.png)
+
+- Assistant - Purpose built AI that uses OpenAi's models and calls tools
+- Thread - A conversation session between an Assistant and a user. Threads store Messages and automatically handle truncation to fit content into a model's context.
+- Message - A message created by an Assistant or a user. Messages can include text, images, and other files. Messages stored as a list on the Thread.
+- Run - An invocation of an Assistant on a Thread. The Assistant uses its configuration and the Thread's Messages to perform tasks by calling models and tools. As part of a Run, teh Assistant appends Messages to the Thread.
+- Run Step - A detailed list of steps the Assistant took as part of a Run. And Assistant can call tools or create Messages during tis run. Examining the Run Steps allow you to introspect how the Assistant is getting to its final results.
+
+#### Creating Assistants
