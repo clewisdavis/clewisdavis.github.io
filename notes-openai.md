@@ -296,3 +296,41 @@ Designed to help developers build powerful AI assistants capable of performing a
 - Run Step - A detailed list of steps the Assistant took as part of a Run. And Assistant can call tools or create Messages during tis run. Examining the Run Steps allow you to introspect how the Assistant is getting to its final results.
 
 #### Creating Assistants
+
+ℹ️ Recommend using the latest models with the Assistants API for best results and maximum compatibility with tools.
+
+To get started, creating an Assistant only requires specifying the `model` to use. But you can futher customize the behavior fo the Assistant:
+
+1. Use the `instructions` parameter to guide the personality of the Assistant and define its goals. Instructions are similar to system messages in the Chat Completions API.
+2. Use the `tools` parameter to give teh Assistant access up to 128 tools. You can give it access to OpenAI-hosted tools like `code_interpreter` and `retrieval` or call a third party tools via `function` calling.
+3. Use the `file_ids` parameter to give teh tools like `code-Interpreter` and `retrieval` access to files. Files are uploaded using the `File` upload endpoint and must have the `purpose` set to `assistants` to be used with this API.
+
+For example, to create an Assistant that can create data visualization based on a `.csv` file, first upload a file.
+
+```JAVASCRIPT
+const file = await openai.files.create({
+  file: fs.createReadStream("mydata.csv"),
+  purpose: "assistants",
+});
+```
+
+- And then create the Assistant with the uploaded file.
+
+```JAVASCRIPT
+const assistant = await openai.beta.assistants.create({
+  name: "Data visualizer",
+  description: "You are great at creating beautiful data visualizations. You analyze data present in .csv files, understand trends, and come up with data visualizations relevant to those trends. You also share a brief text summary of the trends observed.",
+  model: "gpt-4-turbo",
+  tools: [{"type": "code_interpreter"}],
+  file_ids: [file.id]
+});
+```
+
+- You can attach a maximum of 20 files per Assistant, and they can be at most 512 MD each.
+- The size of all the files uploaded by your organization should not exceed 10 GB.
+- In addition to the 512 MB file size, each file can only contain 2,000,000 tokens.
+- Assistant or Message creation will fail if any attached files exceed the token limit.
+
+- You can also use the `AssistantFile` object to create, delete, or view associations between Assistant and File objects.
+- Note that deleting an `AssistantFile` doesn't delete the original File object, if simply deletes the association between that File and teh Assistant. T
+- To delete a File, use the File `delete` endpoint instead.
