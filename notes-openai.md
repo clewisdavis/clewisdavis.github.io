@@ -334,3 +334,45 @@ const assistant = await openai.beta.assistants.create({
 - You can also use the `AssistantFile` object to create, delete, or view associations between Assistant and File objects.
 - Note that deleting an `AssistantFile` doesn't delete the original File object, if simply deletes the association between that File and teh Assistant. T
 - To delete a File, use the File `delete` endpoint instead.
+
+#### Managing Threads and Messages
+
+- Threads and Messages represent a conversation session between an Assistant and a user.
+- There is no limit to the number of Messages you can store in a Thread.
+- Once the size fo the Messages exceeds the context window fo the model, the Tread will attempt to include as many messages as possible that fit in the context window and drop the oldest messages.
+- You can create a Thread with an initial list of Messages like this:
+
+```JAVASCRIPT
+const thread = await openai.beta.threads.create({
+  messages: [
+    {
+      "role": "user",
+      "content": "Create 3 data visualizations based on the trends in this file.",
+      "file_ids": [file.id]
+    }
+  ]
+});
+```
+
+- Messages can contain text, images or files.
+- At the moment, user-created Messages cannot contain image files but we plan to add support for this in the future.
+- Messages also have the same file size and token limits as Assistants (512MB file size and a 2 million token limit).
+
+#### Context window management
+
+The Assistants API can automatically manage teh context window such that you never exceed the models context length, however, we have exposed some controls to allow you some flexibility in managing the context window.
+
+##### Max Completion and Max Prompt Tokens
+
+- To limit the amount of tokens the model is allowed to consume during a single run, you may set `max_prompt_tokens` and `max_completion_tokens` when creating a run.
+- During the run, an additional completion would cuase the run to exceed these values, we will end the run with a status `complete`.
+- More details may be found in the `incomplete_details` field of the run object.
+
+- These values control the context size and `max_tokens` values used during completion.
+- Values get 'spend down' over the course of the run, which could be composed of multiple completions.
+
+- For example, you create a run with `max_prompt_tokens` set to 500 and `max_completion_tokens` set to 1000.
+- On teh first completion, open ai will truncate your thread to 500 tokens according to your truncation strategy, and set the `max_tokens` fo the completion to 1000.
+- On those settings, say you used 200 prompt tokens and 300 completion tokens. On teh second generation, we will use up the 300 tokens for the prompt and 700 tokens for the completion.
+
+##### Truncation Strategy
