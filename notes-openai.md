@@ -376,3 +376,55 @@ The Assistants API can automatically manage teh context window such that you nev
 - On those settings, say you used 200 prompt tokens and 300 completion tokens. On teh second generation, we will use up the 300 tokens for the prompt and 700 tokens for the completion.
 
 ##### Truncation Strategy
+
+- You may also specify a truncation strategy to control how your thread should be rendered into the model's context window.
+- Using a truncation strategy of type `auto` will use OpenAI's default truncation strategy.
+- Using a truncation strategy of type `last_messages` will allo wyou to specify the number of the most recent messages in the context window.
+
+##### Message annotations
+
+Messages created by Assistants may contain `annotations` within the `content` array of the object. Annotations provide information around how you should annotate the text in the Message.
+
+#### Run and RUn Steps
+
+When you have all the context you need from your user in the Thread, you can run the Thread with an Assistant of your choice.
+
+```JAVASCRIPT
+const run = await openai.beta.threads.runs.create(
+  thread.id,
+  { assistant_id: assistant.id }
+);
+```
+
+By default, a Run will use the `model` and `tools` configuration specified in the Assistant object, but you can override most of these wehn creating the Run for added flexibility:
+
+```JAVASCRIPT
+const run = await openai.beta.threads.runs.create(
+  thread.id,
+  {
+    assistant_id: assistant.id,
+    model: "gpt-4-turbo",
+    instructions: "New instructions that override the Assistant instructions",
+    tools: [{"type": "code_interpreter"}, {"type": "retrieval"}]
+  }
+);
+```
+
+ℹ️ `file_ids` associated with teh Assistant cannot be overridden during Run creation. You must use the 'modify Assistant' endpoint to do this.
+
+You can set the `temperature` parameter based on the desired trade-off between coherence and creativity for your app.
+
+- Lower values for temperature results in more consistent outputs (e.g. 0.2)
+- Higher values generate more diverse and creative results.
+- The temperature can range from 0 to 2.
+
+##### Run lifecycle
+
+Run objects can have multiple statuses.
+
+![lifecycle](images/image-1.png)
+
+- `queued` - When Runs are first created or when you complete the `required_action`, they are moved to a queued status. They should almost immediately move to `in_progress`.
+- `in-progress` - While 'in_progress', the Assistant uses the model and tool to perform steps. You can view in progress being made by the run by examining the Run Steps.
+- `completed` - the Run successfuly completed! You can now view all the Messages the Assistant added to the Thread, and all the steps the Run took. You can also continue the conversation by adding more user Messages to the Thread and creating another run.
+- `requires_action` -
