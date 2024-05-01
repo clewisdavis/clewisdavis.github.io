@@ -449,6 +449,45 @@ Run step statuses have the same meaning as Run statuses.
 Most of the interesting detail in the Run Step object lives in the `step_details` field. There can be two types of step details:
 
 1. `message_creation`: This Run Step is created when the Assistant creates a Message on teh Thread.
-2. `tool_calls`: This Run Step is created when the Assistant calls a tool. Details aroudn this are covered in the relevant sections of the Tools guide.
+2. `tool_calls`: This Run Step is created when the Assistant calls a tool. Details around this are covered in the relevant sections of the Tools guide.
 
 #### Data access guidance
+
+Assistants, threads, messages, and files created via teh API are scoped to the entire organization. As such, any person with API key access to the organization is able to read ro write assistants, threads, messages and files in the organization.
+
+Recommend data access controls:
+
+- Authorization
+- Restrict API key access
+- Separate accounts
+
+##### Limitations
+
+- During beta, several limitations:
+- Support for notifications to share object status updates without the need for polling.
+- Support for DALL-E or browsing as a tool
+- Support for user message creation with images
+
+### Tools
+
+Give Assistants access to OpenAI-hosted tools like Code Interpreter and Knowledge Retrieval, or build your own tools using the Function calling.
+
+#### Code Interpreter
+
+Allows the Assistants API to write and run Python code in a sand boxed execution environment. Can process files with diverse data and formatting, generate files with data and images of graphs.
+
+##### Enabling Code Interpreter
+
+Pass the `code_interpreter` in the `tools` parameter of the Assistant object to enable Code Interpreter:
+
+```JAVASCRIPT
+const assistant = await openai.beta.assistants.create({
+  instructions: "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+  model: "gpt-4-turbo",
+  tools: [{"type": "code_interpreter"}]
+});
+```
+
+The model then decides when to invoke Code Interpreter in a Run based on the nature of the user request. This behavior can be promoted by prompting in the Assistant's `instructions` (e.g., write code to solve this problem)
+
+##### Passing files to Code Interpreter
