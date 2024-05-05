@@ -711,3 +711,137 @@ const message = await openai.beta.threads.messages.create(
 - Retrieval supports a variety of file formats including, pdf, md, docx and many more. See Supported files section.
 
 ##### Deleting Files
+
+To remove a file from the assistant, you can detach the file from the assistant:
+
+```JAVASCRIPT
+const fileDeletionStatus = await openai.beta.assistants.files.del(
+  assistant.id,
+  file.id
+);
+```
+
+Detaching the file from the assistant removes teh file from the retrieval index and means you will no longer be charged for the storage of the indexed file.
+
+##### File Citations
+
+When Code Interpreter outputs file paths in a Message, you can convert them to corresponding file downloads using the `annotations` field. See the Annotations section for an example of how to do this.
+
+```JAVASCRIPT
+{
+    "id": "msg_abc123",
+    "object": "thread.message",
+    "created_at": 1699073585,
+    "thread_id": "thread_abc123",
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": {
+          "value": "The rows of the CSV file have been shuffled and saved to a new CSV file. You can download the shuffled CSV file from the following link:\n\n[Download Shuffled CSV File](sandbox:/mnt/data/shuffled_file.csv)",
+          "annotations": [
+            {
+              "type": "file_path",
+              "text": "sandbox:/mnt/data/shuffled_file.csv",
+              "start_index": 167,
+              "end_index": 202,
+              "file_path": {
+                "file_id": "file-abc123"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "file_ids": [
+      "file-abc456"
+    ],
+        ...
+  },
+```
+
+#### Function Calling, Tools
+
+- Similar to the Chat Completions API, the Assistants API supports function calling.
+- Function calling allows you to describe functions to the Assistants and have it intelligently return the functions that need to be called along with their arguments.
+- The Assistants API will pause execution during a Run when it invokes functions, and you can supply the results of the function call back to continue the Run execution.
+
+##### Defining functions
+
+First, define your functions when creating an Assistant:
+
+```JAVASCRIPT
+const assistant = await openai.beta.assistants.create({
+  instructions: "You are a weather bot. Use the provided functions to answer questions.",
+  model: "gpt-4-turbo",
+  tools: [{
+    "type": "function",
+    "function": {
+      "name": "getCurrentWeather",
+      "description": "Get the weather in location",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "location": {"type": "string", "description": "The city and state e.g. San Francisco, CA"},
+          "unit": {"type": "string", "enum": ["c", "f"]}
+        },
+        "required": ["location"]
+      }
+    }
+  }, {
+    "type": "function",
+    "function": {
+      "name": "getNickname",
+      "description": "Get the nickname of a city",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "location": {"type": "string", "description": "The city and state e.g. San Francisco, CA"},
+        },
+        "required": ["location"]
+      }
+    }
+  }]
+});
+```
+
+##### Reading the functions called by the Assistant
+
+When you initiate a Run with a user Message that triggers the function, teh Run wil enter a `pending` status. After it processes, the run will enter a `requires_action` state which you can verify by retrieving the Run.
+
+The model can provide multiple functions to call at once using parallel function calling:
+
+```JAVASCRIPT
+{
+  "id": "run_abc123",
+  "object": "thread.run",
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "status": "requires_action",
+  "required_action": {
+    "type": "submit_tool_outputs",
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "call_abc123",
+          "type": "function",
+          "function": {
+            "name": "getCurrentWeather",
+            "arguments": "{\"location\":\"San Francisco\"}"
+          }
+        },
+        {
+          "id": "call_abc456",
+          "type": "function",
+          "function": {
+            "name": "getNickname",
+            "arguments": "{\"location\":\"Los Angeles\"}"
+          }
+        }
+      ]
+    }
+  },
+...
+```
+
+##### Submitting functions outputs
