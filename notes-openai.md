@@ -845,3 +845,30 @@ The model can provide multiple functions to call at once using parallel function
 ```
 
 ##### Submitting functions outputs
+
+You can then complete the Run by submitting the tool output from teh function(s) you call. Pass the `tool_call_id` referenced in the `required_action` object above to match output to each function call.
+
+```JAVASCRIPT
+const run = await openai.beta.threads.runs.submitToolOutputs(
+  thread.id,
+  run.id,
+  {
+    tool_outputs: [
+      {
+        tool_call_id: callIds[0],
+        output: "22C",
+      },
+      {
+        tool_call_id: callIds[1],
+        output: "LA",
+      },
+    ],
+  }
+);
+```
+
+- After submitting outputs, the run will enter the `queued` state before it continues it's execution.
+
+##### Supported files
+
+- [List of supported file types](https://platform.openai.com/docs/assistants/tools/supported-files).
