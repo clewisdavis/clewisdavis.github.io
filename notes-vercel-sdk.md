@@ -193,7 +193,7 @@ return {
 
 The `createStreamableUI` function belongs to the `ai/rec` module and helps you create a stream that can send React components to the client.
 
-So on teh server, you are directly rendering the `<WeatherCard/>` component with teh props passed to it, and then streaming it to the client 📣 🫢. As a results, on the client side, you only need to render the UI that is streamed from the server.
+So on teh server, you are directly rendering the `<WeatherCard/>` component with the props passed to it, and then streaming it to the client 📣 🫢. As a results, on the client side, you only need to render the UI that is streamed from the server.
 
 ```JAVASCRIPT
 return (
@@ -211,3 +211,72 @@ Now the steps involved are simplified as:
 2. The language model generates a response that includes a function call.
 3. The function call renders a React Component along with teh relevant props that represent the user interface.
 4. The response is streamed to the client and rendered directly.
+
+ℹ️ Note: You can also render text on the server and stream it to the client using RSC.
+
+In the next sections, learn about the `ai/rsc` module provides you with tools to integrate generative UI in your apps.
+
+## Streaming User Interfaces
+
+The RSC API allow you to stream user interfaces from the server to the client using `createStreamableUI`
+
+📣 This is useful when you want to go beyond raw data and stream React components to the client in real time.
+
+### Creating a Streamable UI
+
+You can import `createStreamableUI` from `ai/rsc` and use it to create a streamable UI.
+
+```JAVASCRIPT
+'use server'
+
+import { createStreamableUI } from 'ai/rsc'
+
+export async function getWeather {
+  const weatherUI = createStreamableUI()
+
+  weatherUI.update(<div style={{ color: 'gray' }}>Loading...</div>)
+
+  setTimeout(() => {
+    weatherUI.done(<div>It's a sunny day!</div>)
+  }, 1000)
+
+  return weatherUI.value
+}
+```
+
+In the example above, `use server` is used to indicate that the exported function is a Server Action function that can be requested by the client. INitially, we create a streamable UI and update it with a loading message. Adn the `.value` property contains the actual UI piece that can be sent to the client.
+
+### Reading a Streamable UI
+
+On the client side, you can request to the `getWeather` Server Action via a normal function call, render the returned UI like any other normal React components.
+
+```JAVASCRIPT
+import { useState } from 'react';
+import { readStreamableValue } from 'ai/rsc';
+import { runThread } from '@/actions';
+
+export default function Page() {
+  const [weather, setWeather] = useState(null);
+
+  return (
+    <div>
+      <button
+        onClick={async () => {
+          const weatherUI = await getWeather();
+          setWeather(weatherUI);
+        }}
+      >
+        What's the weather?
+      </button>
+
+      {weather}
+    </div>
+  );
+}
+```
+
+When the button is clicked, the `getWeather` function is called, and the returned UI is set to the `weather` state and rendered on the page. Users wil see the loading message first and then the actual weather information after 1 second.
+
+You can also handle multiple streams in a single request.
+
+## Streaming Values
