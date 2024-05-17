@@ -280,3 +280,112 @@ When the button is clicked, the `getWeather` function is called, and the returne
 You can also handle multiple streams in a single request.
 
 ## Streaming Values
+
+The RSC API allows you to stream serializable JS values form the server to the client using `createStreamableValue`, such as strings, numbers, objects and arrays.
+
+This is useful when you want to stream:
+
+- Text generations from the language in real-time
+- Buffer values of image and audio generations from multi-modal models
+- Progress updates form multi-step agent runs
+
+### Creating a Streamable Value
+
+You can import `createStreamableValue` from `ai/rsc` and use it to create a streamable value.
+
+```JAVASCRIPT
+'use server';
+
+import { createStreamableValue } from 'ai/rsc';
+
+export const runThread = async () => {
+  const streamableStatus = createStreamableValue('thread.init');
+
+  setTimeout(() => {
+    streamableValue.update('thread.run.create');
+    streamableValue.update('thread.run.update');
+    streamableValue.update('thread.run.end');
+    streamableValue.done('thread.end');
+  }, 1000);
+
+  return {
+    status: streamableStatus.value,
+  };
+};
+```
+
+### Reading a Streamable Value
+
+You can read a streamable value on teh client using `readStreamableValue`. It returns an async iterator that yields the value of the streamable as it is updated:
+
+```JAVASCRIPT
+import { readStreamableValue } from 'ai/rsc';
+import { runThread } from '@/actions';
+
+export default function Page() {
+  return (
+    <button
+      onClick={async () => {
+        const { status } = await runThread();
+
+        for await (const value of readStreamableValue(status)) {
+          console.log(value);
+        }
+      }}
+    >
+      Ask
+    </button>
+  );
+}
+```
+
+## Generative User Interfaces
+
+Since language models can render user interfaces as part of their generations, the resulting model generations are referred to as generative user interfaces.
+
+### Deterministic Routes and Probabilistic Routing
+
+The first implication of user interfaces being generative is that they are not deterministic in nature. They depend on the generation output by the model. This is because they depend on the generation output by the model.
+
+Since these generation are 'probabilistic' (variation), it is possible for every user query to result in a different user interface being generated.
+
+Users expect their experience using your application to be predictable, so non-deterministic user interfaces can sound like a bad idea at first.
+
+However, one way language models can be set up to limit their generations to a particular set of outputs is to use their ability to call functions.
+
+When language models are provided with a set of function definitions, and instructed that it can choose to execute any of them based on the user query, it does one of the following two things:
+
+- Execute a function that is more relevant to the user query.
+- Not execute any function if the user query is otu of bounds the set of functions available to them.
+
+```JAVASCRIPT
+const sendMessage = (prompt: string) => generateText({
+  model: 'gpt-3.5-turbo'
+  system: "you are a friendly weather assistant!",
+  prompt,
+  tools: {
+    getWeather: {
+      description: 'Get the weather in a location',
+      parameters: z.object({
+        location: z.string().describe('The location to get the weather for')
+      }),
+      execute: async ({ location }: { location: string }) => ({
+        location,
+        temperature: 72 + Math.floor(Math.random() * 21) - 10
+      })
+    },
+  }
+})
+
+sendMessage('What is the weather in San Francisco?') // getWeather is called
+sendMessage('What is the weather in New York?')      // getWeather is called
+sendMessage('What events are happening in London?')  // No function is called
+```
+
+- This way, it is possible to ensure that the generations result in deterministic outputs, while the choice a model makes still remains to be probabilistic.
+
+- This emergent ability by a language model to choose whether a function needs to be executed or not based on a user query is believed to be models emulating 'reasoning'.
+
+- 📣 As a result, the combination of language models being able to reason which function to execute as well as render UI at the same time gives you the ability to build applications where **language models can be used as a router**. 📣
+
+### Language Models as Routers
