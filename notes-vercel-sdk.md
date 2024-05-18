@@ -389,3 +389,39 @@ sendMessage('What events are happening in London?')  // No function is called
 - 📣 As a result, the combination of language models being able to reason which function to execute as well as render UI at the same time gives you the ability to build applications where **language models can be used as a router**. 📣
 
 ### Language Models as Routers
+
+Historically, developers had to write routing logic that connected different parts of an application to be navigable by a user and complete a specific task.
+
+In web apps today, most of the routing logic takes place in the form of routes:
+
+- `/login` would navigate you to a page with a login form.
+- `/user/john` would navigate you to a page with profile details about John.
+- `/api/events?limit=5` would display the five most recent events from an events database.
+
+While routes help you build web applications that connect different pars of an application into a seamless user experience, it can also be a burden to manage them as the complexity of applications grow.
+
+Next.js ahs helped reduce the complexity in developing with routes by introducing:
+
+- File based routing system
+- Dynamic routing
+- API routes
+- Middleware
+- App router and so on...
+
+📣 With language models becoming better at reasoning, we believe that there is a future where developers only write core application specific components while models take care of routing them based on the user's state in an application. 📣
+
+With generative user interfaces, the language model decides which user interface to render based on the user's stat in the application, **giving users the flexibility to interact with your application in a conversational manner instead of navigating through a series of predefined routes.**
+
+### Routing by parameters
+
+For routes like:
+
+- `/profile/[username]`
+- `/search?q=[query]`
+- `/media/[id]`
+
+that has segments that are dependent on dynamic data, the language model can generate the correct parameters and render the user interface.
+
+For example, when you are in a search application, you can ask the language model to search for artworks from different artists. The language model will call teh search function with the artist's name as a parameter and render the search results.
+
+### Routing by sequence
