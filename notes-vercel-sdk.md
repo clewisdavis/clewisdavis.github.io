@@ -425,3 +425,35 @@ that has segments that are dependent on dynamic data, the language model can gen
 For example, when you are in a search application, you can ask the language model to search for artworks from different artists. The language model will call teh search function with the artist's name as a parameter and render the search results.
 
 ### Routing by sequence
+
+🫢 For actions that require a sequence of steps to be completed by navigating through different routes, the language model can generate the correct sequence of routes to complete in order to fulfill teh user's request.
+
+For example, when you are in a calendar application, you can ask teh LLM to schedule a happy hour evening with your friends. The LLM will then understand your request and will perform the right sequence of **function** calls to:
+
+1. Look up your calendar, `searchContacts('max')`
+2. Look up your friends calendars, `getEvents()`
+3. Determine the best time for everyone
+4. Search for nearby happy hour spots, `searchNearby('Bar')`
+5. Create an event and send out invites to your friends
+
+![planning event](images/image-4.png)
+
+📣 The LLM calls functions and generates interfaces based on user intent, acting like a router.
+
+Just by defining functions to lookup contacts, pull events from a calendar, and search for nearby locations, the model is able to sequentially navigate the routs for you.
+
+## What is AI and UI State?
+
+There is a recurring pattern of having a state for the LLM on the server, and a state for teh UI on the client. However, it can get tricky to manage these two states separately and keep them in sync.
+
+For example, in a chat application, the **AI state is usually the conversation history** (messages) between the user and the assistant.
+
+The LLM reads this history so it can generate the next message. this value is also the source of truth for the current application state. On the client side, the **UI state** is the list of actual UI elements that are displayed to the user.
+
+In traditional text-based chat applications, teh displayed UI elements are just plain text. They are identical to the conversation history passed to the AI.
+
+However, with Generative UI, what gets presented to the user can be more complex, dynamic and hybrid that just plain text. This is where teh **AI and UI state can diverge**.
+
+The RSC API give you teh flexibility to manage these two states separately, while providing a way to keep them in sync between your database, server and client.
+
+### AI State
