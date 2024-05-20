@@ -457,3 +457,85 @@ However, with Generative UI, what gets presented to the user can be more complex
 The RSC API give you teh flexibility to manage these two states separately, while providing a way to keep them in sync between your database, server and client.
 
 ### AI State
+
+It contains the context the LM needs to read. For a chat app, the AI state is generally the conversation history between the user and the assistant. In practice, it can also be used to store other values and meta information such as `createdAt` for each message and `chatId` for each conversation. the AI state, can be accessed/ modified from both the server and the client.
+
+### UI State
+
+It contains the generated UI and other information for the client-side of the application, that is displayed to the user. It is a fully client-side state (similar to `useState`) that can store anything form JS values to React elements. It CANNOT be accessed from the server-side.
+
+### Creating the AI Context
+
+To start, you need to create an React context using `createAI`, and wrap your application with it. Then, the AI and UI states will be available to all its children.
+
+```JAVASCRIPT
+// Define the AI state and UI state types
+export type AIState = Array<{
+  role: 'user' | 'assistant';
+  content: string;
+}>;
+
+export type UIState = Array<{
+  id: string;
+  role: 'user' | 'assistant';
+  display: ReactNode;
+}>;
+
+async function sendMessage(message: string) {
+  'use server';
+
+  // Handle the message, covered in the following sections.
+}
+
+// Create the AI provider with the initial states and allowed actions
+export const AI = createAI({
+  initialAIState: [] as AIState,
+  initialUIState: [] as UIState,
+  actions: {
+    sendMessage,
+  },
+});
+```
+
+### Using the AI Context
+
+The AI context can be used in any Server Component, to wrap the children components that need access to the AI. For example, you can wrap your root layout component with it.
+
+```JAVASCRIPT
+import { type ReactNode } from 'react';
+import { AI } from './actions';
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: ReactNode }>) {
+  return (
+    <AI>
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+    </AI>
+  );
+}
+```
+
+### Reading UI State in Client
+
+The UI state can be accessed in Client Components using the `useUIState` hook provided by the RSC API. The hook returns the current UI state and a function to update the UI state like React's `useState`.
+
+```JAVASCRIPT
+'use client';
+
+import { useUIState } from 'ai/rsc';
+
+export default function Page() {
+  const [messages, setMessages] = useUIState();
+
+  return (
+    <ul>
+      {messages.map(message => (
+        <li key={message.id}>{message.display}</li>
+      ))}
+    </ul>
+  );
+}
+```
