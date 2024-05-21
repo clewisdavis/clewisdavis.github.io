@@ -462,7 +462,7 @@ It contains the context the LM needs to read. For a chat app, the AI state is ge
 
 ### UI State
 
-It contains the generated UI and other information for the client-side of the application, that is displayed to the user. It is a fully client-side state (similar to `useState`) that can store anything form JS values to React elements. It CANNOT be accessed from the server-side.
+It contains the generated UI and other information for the client-side of the application, that is displayed to the user. It is a fully client-side state (similar to `useState`) that can store anything from JS values to React elements. It CANNOT be accessed from the server-side.
 
 ### Creating the AI Context
 
@@ -539,3 +539,121 @@ export default function Page() {
   );
 }
 ```
+
+### Reading AI State in Client
+
+The AI state can be accessed in Client Components using the `useAIState` hook provided by the RSC API. This hook returns the current AI state.
+
+```JAVASCRIPT
+'use client';
+
+import { useAIState } from 'ai/rsc';
+
+export default function Page() {
+  const [messages, setMessages] = useAIState();
+
+  return (
+    <ul>
+      {messages.map(message => (
+        <li key={message.id}>{message.content}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+### Reading AI State on Server
+
+The AI State can be accessed by the Server Action we provided to `createAI`, using the `getAIState` function. It returns teh current AI state as a read-only value:
+
+```JAVASCRIPT
+import { getAIState } from 'ai/rsc';
+
+export async function sendMessage(message: string) {
+  'use server';
+
+  const history = getAIState();
+
+  const response = await generateText({
+    model: openai('gpt-3.5-turbo'),
+    messages: [...history, { role: 'user', content: message }],
+  });
+
+  return response;
+}
+```
+
+### Updating AI State on Server
+
+The AI State can also be updated by the Server Action with the `getMutableAIState` function. Similar to `getAIState`, but it returns the state with methods to read and update it:
+
+```JAVASCRIPT
+import { getMutableAIState } from 'ai/rsc';
+
+export async function sendMessage(message: string) {
+  'use server';
+
+  const history = getMutableAIState();
+
+  // Update the AI state with the new user message.
+  history.update([...history.get(), { role: 'user', content: message }]);
+
+  const response = await generateText({
+    model: openai('gpt-3.5-turbo'),
+    messages: history.get(),
+  });
+
+  // Update the AI state again with the response from the model.
+  history.done([...history.get(), { role: 'assistant', content: response }]);
+
+  return response;
+}
+```
+
+### Calling Server Actions from Client
+
+To call the `sendMessage` action from the client, you can use the `useActions` hook. The hook returns all the available Actions that were provided to `createAI`.
+
+```JAVASCRIPT
+'use client';
+
+import { useActions, useUIState } from 'ai/rsc';
+
+export default function Page() {
+  const { sendMessage } = useActions();
+  const [messages, setMessages] = useUIState();
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+
+    setMessages([
+      ...messages,
+      { id: Date.now(), role: 'user', display: event.target.message.value },
+    ]);
+
+    const response = await sendMessage(event.target.message.value);
+    setMessages([
+      ...messages,
+      { id: Date.now(), role: 'assistant', display: response },
+    ]);
+  };
+
+  return (
+    <>
+      <ul>
+        {messages.map(message => (
+          <li key={message.id}>{message.display}</li>
+        ))}
+      </ul>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="message" />
+        <button type="submit">Send</button>
+      </form>
+    </>
+  );
+}
+```
+
+When the user submits a message, the `sendMessage` action is called with the message content. The response from the action is then added to the UI state, updating the displayed messages.
+
+## Saving and Restoring States
