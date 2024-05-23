@@ -657,3 +657,107 @@ export default function Page() {
 When the user submits a message, the `sendMessage` action is called with the message content. The response from the action is then added to the UI state, updating the displayed messages.
 
 ## Saving and Restoring States
+
+The RSC API provides a convenient methods for saving and restoring the state of your AI and UI state. This is useful for saving the state of your application after every model generation, and restoring it when the user revisits the generations.
+
+### AI State
+
+#### Saving AI state
+
+The AI state can be saved using the `onSetAIState` callback, which gets called whenever the AI state is updated. In the following example, we save the chat history to a database, whenever the generation is marked as done.
+
+```JAVASCRIPT
+export const AI = createAI<ServerMessage[], ClientMessage[]>({
+  actions: {
+    continueConversation,
+  },
+  onSetAIState: async ({ state, done }) => {
+    'use server';
+
+    if (done) {
+      saveChatToDB(state);
+    }
+  },
+});
+```
+
+#### Restoring AI state
+
+The AI state can be restored using the `initialAIState` prop passed to the context provider created by the `createAI` function. In the example, we restore the chat history from a database when the component is mounted.
+
+```JAVASCRIPT
+import { ReactNode } from 'react';
+import { AI } from './actions';
+
+export default async function RootLayout({
+  children,
+}: Readonly<{ children: ReactNode }>) {
+  const chat = await loadChatFromDB();
+
+  return (
+    <html lang="en">
+      <body>
+        <AI initialAIState={chat}>{children}</AI>
+      </body>
+    </html>
+  );
+}
+```
+
+### UI State
+
+#### Saving UI State
+
+The UI state cannot be saved directly, since the contents are not yet serializable. Instead,  you cna use the AI state as a proxy to store details about the UI state and use it to restore teh UI sate when needed. you can check out the Restoring UI State sectoin for more details.
+
+#### Restoring UI state
+
+The UI state can be restored using the AI state as a proxy. In the following example, we restore the chat history form the AI state when teh component is mounted. We will use `onGetUIState` callback to listen for SSR events and restore the UI state.
+
+```JAVASCRIPT
+export const AI = createAI<ServerMessage[], ClientMessage[]>({
+  actions: {
+    continueConversation,
+  },
+  onGetUIState: async () => {
+    'use server';
+
+    const historyFromDB: ServerMessage[] = await loadChatFromDB();
+    const historyFromApp: ServerMessage[] = getAIState();
+
+    // If the history from the database is different from the
+    // history in the app, they're not in sync so return the UIState
+    // based on the history from the database
+
+    if (historyFromDB.length !== historyFromApp.length) {
+      return history.map(({ role, content }) => ({
+        id: nanoid(),
+        role,
+        display:
+          role === 'function' ? (
+            <Component {...JSON.parse(content)} />
+          ) : (
+            content
+          ),
+      }));
+    }
+  },
+});
+```
+
+### Designing Multi-step Interfaces
+
+📣 Multi-step interfaces refer to user interfaces that require multiple independent steps to be completed in order to achieve a specific task.
+
+In order to understand multi-step interfaces, it is important to understand two concepts:
+
+- Function composition
+- Application context
+
+**Function composition** is the process of combining multiple function to create a new function. This is a powerful concept that allows you to break down complex tasks into smaller, more manageable steps.
+
+**Application context** refers to the state of the application at any given point in time. This includes the user's input, the output of the language model, and any other relevant information.
+
+When designing multi-step interfaces, you ned to consider how the functions in your application can be composed together to form a coherent UX as well as how the application context changes as the user progresses through the interface.
+
+### Application Context
