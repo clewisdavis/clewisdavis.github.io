@@ -761,3 +761,205 @@ In order to understand multi-step interfaces, it is important to understand two 
 When designing multi-step interfaces, you ned to consider how the functions in your application can be composed together to form a coherent UX as well as how the application context changes as the user progresses through the interface.
 
 ### Application Context
+
+The application context can be thought of as the conversation history between the user and the model. The richer the context, the more information the modal has to generate relevant responses.
+
+In the context of multistep interfaces, the application context becomes even more important. This is because the user's input in one step may affect the output of the model in the next step.
+
+For example, consider a meal logging app that helps users track their daily food intake. Thelanguage model is provided with the following functions:
+
+- `log_meal` takes in parameters like the name of the food, the quantity, and the time of consumption to log a meal.
+- `delete_meal` takes in the name of the meal to be deleted.
+
+When the user logs a meal, the model generates a response confirming the meal has been logged.
+
+```JAVASCRIPT
+User: Log a chicken shawarma for lunch.
+Function: log_meal("chicken shawarma", "250g", "12:00 PM")
+Model: Chicken shawarma has been logged for lunch.
+```
+
+Now when the user decides to delete the meal, the model should be able to reference the previous step to identify the meal to be deleted.
+
+```JAVASCRIPT
+User: Log a chicken shawarma for lunch.
+Function: log_meal("chicken shawarma", "250g", "12:00 PM")
+Model: Chicken shawarma has been logged for lunch.
+...
+...
+User: I skipped lunch today, can you update my log?
+Function: delete_meal("chicken shawarma")
+Model: Chicken shawarma has been deleted from your log.
+```
+
+In this example, managing the application context is important for the model to generate the correct response. Teh model needs to have information about the previous actions in order for it to use generate the parameters for teh `delete_meal` function.
+
+### Function Composition
+
+📣 Function composition is the process of combining multiple functions to create a new function.
+
+This involves defining the inputs and outputs of each function, as well as how they interact with each other.
+
+🫢 The design of how these function can be composed together to form a multi-step interface is crucial to both the UX of your application and the model's ability go generate the correct output.
+
+For example, consider a flight booking assistant that can help users book flights. The assistant can be designed to have the following functions:
+
+- `searchFlights`: Searches for flights based on the user's query.
+- `lookupFLight`: Looks up details of a specific flight based on the flight number.
+- `bookFlight`: Books a flight based on the user's selection.
+
+The `searchFlights` function is called when the user wants to lookup flights for a specific route. This would typically mean teh function should be able to take in parameters like the origin and destination of the flight.
+
+The `lookupFlight` function is called when the user wants to get more details about a specific flight. This would typically mean the function should be able to take in parameters like the flight number and return information about search avail.
+
+The `bookFlight` function is called when the user decides to book a flight. In order to identify the flight to book, the function should be able to take in parameters like the flight number, trip date and passenger details.
+
+So the conversation between the user and the model could look like this:
+
+```JAVASCRIPT
+User: I want to book a flight from New York to London.
+Function: searchFlights("New York", "London")
+Model: Here are the available flights from New York to London.
+User: I want to book flight number BA123 on 12th December for myself and my wife.
+Function: lookupFlight("BA123") -> "4 seats available"
+Model: Sure, there are seats available! can you provide the names of the passengers?
+User: John Doe and Jane Doe.
+Function: bookFlight("BA123", "12th December", ["John Doe", "Jane Doe"])
+Model: Your flight has been booked!
+```
+
+The `lookupContacts` function is called before the `bookFlight` funciton to ensure that the passenger details are available in the application context when booking the flight. This way, the model can reduce the number of steps required from the user and use its ability to call functions that populate its context and use that information to complete the booking process.
+
+Now, let's introduce another function called `lookupBooking` that can be used to show booking details by taking in the name of the passenger as parameter. This function can be composed with the existing functions to provide a more complete user experience.
+
+```JAVASCRIPT
+User: What's the status of my wife's upcoming flight?
+Function: lookupContacts() -> ["John Doe", "Jane Doe"]
+Function: lookupBooking("Jane Doe") -> "BA123 confirmed"
+Function: lookupFlight("BA123") -> "Flight BA123 is scheduled to depart on 12th December."
+Model: Your wife's flight BA123 is confirmed and scheduled to depart on 12th December.
+```
+
+In this example, the `lookupBooking` function is used to provide teh user with the status of their wife's upcoming flight. By composing this function with the existing functions, the model is able to generate a response that includes the booking status and the departure data of the flight without requiring the user ot provide additional information.
+
+As a result the more functions you design that can be composed together, the more complex and powerful  your apps can become. 📣
+
+## Error Handling
+
+Two categories of errors can occur when working with the RSC API: errors while streaming user interfaces and erros while streaming other values.
+
+### Handling UI Errors
+
+To handle errors while generating UI, the `streamableUI` object exposes an `error()` method.
+
+```JAVASCRIPT
+'use server';
+
+import { createStreamableUI } from 'ai/rsc';
+
+export async function getStreamedUI() {
+  const ui = createStreamableUI();
+
+  (async () => {
+    ui.update(<div>loading</div>);
+    try {
+      const data = await fetchData();
+      ui.done(<div>{data}</div>);
+    } catch (e) {
+      ui.error(<div>Error: {e.message}</div>);
+    }
+  })();
+
+  return ui.value;
+}
+```
+
+With this method, you can catch any error with the stream, and return relevant UI. On the client, you can also use a React Error Boundary to wrap the streamed component and catch any additional errors.
+
+```JAVASCRIPT
+import { getStreamedUI } from '@/actions';
+import { useState } from 'react';
+import { ErrorBoundary } from './ErrorBoundary';
+
+export default function Page() {
+  const [streamedUI, setStreamedUI] = useState(null);
+
+  return (
+    <div>
+      <button
+        onClick={async () => {
+          const newUI = await getStreamedUI();
+          setStreamedUI(newUI);
+        }}
+      >
+        What does the new UI look like?
+      </button>
+      <ErrorBoundary>{streamedUI}</ErrorBoundary>
+    </div>
+  );
+}
+```
+
+### Handling Other Errors
+
+To handle other errors while streaming, you can return an error object that the receiver can use to determine why the failure occurred.
+
+```JAVASCRIPT
+'use server';
+
+import { createStreamableValue } from 'ai/rsc';
+import { fetchData, emptyData } from '../utils/data';
+
+export const getStreamedData = async () => {
+  const streamableData = createStreamableValue<string>(emptyData);
+
+  try {
+    (() => {
+      const data1 = await fetchData();
+      streamableData.update(data1);
+
+      const data2 = await fetchData();
+      streamableData.update(data2);
+
+      const data3 = await fetchData();
+      streamableData.done(data3);
+    })();
+
+    return { data: streamableData.value };
+  } catch (e) {
+    return { error: e.message };
+  }
+};
+```
+
+## Authentication
+
+The RSC API makes extensive use of Server Actions to power streaming values and UI from the server.
+
+Sever Actions are exposed as public, unprotected endpoints. As a result you should treat Server Actions as you would public-facing API endpoints that the user is authorized to perform the action before returning any data.
+
+```JAVASCRIPT
+'use server';
+
+import { cookies } from 'next/headers';
+import { createStremableUI } from 'ai/rsc';
+import { validateToken } from '../utils/auth';
+
+export const getWeather = async () => {
+  const token = cookies().get('token');
+
+  if (!token || !validateToken(token)) {
+    return {
+      error: 'This action requires authentication',
+    };
+  }
+  const streamableDisplay = createStreamableUI(null);
+
+  streamableDisplay.update(<Skeleton />);
+  streamableDisplay.done(<Weather />);
+
+  return {
+    display: streamableDisplay.value,
+  };
+};
+```
