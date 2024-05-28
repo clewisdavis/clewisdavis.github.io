@@ -963,3 +963,5 @@ export const getWeather = async () => {
   };
 };
 ```
+
+## Examples, Generate Text
