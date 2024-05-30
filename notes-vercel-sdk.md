@@ -965,3 +965,127 @@ export const getWeather = async () => {
 ```
 
 ## Examples, Generate Text
+
+When you need to generate text based on a prompt. For example you may want to generate a response to a question or summarize a body of text. The `generateText` function can be used to generate text based on the input prompt.
+
+### Client
+
+Let's create a simple React component that will call the `getAnswer` function when a button is clicked. The `getAnswer` function wil call the `generateText` function from the `ai` module, which wil then generate text based on the input prompt.
+
+```JAVASCRIPT
+'use client';
+
+import { useState } from 'react';
+import { getAnswer } from './actions';
+
+export default function Home() {
+  const [generation, setGeneration] = useState<string>('');
+
+  return (
+    <div>
+      <button
+        onClick={async () => {
+          const { text } = await getAnswer('Why is the sky blue?');
+          setGeneration(text);
+        }}
+      >
+        Answer
+      </button>
+      <div>{generation}</div>
+    </div>
+  );
+}
+```
+
+### Server
+
+On the server side, we need to implement the `getAnswer` function which will call the `generateText` function from the `ai` module. The `generateText` function will generate text based on the input prompt.
+
+```JAVASCRIPT
+'use server';
+
+import { generateText } from 'ai';
+import { openai } from '@ai-sdk/openai';
+
+export async function getAnswer(question: string) {
+  const { text, finishReason, usage } = await generateText({
+    model: openai('gpt-3.5-turbo'),
+    prompt: question,
+  });
+
+  return { text, finishReason, usage };
+}
+```
+
+## Stream Text Generation
+
+Text generation can sometimes take a long time to complete, especially when you are generating a couple paragraphs of text. In this case it can be useful to stream teh text generation process to the client in real-time.
+
+### Client
+
+Create a simple React component that wil call the `getAnswer` function when a button is clicked. The `getAnswer` function wil cal the `streamText` function, which wil then generate text based on the input prompt. To consume the stream of text in the client, we will use the `readStreamableValue` function form the `ai/rsc` module.
+
+```JAVASCRIPT
+'use client';
+
+import { useState } from 'react';
+import { generate } from './actions';
+import { readStreamableValue } from 'ai/rsc';
+
+export default function Home() {
+  const [generation, setGeneration] = useState<string>('');
+
+  return (
+    <div>
+      <button
+        onClick={async () => {
+          const { output } = await generate('Why is the sky blue?');
+
+          for await (const delta of readStreamableValue(output)) {
+            setGeneration(currentGeneration => `${currentGeneration}${delta}`);
+          }
+        }}
+      >
+        Ask
+      </button>
+
+      <div>{generation}</div>
+    </div>
+  );
+}
+```
+
+### Server
+
+On the server side, we need to implement the `getAnswer` function, which wil call the `streamText` function. The `streamText` function. The `streamText` function will generate text based on the input prompt. In order to stream the text generation to the client, we will use the `createStreamableValue` that can wrap any changeable value and stream it to the client.
+
+Using the DevTools, we can see teh text generation being streamed to the client in real-time.
+
+```JAVASCRIPT
+'use server';
+
+import { streamText } from 'ai';
+import { openai } from '@ai-sdk/openai';
+import { createStreamableValue } from 'ai/rsc';
+
+export async function generate(input: string) {
+  'use server';
+
+  const stream = createStreamableValue('');
+
+  (async () => {
+    const { textStream } = await streamText({
+      model: openai('gpt-3.5-turbo'),
+      prompt: input,
+    });
+
+    for await (const delta of textStream) {
+      stream.update(delta);
+    }
+
+    stream.done();
+  })();
+
+  return { output: stream.value };
+}
+```
