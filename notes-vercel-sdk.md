@@ -1089,3 +1089,79 @@ export async function generate(input: string) {
   return { output: stream.value };
 }
 ```
+
+## Generate Object
+
+Earlier functions like `generateText` and `streamText` gave us the ability to generate unstructured text. However if you want to generate structured data like JSON, you can provide a schema that describes the structure of your desired object to the `generateObject` function.
+
+The function requires you to provide a schema using zod, a library for defining schemas for JS objects. By using zod,  you can also use it to validate the generated object and ensure that it confirms to the specified structure.
+
+### Client
+
+Simple React component that will call the `getNotifications` function when a button is clicked. The function will generate a list of notifications as described in the schema.
+
+```JAVASCRIPT
+'use client';
+
+import { useState } from 'react';
+import { getNotifications } from './actions';
+
+export default function Home() {
+  const [generation, setGeneration] = useState<string>('');
+
+  return (
+    <div>
+      <button
+        onClick={async () => {
+          const { notifications } = await getNotifications(
+            'Messages during finals week.',
+          );
+
+          setGeneration(JSON.stringify(notifications, null, 2));
+        }}
+      >
+        View Notifications
+      </button>
+
+      <pre>{generation}</pre>
+    </div>
+  );
+}
+```
+
+### Server
+
+Now implement the `getNotifications` function. We will use the `generateObject` function to generate the list of notifications based on the schema we defined earlier.
+
+```JAVASCRIPT
+'use server';
+
+import { generateObject } from 'ai';
+import { openai } from '@ai-sdk/openai';
+import { z } from 'zod';
+
+export async function getNotifications(input: string) {
+  'use server';
+
+  const { object: notifications } = await generateObject({
+    model: openai('gpt-4-turbo'),
+    system: 'You generate three notifications for a messages app.',
+    prompt: input,
+    schema: z.object({
+      notifications: z.array(
+        z.object({
+          name: z.string().describe('Name of a fictional person.'),
+          message: z.string().describe('Do not use emojis or links.'),
+          minutesAgo: z.number(),
+        }),
+      ),
+    }),
+  });
+
+  return { notifications };
+}
+```
+
+### Stream Object Generation
+
+Object generation can sometimes take a long time to complete, especially when you are generating a large schema. It is useful to stream teh object generation process to the client in real time. This allows the client to display the generated object as it is being generated, rather than have users wait for it to complete before displaying the result.
