@@ -1165,3 +1165,85 @@ export async function getNotifications(input: string) {
 ### Stream Object Generation
 
 Object generation can sometimes take a long time to complete, especially when you are generating a large schema. It is useful to stream teh object generation process to the client in real time. This allows the client to display the generated object as it is being generated, rather than have users wait for it to complete before displaying the result.
+
+### Client
+
+Let's create a simple Rect component that will call the `getNotification` function when a button is clicked. Teh function will generate a list of notifications as described in the schema.
+
+```JAVASCRIPT
+'use client';
+
+import { useState } from 'react';
+import { generate } from './actions';
+import { readStreamableValue } from 'ai/rsc';
+
+export default function Home() {
+  const [generation, setGeneration] = useState<string>('');
+
+  return (
+    <div>
+      <button
+        onClick={async () => {
+          const { object } = await generate('Messages during finals week.');
+
+          for await (const partialObject of readStreamableValue(object)) {
+            if (partialObject) {
+              setGeneration(
+                JSON.stringify(partialObject.notifications, null, 2),
+              );
+            }
+          }
+        }}
+      >
+        Ask
+      </button>
+
+      <pre>{generation}</pre>
+    </div>
+  );
+}
+```
+
+## Server
+
+Now let's implement the `getNotifications` function. We will use the `generateObject` function to generate the list of fictional notifications based on the schema we defined earlier.
+
+```JAVASCRIPT
+'use server';
+
+import { streamObject } from 'ai';
+import { openai } from '@ai-sdk/openai';
+import { createStreamableValue } from 'ai/rsc';
+import { z } from 'zod';
+
+export async function generate(input: string) {
+  'use server';
+
+  const stream = createStreamableValue();
+
+  (async () => {
+    const { partialObjectStream } = await streamObject({
+      model: openai('gpt-4-turbo'),
+      system: 'You generate three notifications for a messages app.',
+      prompt: input,
+      schema: z.object({
+        notifications: z.array(
+          z.object({
+            name: z.string().describe('Name of a fictional person.'),
+            message: z.string().describe('Do not use emojis or links.'),
+            minutesAgo: z.number(),
+          }),
+        ),
+      }),
+    });
+
+    for await (const partialObject of partialObjectStream) {
+      stream.update(partialObject);
+    }
+
+    stream.done();
+  })();
+
+  return { object: stream.value };
+}
+```
