@@ -1721,3 +1721,5 @@ export async function continueConversation(history: Message[]) {
   };
 }
 ```
+
+- trying out to make my own tools
