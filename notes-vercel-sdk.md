@@ -1604,3 +1604,120 @@ export default function Chat() {
   );
 }
 ```
+
+## Tools
+
+Certain language models have the ability to use external tools to perform tasks, like using a calculator to solve a math problem or using a browser to search for information. The most common way to share tool info with language models is to share a function definition, along with its description, for it to execute and generate a response based on the output.
+
+Here, you will learn how to use the `tools` parameter to allow LLM to call these function in your Next.js app.
+
+And briefly explore rendering React components as part of the function's output which can be useful for creating UI's that go beyond text.
+
+### Call Tools
+
+Some models allow developers to provide a list of tools that can be called at any time during a generation. This is useful for extending teh capabilities of a LLm to either use logic or data to interact with systems external to the model.
+
+### Client
+
+Let's create a simple conversation between a user and model and place a button that will call `continueConversation`.
+
+```JAVASCRIPT
+'use client';
+
+import { useState } from 'react';
+import { Message, continueConversation } from './actions';
+
+// Force the page to be dynamic and allow streaming responses up to 30 seconds
+export const dynamic = 'force-dynamic';
+export const maxDuration = 30;
+
+export default function Home() {
+  const [conversation, setConversation] = useState<Message[]>([]);
+  const [input, setInput] = useState<string>('');
+
+  return (
+    <div>
+      <div>
+        {conversation.map((message, index) => (
+          <div key={index}>
+            {message.role}: {message.content}
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          value={input}
+          onChange={event => {
+            setInput(event.target.value);
+          }}
+        />
+        <button
+          onClick={async () => {
+            const { messages } = await continueConversation([
+              ...conversation,
+              { role: 'user', content: input },
+            ]);
+
+            setConversation(messages);
+          }}
+        >
+          Send Message
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+## Server
+
+Now let's implement the `continueConversation` action that uses `generateText` to generate a response to the user's question. We will use the `tools` parameter to specify our own function called `celsiusToFahrenheit` that will convert a user given value in celsius to fahrenheit.
+
+```JAVASCRIPT
+'use server';
+
+import { generateText } from 'ai';
+import { openai } from '@ai-sdk/openai';
+import { z } from 'zod';
+
+export interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+export async function continueConversation(history: Message[]) {
+  'use server';
+
+  const { text, toolResults } = await generateText({
+    model: openai('gpt-3.5-turbo'),
+    system: 'You are a friendly assistant!',
+    messages: history,
+    tools: {
+      celsiusToFahrenheit: {
+        description: 'Converts celsius to fahrenheit',
+        parameters: z.object({
+          value: z.string().describe('The value in celsius'),
+        }),
+        execute: async ({ value }) => {
+          const celsius = parseFloat(value);
+          const fahrenheit = celsius * (9 / 5) + 32;
+          return `${celsius}°C is ${fahrenheit.toFixed(2)}°F`;
+        },
+      },
+    },
+  });
+
+  return {
+    messages: [
+      ...history,
+      {
+        role: 'assistant' as const,
+        content:
+          text || toolResults.map(toolResult => toolResult.result).join('\n'),
+      },
+    ],
+  };
+}
+```
