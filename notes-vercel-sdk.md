@@ -1605,7 +1605,7 @@ export default function Chat() {
 }
 ```
 
-## Tools
+### Tools
 
 Certain language models have the ability to use external tools to perform tasks, like using a calculator to solve a math problem or using a browser to search for information. The most common way to share tool info with language models is to share a function definition, along with its description, for it to execute and generate a response based on the output.
 
@@ -1671,7 +1671,7 @@ export default function Home() {
 }
 ```
 
-## Server
+### Server
 
 Now let's implement the `continueConversation` action that uses `generateText` to generate a response to the user's question. We will use the `tools` parameter to specify our own function called `celsiusToFahrenheit` that will convert a user given value in celsius to fahrenheit.
 
@@ -1722,4 +1722,130 @@ export async function continueConversation(history: Message[]) {
 }
 ```
 
-- trying out to make my own tools
+## Call Tools in Parallel
+
+Some language models support calling tools in parallel. This is particularly useful when multiple tools are independent of each other and can be executed in parallel during the same generation step.
+
+For example;
+
+```CODE
+User: How is it going?
+Assistant: All good, how may I help you?
+User: What is the weather in Paris and New York?
+```
+
+### Client
+
+Let's modify our previous example to call `getWeather` tool for multiple cities in parallel.
+
+```JAVASCRIPT
+'use client';
+
+import { useState } from 'react';
+import { Message, continueConversation } from './actions';
+
+// Force the page to be dynamic and allow streaming responses up to 30 seconds
+export const dynamic = 'force-dynamic';
+export const maxDuration = 30;
+
+export default function Home() {
+  const [conversation, setConversation] = useState<Message[]>([]);
+  const [input, setInput] = useState<string>('');
+
+  return (
+    <div>
+      <div>
+        {conversation.map((message, index) => (
+          <div key={index}>
+            {message.role}: {message.content}
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          value={input}
+          onChange={event => {
+            setInput(event.target.value);
+          }}
+        />
+        <button
+          onClick={async () => {
+            const { messages } = await continueConversation([
+              ...conversation,
+              { role: 'user', content: input },
+            ]);
+
+            setConversation(messages);
+          }}
+        >
+          Send Message
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+### Server
+
+Let's update the tools object to now use the `getWeather` function instead.
+
+```JAVASCRIPT
+'use server';
+
+import { generateText } from 'ai';
+import { openai } from '@ai-sdk/openai';
+import { z } from 'zod';
+
+export interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+function getWeather({ city, unit }) {
+  // This function would normally make an
+  // API request to get the weather.
+
+  return { value: 25, description: 'Sunny' };
+}
+
+export async function continueConversation(history: Message[]) {
+  'use server';
+
+  const { text, toolResults } = await generateText({
+    model: openai('gpt-3.5-turbo'),
+    system: 'You are a friendly weather assistant!',
+    messages: history,
+    tools: {
+      getWeather: {
+        description: 'Get the weather for a location',
+        parameters: z.object({
+          city: z.string().describe('The city to get the weather for'),
+          unit: z
+            .enum(['C', 'F'])
+            .describe('The unit to display the temperature in'),
+        }),
+        execute: async ({ city, unit }) => {
+          const weather = getWeather({ city, unit });
+          return `It is currently 25°${weather.value} and ${weather.description} in ${city}!`;
+        },
+      },
+    },
+  });
+
+  return {
+    messages: [
+      ...history,
+      {
+        role: 'assistant' as const,
+        content:
+          text || toolResults.map(toolResult => toolResult.result).join('\n'),
+      },
+    ],
+  };
+}
+```
+
+## Render Interface During Tool Call
