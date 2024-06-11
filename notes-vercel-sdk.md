@@ -1984,3 +1984,5 @@ export async function continueConversation(history: Message[]) {
   };
 }
 ```
+
+## State Management
