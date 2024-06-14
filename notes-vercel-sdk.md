@@ -2164,3 +2164,77 @@ export const AI = createAI<ServerMessage[], ClientMessage[]>({
   initialUIState: [],
 });
 ```
+
+## Save and Restore States
+
+...
+
+## Generative User Interface
+
+Use the `streamUI` function to stream generative user interfaces to the client based on the response from the language model.
+
+### Route Components
+
+We have seen how a language model can call a function and render a component based on a conversation with the user.
+
+When we define multiple function in `tools`, it is possible for the model to reason out the right function to call based on whatever the user's intent is. This means you can write a bunch of functions without the burden of implementing complex routing logic to run them.
+
+### Client
+
+```JAVASCRIPT
+'use client';
+
+import { useState } from 'react';
+import { ClientMessage } from './actions';
+import { useActions, useUIState } from 'ai/rsc';
+import { generateId } from 'ai';
+
+// Force the page to be dynamic and allow streaming responses up to 30 seconds
+export const dynamic = 'force-dynamic';
+export const maxDuration = 30;
+
+export default function Home() {
+  const [input, setInput] = useState<string>('');
+  const [conversation, setConversation] = useUIState();
+  const { continueConversation } = useActions();
+
+  return (
+    <div>
+      <div>
+        {conversation.map((message: ClientMessage) => (
+          <div key={message.id}>
+            {message.role}: {message.display}
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          value={input}
+          onChange={event => {
+            setInput(event.target.value);
+          }}
+        />
+        <button
+          onClick={async () => {
+            setConversation((currentConversation: ClientMessage[]) => [
+              ...currentConversation,
+              { id: generateId(), role: 'user', display: input },
+            ]);
+
+            const message = await continueConversation(input);
+
+            setConversation((currentConversation: ClientMessage[]) => [
+              ...currentConversation,
+              message,
+            ]);
+          }}
+        >
+          Send Message
+        </button>
+      </div>
+    </div>
+  );
+}
+```
