@@ -2387,3 +2387,5 @@ export const AI = createAI<ServerMessage[], ClientMessage[]>({
   initialUIState: [],
 });
 ```
+
+Recreated UI Chat.
