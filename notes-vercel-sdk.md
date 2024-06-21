@@ -2388,4 +2388,6 @@ export const AI = createAI<ServerMessage[], ClientMessage[]>({
 });
 ```
 
-Recreated UI Chat.
+## Stream Component Updates
+
+By streaming the components we open up the possibility to update these components based on state change that occur in the server.
